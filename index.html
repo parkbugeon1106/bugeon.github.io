@@ -139,19 +139,18 @@ button:hover{background:#00e0ff}
 <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
 
 <script>
-// TODO : 여기에 Firebase 설정 붙이기
-/* 
+// ✅ Firebase 설정
 const firebaseConfig = {
-  apiKey: "AIza....",
-  authDomain: "...firebaseapp.com",
-  projectId: "...",
-  storageBucket: "...",
-  messagingSenderId: "...",
-  appId: "1:...:web:..."
+  apiKey: "AIzaSyCrq_RAL7j0WwX0f6yA7rEUf1axqPSFv9Q",
+  authDomain: "pjitcompany-hp.firebaseapp.com",
+  projectId: "pjitcompany-hp",
+  storageBucket: "pjitcompany-hp.appspot.com",
+  messagingSenderId: "576854965361",
+  appId: "1:576854965361:web:b01632afe33d766d076fd0",
+  measurementId: "G-8KM8CYTSHF"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-*/
 
 let isAdmin=false;
 function login(){
@@ -175,7 +174,7 @@ function writeNotice(){
   div.className="card";
   div.innerHTML=`<strong>${title}</strong><p>${content}</p>`;
   box.prepend(div);
-  // Firebase 연동 예시 : db.collection('notice').add({title,content,date:new Date()})
+  db.collection('notice').add({title,content,date:new Date()});
 }
 
 function ask(){
@@ -195,7 +194,7 @@ function ask(){
     div.append(ans,btn);
   }
   list.prepend(div);
-  // Firebase 연동 예시 : db.collection('questions').add({name,text,date:new Date()})
+  db.collection('questions').add({name,text,date:new Date()});
 }
 
 document.getElementById("lastModified").textContent=document.lastModified;
