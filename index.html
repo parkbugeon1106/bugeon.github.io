@@ -3,58 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>박부건 | PJ IT COMPANY</title>
-  <meta name="description" content="박부건의 포트폴리오 — PJ IT COMPANY의 개발자이자 창립자. 기술, 창의, 그리고 비전.">
-  <meta name="keywords" content="박부건, Bugun Park, PJ IT COMPANY, 포트폴리오, IT, Unity, Raspberry Pi, AI, 개발자">
-  <meta name="author" content="박부건">
+  <title>PJ IT COMPANY | 박부건</title>
+
+  <!-- ✅ SEO 강화 -->
+  <meta name="description" content="PJ IT COMPANY 공식 페이지 — 박부건의 IT 프로젝트, 기술 개발, 그리고 창의적인 혁신.">
+  <meta name="keywords" content="박부건, Bugun Park, PJ IT COMPANY, 포트폴리오, IT, Unity, Raspberry Pi, AI, 개발자, 자동화, 시드머니, 창업, 스타트업">
+  <meta name="author" content="박부건 (Bugun Park)">
+  <meta property="og:title" content="PJ IT COMPANY | 박부건 포트폴리오">
+  <meta property="og:description" content="기술과 창의로 세상을 바꾸는 IT 프로젝트 — PJ IT COMPANY">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ 폰트 및 스타일 -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      background: radial-gradient(circle at center, #121212 0%, #000000 100%);
-      color: #f5f5f5;
       font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
+      background: linear-gradient(135deg, #000000, #0a0a0a, #001933);
+      color: #f5f5f5;
       text-align: center;
+      overflow-x: hidden;
     }
-    img {
-      width: 180px;
-      margin-bottom: 25px;
-      filter: drop-shadow(0 0 25px #00b7ff);
-      border-radius: 15px;
-    }
-    h1 {
-      font-size: 2.4rem;
-      color: #00b7ff;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      opacity: 0.8;
-      margin-bottom: 2rem;
-    }
-    p {
-      opacity: 0.7;
+
+    /* 🌐 언어 선택 */
+    #language-selector {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: 1px solid #00b7ff;
+      border-radius: 8px;
+      padding: 5px 10px;
       font-size: 0.9rem;
     }
+
+    /* 🌀 배경 애니메이션 */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #001a33 0%, #000000 100%);
+      animation: gradientMove 8s infinite alternate;
+    }
+    @keyframes gradientMove {
+      0% { background: radial-gradient(circle at 30% 30%, #001a33, #000000); }
+      100% { background: radial-gradient(circle at 70% 70%, #002a55, #000000); }
+    }
+
+    /* 🌟 메인 헤더 */
+    header {
+      padding-top: 120px;
+      animation: fadeIn 2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00b7ff;
+      margin: 10px 0;
+      text-shadow: 0 0 20px #00b7ff;
+    }
+
+    h2 {
+      font-weight: 400;
+      opacity: 0.85;
+      font-size: 1.3rem;
+    }
+
+    /* 🧑‍💻 소개 */
+    .about {
+      max-width: 600px;
+      margin: 50px auto;
+      line-height: 1.7;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* ✉️ 버튼 */
+    .email-link {
+      display: inline-block;
+      margin-top: 15px;
+      background: #00b7ff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .email-link:hover {
+      background: #00e0ff;
+      transform: scale(1.05);
+    }
+
+    /* 💰 프로젝트 상태 */
+    .project {
+      margin-top: 50px;
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    /* 🕓 Footer */
     footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.8rem;
-      color: #666;
+      margin-top: 80px;
+      font-size: 0.85rem;
+      color: #999;
+      padding-bottom: 30px;
     }
   </style>
+
+  <!-- 🌍 Google 번역 위젯 -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ko',
+        includedLanguages: 'af,sq,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,he,hi,hmn,hr,ht,hu,hy,id,ig,is,it,ja,jv,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,ml,mn,mr,ms,mt,my,ne,nl,no,ny,pa,pl,ps,pt,ro,ru,rw,sd,si,sk,sl,sm,sn,so,sr,st,su,sv,sw,ta,te,tg,th,tk,tr,tt,ug,uk,ur,uz,vi,xh,yi,yo,zh-CN,zh-TW,zu'
+      }, 'language-selector');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </head>
+
 <body>
-  <img src="logo.png" alt="PJ IT COMPANY 로고">
-  <h1>박부건 (Bugeon Park)</h1>
-  <h2>PJ IT COMPANY · Technologies</h2>
-  <p>pj it company ceo</p>
-  <footer>© 2025 PJ IT COMPANY. All rights reserved.</footer>
+  <div class="background"></div>
+
+  <!-- 🌍 언어 선택 -->
+  <div id="language-selector"></div>
+
+  <header>
+    <img src="logo.png" alt="PJ IT COMPANY 로고" style="width:160px; border-radius:15px; filter:drop-shadow(0 0 25px #00b7ff);">
+    <h1>안녕하세요, PJ IT COMPANY 입니다.</h1>
+    <h2>기술과 창의로 세상을 바꾸는 회사</h2>
+  </header>
+
+  <section class="about">
+    안녕하세요! 저는 <strong>박부건</strong>이며, <strong>PJ IT COMPANY</strong>의 창립자이자 개발자입니다.<br>
+    기술, 창의, 그리고 혁신을 바탕으로 세상을 더 나은 방향으로 바꾸기 위해 노력하고 있습니다.<br>
+    Unity, Raspberry Pi, AI, Web 등 다양한 기술 프로젝트를 진행하고 있습니다.<br><br>
+    📧 연락처: <a href="mailto:bagdoeon827@gmail.com" class="email-link">bagdoeon827@gmail.com</a>
+  </section>
+
+  <section class="project">
+    💡 현재 진행 중인 프로젝트: 회사의 시드머니를 모으고 있습니다.
+  </section>
+
+  <footer>
+    © 2025 PJ IT COMPANY | 마지막 수정일: <span id="lastModified"></span>
+  </footer>
+
+  <script>
+    // ⏰ 마지막 수정일 자동 표시
+    document.getElementById("lastModified").textContent = document.lastModified;
+  </script>
 </body>
 </html>
