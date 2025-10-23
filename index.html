@@ -1,169 +1,204 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PJ IT COMPANY | 박부건</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-  <!-- ✅ SEO 강화 -->
-  <meta name="description" content="PJ IT COMPANY 공식 페이지 — 박부건의 IT 프로젝트, 기술 개발, 그리고 창의적인 혁신.">
-  <meta name="keywords" content="박부건, Bugun Park, PJ IT COMPANY, 포트폴리오, IT, Unity, Raspberry Pi, AI, 개발자, 자동화, 시드머니, 창업, 스타트업">
-  <meta name="author" content="박부건 (Bugun Park)">
-  <meta property="og:title" content="PJ IT COMPANY | 박부건 포트폴리오">
-  <meta property="og:description" content="기술과 창의로 세상을 바꾸는 IT 프로젝트 — PJ IT COMPANY">
-  <meta property="og:image" content="logo.png">
-  <meta property="og:type" content="website">
-  <meta name="robots" content="index, follow">
+<!-- 기본 SEO -->
+<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
+<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
+<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
+<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
+<meta property="og:image" content="logo.png">
 
-  <!-- ✅ 폰트 및 스타일 -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #000000, #0a0a0a, #001933);
-      color: #f5f5f5;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    /* 🌐 언어 선택 */
-    #language-selector {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      border: 1px solid #00b7ff;
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-size: 0.9rem;
-    }
-
-    /* 🌀 배경 애니메이션 */
-    .background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at center, #001a33 0%, #000000 100%);
-      animation: gradientMove 8s infinite alternate;
-    }
-    @keyframes gradientMove {
-      0% { background: radial-gradient(circle at 30% 30%, #001a33, #000000); }
-      100% { background: radial-gradient(circle at 70% 70%, #002a55, #000000); }
-    }
-
-    /* 🌟 메인 헤더 */
-    header {
-      padding-top: 120px;
-      animation: fadeIn 2s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #00b7ff;
-      margin: 10px 0;
-      text-shadow: 0 0 20px #00b7ff;
-    }
-
-    h2 {
-      font-weight: 400;
-      opacity: 0.85;
-      font-size: 1.3rem;
-    }
-
-    /* 🧑‍💻 소개 */
-    .about {
-      max-width: 600px;
-      margin: 50px auto;
-      line-height: 1.7;
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-
-    /* ✉️ 버튼 */
-    .email-link {
-      display: inline-block;
-      margin-top: 15px;
-      background: #00b7ff;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .email-link:hover {
-      background: #00e0ff;
-      transform: scale(1.05);
-    }
-
-    /* 💰 프로젝트 상태 */
-    .project {
-      margin-top: 50px;
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
-
-    /* 🕓 Footer */
-    footer {
-      margin-top: 80px;
-      font-size: 0.85rem;
-      color: #999;
-      padding-bottom: 30px;
-    }
-  </style>
-
-  <!-- 🌍 Google 번역 위젯 -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'ko',
-        includedLanguages: 'af,sq,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,he,hi,hmn,hr,ht,hu,hy,id,ig,is,it,ja,jv,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,ml,mn,mr,ms,mt,my,ne,nl,no,ny,pa,pl,ps,pt,ro,ru,rw,sd,si,sk,sl,sm,sn,so,sr,st,su,sv,sw,ta,te,tg,th,tk,tr,tt,ug,uk,ur,uz,vi,xh,yi,yo,zh-CN,zh-TW,zu'
-      }, 'language-selector');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#000010,#001a33,#000010);
+  color:#f5f5f5;overflow-x:hidden
+}
+header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;
+  align-items:center;padding:10px 40px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
+  border-bottom:1px solid #00b7ff;z-index:10}
+header h1{font-family:'Orbitron',sans-serif;color:#00b7ff;letter-spacing:1px}
+nav a{margin:0 10px;color:#fff;text-decoration:none;font-weight:600}
+nav a:hover{color:#00e0ff}
+section{padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center}
+h2{color:#00b7ff}
+.card{background:rgba(255,255,255,.05);border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20}
+footer{border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999}
+input,textarea{width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none}
+button{background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;font-weight:600;cursor:pointer}
+button:hover{background:#00e0ff}
+.hidden{display:none}
+.admin-only{display:none}
+</style>
 </head>
 
 <body>
-  <div class="background"></div>
+<header>
+  <h1>PJ IT COMPANY</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#news">News</a>
+    <a href="#community">Community</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- 🌍 언어 선택 -->
-  <div id="language-selector"></div>
+<!-- HOME -->
+<section id="home">
+  <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
+  <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
+  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff)">
+</section>
 
-  <header>
-    <img src="logo.png" alt="PJ IT COMPANY 로고" style="width:160px; border-radius:15px; filter:drop-shadow(0 0 25px #00b7ff);">
-    <h1>안녕하세요, PJ IT COMPANY 입니다.</h1>
-    <h2>기술과 창의로 세상을 바꾸는 회사</h2>
-  </header>
+<!-- ABOUT -->
+<section id="about">
+  <h2>회사 소개</h2>
+  <div class="card">
+    <p><strong>PJ IT COMPANY</strong>는 2010년생 두 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.
+    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.
+    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
+  </div>
+  <h3>핵심 가치</h3>
+  <div class="card">창의 · 덕성 · 봉사</div>
+  <h3>연혁</h3>
+  <div class="card">2025 년 10 월 3 일 — PJ IT COMPANY 설립</div>
+</section>
 
-  <section class="about">
-    안녕하세요! 저는 <strong>박부건</strong>이며, <strong>PJ IT COMPANY</strong>의 창립자이자 개발자입니다.<br>
-    기술, 창의, 그리고 혁신을 바탕으로 세상을 더 나은 방향으로 바꾸기 위해 노력하고 있습니다.<br>
-    Unity, Raspberry Pi, AI, Web 등 다양한 기술 프로젝트를 진행하고 있습니다.<br><br>
-    📧 연락처: <a href="mailto:bagdoeon827@gmail.com" class="email-link">bagdoeon827@gmail.com</a>
-  </section>
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>프로젝트</h2>
+  <div class="card">
+    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
+    <p>💰 비트코인 투자 프로그램 준비 중</p>
+    <p>💼 스타트업 투자 및 성장 지원</p>
+  </div>
+</section>
 
-  <section class="project">
-    💡 현재 진행 중인 프로젝트: 회사의 시드머니를 모으고 있습니다.
-  </section>
+<!-- NEWS -->
+<section id="news">
+  <h2>세계 뉴스</h2>
+  <div id="news-container">
+    <div class="card"><h3>🇺🇸 미국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
+    <div class="card"><h3>🇬🇧 영국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
+    <div class="card"><h3>🇰🇷 한국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
+    <div class="card"><h3>🇨🇳 중국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
+  </div>
+</section>
 
-  <footer>
-    © 2025 PJ IT COMPANY | 마지막 수정일: <span id="lastModified"></span>
-  </footer>
+<!-- COMMUNITY -->
+<section id="community">
+  <h2>커뮤니티 / 공지 게시판</h2>
 
-  <script>
-    // ⏰ 마지막 수정일 자동 표시
-    document.getElementById("lastModified").textContent = document.lastModified;
-  </script>
+  <!-- 관리자 로그인 -->
+  <div id="loginBox">
+    <input id="adminId" placeholder="ID">
+    <input id="adminPw" type="password" placeholder="Password">
+    <button onclick="login()">로그인</button>
+  </div>
+
+  <!-- 공지 작성 (관리자만) -->
+  <div id="noticeWrite" class="admin-only">
+    <h3>공지 작성</h3>
+    <input id="noticeTitle" placeholder="제목">
+    <textarea id="noticeContent" placeholder="내용"></textarea><br>
+    <button onclick="writeNotice()">등록</button>
+  </div>
+
+  <h3>공지사항</h3>
+  <div id="noticeList" class="card"></div>
+
+  <h3>질문 게시판</h3>
+  <input id="qName" placeholder="이름">
+  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br>
+  <button onclick="ask()">등록</button>
+  <div id="qList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>📧 <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
+</section>
+
+<footer>
+  © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
+</footer>
+
+<!-- 🔥 Firebase SDK 및 로직 -->
+<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
+
+<script>
+// TODO : 여기에 Firebase 설정 붙이기
+/* 
+const firebaseConfig = {
+  apiKey: "AIza....",
+  authDomain: "...firebaseapp.com",
+  projectId: "...",
+  storageBucket: "...",
+  messagingSenderId: "...",
+  appId: "1:...:web:..."
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+*/
+
+let isAdmin=false;
+function login(){
+  const id=document.getElementById("adminId").value;
+  const pw=document.getElementById("adminPw").value;
+  if(id==="doeon1106" && pw==="doeon1106^^"){
+    isAdmin=true;
+    localStorage.setItem("isAdmin","true");
+    document.getElementById("loginBox").classList.add("hidden");
+    document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
+    alert("관리자 로그인 성공");
+  }else alert("로그인 실패");
+}
+
+function writeNotice(){
+  const title=document.getElementById("noticeTitle").value;
+  const content=document.getElementById("noticeContent").value;
+  if(!title||!content)return alert("내용을 입력하세요");
+  const box=document.getElementById("noticeList");
+  const div=document.createElement("div");
+  div.className="card";
+  div.innerHTML=`<strong>${title}</strong><p>${content}</p>`;
+  box.prepend(div);
+  // Firebase 연동 예시 : db.collection('notice').add({title,content,date:new Date()})
+}
+
+function ask(){
+  const name=document.getElementById("qName").value||"익명";
+  const text=document.getElementById("qText").value;
+  if(!text)return;
+  const list=document.getElementById("qList");
+  const div=document.createElement("div");
+  div.className="card";
+  div.innerHTML=`<p><b>${name}</b> : ${text}</p>`;
+  if(isAdmin){
+    const ans=document.createElement("textarea");
+    ans.placeholder="답변 작성";
+    const btn=document.createElement("button");
+    btn.textContent="답변";
+    btn.onclick=()=>{div.innerHTML+=`<p style='color:#0f0'>관리자: ${ans.value}</p>`;}
+    div.append(ans,btn);
+  }
+  list.prepend(div);
+  // Firebase 연동 예시 : db.collection('questions').add({name,text,date:new Date()})
+}
+
+document.getElementById("lastModified").textContent=document.lastModified;
+</script>
 </body>
 </html>
