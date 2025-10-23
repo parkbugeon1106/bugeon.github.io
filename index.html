@@ -5,17 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-<!-- ✅ 기본 SEO -->
 <meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
 <meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
 <meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
 <meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
 <meta property="og:image" content="logo.png">
 
-<!-- ✅ 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-<!-- ✅ 디자인 -->
 <style>
 *{box-sizing:border-box}
 body{
@@ -24,29 +21,54 @@ body{
   background:linear-gradient(135deg,#000010,#001a33,#000010);
   color:#f5f5f5;overflow-x:hidden
 }
-header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;
-  align-items:center;padding:10px 40px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
-  border-bottom:1px solid #00b7ff;z-index:10}
-header h1{font-family:'Orbitron',sans-serif;color:#00b7ff;letter-spacing:1px}
+header{
+  position:fixed;top:0;left:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 40px;background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);border-bottom:1px solid #00b7ff;z-index:10
+}
+header h1{
+  font-family:'Orbitron',sans-serif;color:#00b7ff;letter-spacing:1px;
+  cursor:pointer;transition:0.3s
+}
+header h1:hover{color:#00e0ff}
 nav a{margin:0 10px;color:#fff;text-decoration:none;font-weight:600}
 nav a:hover{color:#00e0ff}
 section{padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center}
 h2{color:#00b7ff}
-.card{background:rgba(255,255,255,.05);border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20}
+.card{
+  background:rgba(255,255,255,.05);border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+}
 footer{border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999}
 input,textarea{width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none}
-button{background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;font-weight:600;cursor:pointer}
+button{
+  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
+  font-weight:600;cursor:pointer
+}
 button:hover{background:#00e0ff}
 .hidden{display:none}
 .admin-only{display:none}
-select{padding:5px;border-radius:6px;border:none;background:#00b7ff;color:#fff;font-weight:600}
+select{
+  padding:5px;border-radius:6px;border:none;background:#00b7ff;color:#fff;font-weight:600
+}
+
+/* ✅ 반응형 */
+@media (max-width: 768px) {
+  header {flex-direction: column; padding: 15px;}
+  nav a {display: block; margin: 8px 0;}
+  section {padding: 80px 10px;}
+  img {max-width: 90%; height: auto;}
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  section {max-width: 90%;}
+}
 </style>
 </head>
 
 <body>
 <header>
-  <h1>PJ IT COMPANY</h1>
+  <h1 onclick="scrollToHome()">PJ IT COMPANY</h1>
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -93,10 +115,7 @@ select{padding:5px;border-radius:6px;border:none;background:#00b7ff;color:#fff;f
 <section id="news">
   <h2>세계 뉴스</h2>
   <div id="news-container">
-    <div class="card"><h3>🇺🇸 미국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
-    <div class="card"><h3>🇬🇧 영국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
-    <div class="card"><h3>🇰🇷 한국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
-    <div class="card"><h3>🇨🇳 중국</h3><p>경제 · 기술 · 과학 관련 뉴스 업데이트 예정</p></div>
+    <p>최신 뉴스를 불러오는 중...</p>
   </div>
 </section>
 
@@ -137,15 +156,11 @@ select{padding:5px;border-radius:6px;border:none;background:#00b7ff;color:#fff;f
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- ✅ Firebase SDK -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
 
-<!-- ✅ EmailJS (질문 시 자동 메일 전송용) -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <script>
-// Firebase 연결
 const firebaseConfig = {
   apiKey: "AIzaSyCrq_RAL7j0WwX0f6yA7rEUf1axqPSFv9Q",
   authDomain: "pjitcompany-hp.firebaseapp.com",
@@ -158,7 +173,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// 관리자 로그인
+function scrollToHome(){ document.getElementById("home").scrollIntoView({behavior:"smooth"}); }
+
 let isAdmin=false;
 function login(){
   const id=document.getElementById("adminId").value;
@@ -172,7 +188,6 @@ function login(){
   }else alert("로그인 실패");
 }
 
-// 공지 등록
 function writeNotice(){
   const title=document.getElementById("noticeTitle").value;
   const content=document.getElementById("noticeContent").value;
@@ -182,7 +197,6 @@ function writeNotice(){
   document.getElementById("noticeContent").value="";
 }
 
-// 공지 실시간 반영
 db.collection('notice').orderBy("date","desc").onSnapshot(snapshot=>{
   const box=document.getElementById("noticeList");
   box.innerHTML="";
@@ -192,8 +206,6 @@ db.collection('notice').orderBy("date","desc").onSnapshot(snapshot=>{
   });
 });
 
-// 질문 등록 + 메일 알림
-emailjs.init("service_xxxxxx"); // ⚠️ 여기에 나중에 EmailJS 서비스 ID 입력해야 함
 function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
@@ -202,16 +214,8 @@ function ask(){
   document.getElementById("qName").value="";
   document.getElementById("qText").value="";
   alert("질문이 등록되었습니다!");
-
-  // EmailJS 알림 전송
-  emailjs.send("service_xxxxxx","template_xxxxxx",{
-    from_name:name,
-    message:text,
-    to_email:"bagdoeon827@gmail.com"
-  });
 }
 
-// 질문 실시간 반영
 db.collection('questions').orderBy("date","desc").onSnapshot(snapshot=>{
   const list=document.getElementById("qList");
   list.innerHTML="";
@@ -221,23 +225,27 @@ db.collection('questions').orderBy("date","desc").onSnapshot(snapshot=>{
   });
 });
 
-// 언어 선택 (Google Translate API)
-const langs=["ko","en","ja","zh","es","fr","de","ru","it","pt","ar","hi"];
-langs.forEach(l=>{
-  const opt=document.createElement("option");
-  opt.value=l;
-  opt.textContent=l.toUpperCase();
-  document.getElementById("langSelect").append(opt);
-});
-function translatePage(){
-  const lang=document.getElementById("langSelect").value;
-  const script=document.createElement("script");
-  script.src=`https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-  document.body.append(script);
-  window.googleTranslateElementInit=function(){
-    new google.translate.TranslateElement({pageLanguage:'ko',includedLanguages:langs.join(','),layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'home');
-  };
+// ✅ 뉴스 자동 갱신
+const apiKey = "YOUR_NEWS_API_KEY"; // 여기에 뉴스API 키 입력
+const countries = { us:"🇺🇸 미국", gb:"🇬🇧 영국", kr:"🇰🇷 한국", cn:"🇨🇳 중국" };
+
+async function updateNews(){
+  const container=document.getElementById("news-container");
+  container.innerHTML="";
+  try{
+    for(const code in countries){
+      const res=await fetch(`https://newsapi.org/v2/top-headlines?country=${code}&category=technology&apiKey=${apiKey}`);
+      const data=await res.json();
+      const articles=data.articles.slice(0,3);
+      const html=`<div class='card'><h3>${countries[code]}</h3>${articles.map(a=>`<p><a href="${a.url}" target="_blank">${a.title}</a><br><small>${a.source.name}</small></p>`).join("")}</div>`;
+      container.innerHTML+=html;
+    }
+  }catch(e){
+    container.innerHTML="<p>뉴스를 불러오지 못했습니다.</p>";
+  }
 }
+updateNews();
+setInterval(updateNews,600000);
 
 document.getElementById("lastModified").textContent=document.lastModified;
 </script>
