@@ -23,8 +23,32 @@ body{
   animation:bgMove 20s ease infinite;
   color:#f5f5f5;
   overflow-x:hidden;
+  position:relative;
 }
 
+/* ✨ 별빛 효과 */
+.stars{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:-1;
+}
+.star{
+  position:absolute;
+  width:2px;height:2px;
+  background:radial-gradient(circle,#ff0048 20%,transparent 70%);
+  border-radius:50%;
+  opacity:0.6;
+  animation:twinkle 3s infinite ease-in-out;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.3;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.8);}
+}
+
+/* 배경 애니메이션 */
 @keyframes bgMove{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
@@ -150,6 +174,9 @@ button:hover{
 </head>
 
 <body>
+<!-- 별빛 레이어 -->
+<div class="stars" id="stars"></div>
+
 <header>
   <h1 onclick="scrollToSection('home')">PJ IT COMPANY</h1>
   <nav>
@@ -265,6 +292,18 @@ button:hover{
 // 🏠 홈으로 스크롤
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// 별 자동 생성 ✨
+const starContainer=document.getElementById('stars');
+for(let i=0;i<100;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.top=Math.random()*100+'%';
+  s.style.left=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*5)+'s';
+  s.style.width=s.style.height=(Math.random()*2+1)+'px';
+  starContainer.appendChild(s);
 }
 
 // 관리자 로그인
