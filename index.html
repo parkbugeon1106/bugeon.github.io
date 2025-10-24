@@ -180,16 +180,17 @@ button:hover{background:#00e0ff}
 <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
 
 <script>
-// 🔥 Firebase 연결
+// 🔥 Firebase 연결 (정확한 pjitcompany-web 프로젝트용)
 const firebaseConfig = {
   apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-  authDomain: "pjitcompany-hp.firebaseapp.com",
-  projectId: "pjitcompany-hp",
-  storageBucket: "pjitcompany-hp.firebasestorage.app",
+  authDomain: "pjitcompany-web.firebaseapp.com",
+  projectId: "pjitcompany-web",
+  storageBucket: "pjitcompany-web.appspot.com",
   messagingSenderId: "576854965361",
   appId: "1:576854965361:web:b01632afe33d766d076fd0",
   measurementId: "G-8KM8CYTSHF"
 };
+
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -223,12 +224,12 @@ async function logout(){
   renderAll();
 }
 
-// 🧭 로그인 상태 감시 (렌더링은 나중에 실행)
+// 로그인 상태 감시
 auth.onAuthStateChanged(user=>{
   currentUser = user;
 });
 
-// 📢 공지 작성
+// 공지 작성
 async function writeNotice(){
   if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
   const title=document.getElementById("noticeTitle").value;
@@ -238,7 +239,7 @@ async function writeNotice(){
   renderNotices();
 }
 
-// 🗑️ 공지 삭제
+// 공지 삭제
 async function deleteNotice(id){
   if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
   if(!confirm("정말 삭제하시겠습니까?"))return;
@@ -246,7 +247,7 @@ async function deleteNotice(id){
   renderNotices();
 }
 
-// 📋 공지 출력
+// 공지 출력
 async function renderNotices(){
   const box=document.getElementById("noticeList");
   const snapshot=await db.collection("notices").orderBy("date","desc").get();
@@ -263,7 +264,7 @@ async function renderNotices(){
   });
 }
 
-// 💬 질문 작성
+// 질문 작성
 async function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
@@ -274,7 +275,7 @@ async function ask(){
   renderQuestions();
 }
 
-// 🧩 질문 답변
+// 답변
 async function answerQuestion(id){
   if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
   const ans=prompt("답변을 입력하세요:");
@@ -283,7 +284,7 @@ async function answerQuestion(id){
   renderQuestions();
 }
 
-// ❌ 질문 삭제
+// 질문 삭제
 async function deleteQuestion(id){
   if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
   if(!confirm("정말 삭제하시겠습니까?"))return;
@@ -291,7 +292,7 @@ async function deleteQuestion(id){
   renderQuestions();
 }
 
-// 🗂️ 질문 출력
+// 질문 출력
 async function renderQuestions(){
   const list=document.getElementById("qList");
   const snapshot=await db.collection("questions").orderBy("date","desc").get();
@@ -312,13 +313,12 @@ async function renderQuestions(){
   });
 }
 
-// 🔄 렌더 전체 갱신
+// 전체 렌더링
 function renderAll(){
   renderNotices();
   renderQuestions();
 }
 
-// ✅ 페이지 전체가 로드된 후 렌더링 실행
 window.addEventListener("load", () => {
   renderAll();
 });
