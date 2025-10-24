@@ -197,7 +197,9 @@ const auth = firebase.auth();
 let currentUser = null;
 
 // 🏠 섹션 이동
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
 
 // ✅ 로그인
 async function login(){
@@ -221,9 +223,9 @@ async function logout(){
   renderAll();
 }
 
+// 🧭 로그인 상태 감시 (렌더링은 나중에 실행)
 auth.onAuthStateChanged(user=>{
   currentUser = user;
-  renderAll();
 });
 
 // 📢 공지 작성
@@ -315,6 +317,11 @@ function renderAll(){
   renderNotices();
   renderQuestions();
 }
+
+// ✅ 페이지 전체가 로드된 후 렌더링 실행
+window.addEventListener("load", () => {
+  renderAll();
+});
 
 document.getElementById("lastModified").textContent=document.lastModified;
 </script>
