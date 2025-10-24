@@ -116,17 +116,6 @@ button:hover{background:#00e0ff}
   </div>
 </section>
 
-<!-- NEWS -->
-<section id="news">
-  <h2>세계 뉴스</h2>
-  <div id="news-container">
-    <div class="card"><h3>🇺🇸 미국</h3><div id="usNews"></div></div>
-    <div class="card"><h3>🇬🇧 영국</h3><div id="ukNews"></div></div>
-    <div class="card"><h3>🇰🇷 한국</h3><div id="krNews"></div></div>
-    <div class="card"><h3>🇨🇳 중국</h3><div id="cnNews"></div></div>
-  </div>
-</section>
-
 <!-- TEAM -->
 <section id="team">
   <h2>팀원 소개</h2>
@@ -154,9 +143,8 @@ button:hover{background:#00e0ff}
   <h2>커뮤니티 / 공지 게시판</h2>
 
   <div id="loginBox">
-    <input id="adminId" placeholder="ID">
-    <input id="adminPw" type="password" placeholder="Password">
     <button onclick="login()">로그인</button>
+    <button onclick="logout()">로그아웃</button>
   </div>
 
   <div id="noticeWrite" class="admin-only">
@@ -189,53 +177,70 @@ button:hover{background:#00e0ff}
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
 
 <script>
 // 🔥 Firebase 연결
 const firebaseConfig = {
-  apiKey: "여기에_너의_apiKey_붙이기",
+  apiKey: "여기에_너의_apiKey", // 🔥 Firebase에서 복사해 넣기
   authDomain: "pjitcompany-hp.firebaseapp.com",
   projectId: "pjitcompany-hp",
 };
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-// 🏠 홈으로 이동
+let currentUser = null;
+
+// 🏠 섹션 이동
 function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 
-// --- 관리자 로그인 ---
-let isAdmin = localStorage.getItem("isAdmin") === "true";
-if(isAdmin) document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
-
-function login(){
-  const id=document.getElementById("adminId").value;
-  const pw=document.getElementById("adminPw").value;
-  if(id==="doeon1106" && pw==="doeon1106^^"){
-    isAdmin=true;
-    localStorage.setItem("isAdmin","true");
-    document.getElementById("loginBox").classList.add("hidden");
-    document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
-    alert("관리자 로그인 성공");
-  } else alert("로그인 실패");
+// ✅ 로그인
+async function login(){
+  const email = prompt("이메일을 입력하세요:");
+  const password = prompt("비밀번호를 입력하세요:");
+  try {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    currentUser = userCredential.user;
+    alert("로그인 성공!");
+    renderAll();
+  } catch (error) {
+    alert("로그인 실패: " + error.message);
+  }
 }
 
-// --- 공지 작성 / 삭제 ---
+// 🚪 로그아웃
+async function logout(){
+  await auth.signOut();
+  currentUser = null;
+  alert("로그아웃되었습니다.");
+  renderAll();
+}
+
+auth.onAuthStateChanged(user=>{
+  currentUser = user;
+  renderAll();
+});
+
+// 📢 공지 작성
 async function writeNotice(){
+  if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
   const title=document.getElementById("noticeTitle").value;
   const content=document.getElementById("noticeContent").value;
   if(!title||!content)return alert("내용을 입력하세요");
-  await db.collection("notices").add({
-    title, content, date:new Date().toLocaleString()
-  });
+  await db.collection("notices").add({title, content, date:new Date().toLocaleString()});
   renderNotices();
 }
 
+// 🗑️ 공지 삭제
 async function deleteNotice(id){
+  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
   if(!confirm("정말 삭제하시겠습니까?"))return;
   await db.collection("notices").doc(id).delete();
   renderNotices();
 }
 
+// 📋 공지 출력
 async function renderNotices(){
   const box=document.getElementById("noticeList");
   const snapshot=await db.collection("notices").orderBy("date","desc").get();
@@ -247,35 +252,40 @@ async function renderNotices(){
         <b>${n.title}</b>
         <p>${n.content}</p>
         <small>${n.date}</small>
-        ${isAdmin?`<br><button onclick="deleteNotice('${doc.id}')">🗑️ 삭제</button>`:""}
+        ${currentUser?`<br><button onclick="deleteNotice('${doc.id}')">🗑️ 삭제</button>`:""}
       </div>`;
   });
 }
 
-// --- 질문 / 답변 / 삭제 ---
+// 💬 질문 작성
 async function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
-  if(!text)return alert("질문 내용을 입력하세요");
+  if(!text)return alert("질문을 입력하세요");
   await db.collection("questions").add({
     name, text, answer:"", date:new Date().toLocaleString()
   });
   renderQuestions();
 }
 
+// 🧩 질문 답변
 async function answerQuestion(id){
+  if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
   const ans=prompt("답변을 입력하세요:");
   if(!ans)return;
   await db.collection("questions").doc(id).update({answer:ans});
   renderQuestions();
 }
 
+// ❌ 질문 삭제
 async function deleteQuestion(id){
+  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
   if(!confirm("정말 삭제하시겠습니까?"))return;
   await db.collection("questions").doc(id).delete();
   renderQuestions();
 }
 
+// 🗂️ 질문 출력
 async function renderQuestions(){
   const list=document.getElementById("qList");
   const snapshot=await db.collection("questions").orderBy("date","desc").get();
@@ -287,7 +297,7 @@ async function renderQuestions(){
         <p><b>${q.name}</b>: ${q.text}</p>
         <small>${q.date}</small>
         ${q.answer?`<p style="color:#00b7ff;"><b>답변:</b> ${q.answer}</p>`:""}
-        ${isAdmin?`
+        ${currentUser?`
           <br>
           <button onclick="answerQuestion('${doc.id}')">💬 답변</button>
           <button onclick="deleteQuestion('${doc.id}')">🗑️ 삭제</button>
@@ -296,9 +306,12 @@ async function renderQuestions(){
   });
 }
 
-// --- 초기 로드 ---
-renderNotices();
-renderQuestions();
+// 🔄 렌더 전체 갱신
+function renderAll(){
+  renderNotices();
+  renderQuestions();
+}
+
 document.getElementById("lastModified").textContent=document.lastModified;
 </script>
 </body>
