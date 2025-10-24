@@ -18,154 +18,52 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#000010,#001a33,#000020,#001a33);
-  background-size:400% 400%;
-  animation:bgMove 25s ease infinite;
-  color:#f5f5f5;
-  overflow-x:hidden;
-  position:relative;
+  background:linear-gradient(135deg,#000010,#001a33,#000010);
+  color:#f5f5f5;overflow-x:hidden;
 }
-
-/* ✨ 파란 별빛 효과 */
-.stars{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:-1;
-}
-.star{
-  position:absolute;
-  width:2px;height:2px;
-  background:radial-gradient(circle,#00b7ff 25%,transparent 70%);
-  border-radius:50%;
-  opacity:0.6;
-  animation:twinkle 3s infinite ease-in-out;
-}
-@keyframes twinkle{
-  0%,100%{opacity:0.3;transform:scale(1);}
-  50%{opacity:1;transform:scale(1.8);}
-}
-
-/* 배경 이동 애니메이션 */
-@keyframes bgMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* 헤더 */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:10px 40px;
-  background:rgba(0,0,20,.6);
-  border-bottom:1px solid #00b7ff80;
-  backdrop-filter:blur(8px);
-  z-index:10;
+  padding:10px 40px;background:rgba(0,0,0,.6);
+  border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
 }
 header h1{
-  font-family:'Orbitron',sans-serif;
-  color:#00b7ff;
-  cursor:pointer;
-  text-shadow:0 0 15px #00b7ff80;
+  font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;
 }
-
-/* 네비게이션 */
 nav a{
-  margin:0 10px;
-  color:#e0faff;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
+  margin:0 10px;color:#fff;text-decoration:none;font-weight:600;
 }
-nav a:hover{
-  color:#00e0ff;
-  text-shadow:0 0 10px #00e0ff80;
-}
-
-/* 섹션 */
+nav a:hover{color:#00e0ff}
 section{
-  padding:100px 20px 80px;
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
+  padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center
 }
-h2{
-  color:#00b7ff;
-  margin-bottom:15px;
-  text-shadow:0 0 12px #00b7ff70;
-}
-
-/* 카드 */
+h2{color:#00b7ff;margin-bottom:15px}
 .card{
-  background:rgba(255,255,255,.03);
-  border:1px solid #00b7ff80;
-  border-radius:15px;
-  padding:20px;
-  margin:20px 0;
-  box-shadow:0 0 20px #00b7ff20;
-  transition:transform .3s, box-shadow .3s;
-}
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px #00b7ff60;
-}
-
-/* 버튼 */
-input,textarea{
-  width:90%;
-  padding:10px;
-  margin:6px 0;
-  border-radius:10px;
-  border:none;
   background:rgba(255,255,255,.05);
-  color:#fff;
+  border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+}
+footer{
+  border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
+}
+input,textarea{
+  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none
 }
 button{
-  background:linear-gradient(135deg,#00b7ff,#0044ff);
-  border:none;
-  padding:10px 25px;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  color:#fff;
-  box-shadow:0 0 10px #00b7ff60;
-  transition:0.3s;
+  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
+  font-weight:600;cursor:pointer;color:#000;
 }
-button:hover{
-  background:linear-gradient(135deg,#00e0ff,#0066ff);
-  box-shadow:0 0 20px #00b7ff80;
-}
-
-/* 팀 카드 */
+button:hover{background:#00e0ff}
+.hidden{display:none}
+.admin-only{display:none}
 .team-card{
-  background:rgba(255,255,255,.04);
-  border:1px solid #00b7ff70;
-  border-radius:15px;
-  padding:20px;
-  margin:20px auto;
-  width:80%;
-  max-width:400px;
-  box-shadow:0 0 20px #00b7ff30;
+  background:rgba(255,255,255,.05);
+  border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px auto;width:80%;max-width:400px;
+  box-shadow:0 0 10px #00b7ff50;
 }
-.team-card h3{
-  color:#00b7ff;
-  margin-bottom:5px;
-  text-shadow:0 0 8px #00b7ff70;
-}
+.team-card h3{color:#00b7ff;margin-bottom:5px}
 .team-card p{margin:4px 0}
-
-/* 푸터 */
-footer{
-  border-top:1px solid #00b7ff30;
-  text-align:center;
-  padding:20px;
-  color:#aaa;
-}
-
-/* 반응형 */
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -174,9 +72,6 @@ footer{
 </head>
 
 <body>
-<!-- 별빛 레이어 -->
-<div class="stars" id="stars"></div>
-
 <header>
   <h1 onclick="scrollToSection('home')">PJ IT COMPANY</h1>
   <nav>
@@ -194,7 +89,7 @@ footer{
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 25px #00b7ff);margin-top:20px">
+  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff);margin-top:20px">
 </section>
 
 <!-- ABOUT -->
@@ -234,7 +129,8 @@ footer{
 
 <!-- TEAM -->
 <section id="team">
-  <h2>팀 소개</h2>
+  <h2>팀원 소개</h2>
+
   <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
@@ -242,6 +138,7 @@ footer{
     <p><b>생년:</b> 2010년생</p>
     <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
   </div>
+
   <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
@@ -249,6 +146,7 @@ footer{
     <p><b>생년:</b> 2007년생</p>
     <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
   </div>
+
 </section>
 
 <!-- COMMUNITY -->
@@ -289,21 +187,9 @@ footer{
 </footer>
 
 <script>
-// 스크롤 이동
+// 🏠 홈으로 이동
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-// 별 자동 생성
-const starContainer=document.getElementById('stars');
-for(let i=0;i<100;i++){
-  const s=document.createElement('div');
-  s.className='star';
-  s.style.top=Math.random()*100+'%';
-  s.style.left=Math.random()*100+'%';
-  s.style.animationDelay=(Math.random()*5)+'s';
-  s.style.width=s.style.height=(Math.random()*2+1)+'px';
-  starContainer.appendChild(s);
 }
 
 // 관리자 로그인
@@ -322,26 +208,23 @@ function login(){
   } else alert("로그인 실패");
 }
 
-// 공지 작성
+// 공지 저장/불러오기
 function writeNotice(){
   const title=document.getElementById("noticeTitle").value;
   const content=document.getElementById("noticeContent").value;
   if(!title||!content)return alert("내용을 입력하세요");
   const notices=JSON.parse(localStorage.getItem("notices")||"[]");
-  const n={title,content,date:new Date().toLocaleString()};
-  notices.unshift(n);
+  notices.unshift({title,content,date:new Date().toLocaleString()});
   localStorage.setItem("notices",JSON.stringify(notices));
   renderNotices();
 }
-
-// 공지 표시
 function renderNotices(){
   const box=document.getElementById("noticeList");
   const data=JSON.parse(localStorage.getItem("notices")||"[]");
   box.innerHTML=data.map(n=>`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small></div>`).join('');
 }
 
-// 질문 작성
+// 질문 저장/불러오기
 function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
@@ -351,23 +234,21 @@ function ask(){
   localStorage.setItem("questions",JSON.stringify(qs));
   renderQuestions();
 }
-
-// 질문 표시
 function renderQuestions(){
   const list=document.getElementById("qList");
   const data=JSON.parse(localStorage.getItem("questions")||"[]");
   list.innerHTML=data.map(q=>`<div class='card'><p><b>${q.name}</b>: ${q.text}</p><small>${q.date}</small></div>`).join('');
 }
 
-// 뉴스 자동 업데이트
+// 뉴스 자동 업데이트 (무료 RSS)
 async function loadRSS(){
-  const feeds = {
-    us: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    uk: "https://feeds.bbci.co.uk/news/technology/rss.xml",
-    kr: "https://www.hankyung.com/feed/it",
-    cn: "https://www.scmp.com/rss/91/feed"
+  const feeds={
+    us:"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    uk:"https://feeds.bbci.co.uk/news/technology/rss.xml",
+    kr:"https://www.hankyung.com/feed/it",
+    cn:"https://www.scmp.com/rss/91/feed"
   };
-  for (const [key,url] of Object.entries(feeds)){
+  for(const [key,url] of Object.entries(feeds)){
     try{
       const res=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
       const data=await res.json();
