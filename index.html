@@ -186,13 +186,24 @@ button:hover{background:#00e0ff}
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<script>
-// 🏠 홈으로 이동
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
 
-// 관리자 로그인
+<script>
+// 🔥 Firebase 연결
+const firebaseConfig = {
+  apiKey: "여기에_너의_apiKey_붙이기",
+  authDomain: "pjitcompany-hp.firebaseapp.com",
+  projectId: "pjitcompany-hp",
+};
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// 🏠 홈으로 이동
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+// --- 관리자 로그인 ---
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 if(isAdmin) document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
 
@@ -208,59 +219,84 @@ function login(){
   } else alert("로그인 실패");
 }
 
-// 공지 저장/불러오기
-function writeNotice(){
+// --- 공지 작성 / 삭제 ---
+async function writeNotice(){
   const title=document.getElementById("noticeTitle").value;
   const content=document.getElementById("noticeContent").value;
   if(!title||!content)return alert("내용을 입력하세요");
-  const notices=JSON.parse(localStorage.getItem("notices")||"[]");
-  notices.unshift({title,content,date:new Date().toLocaleString()});
-  localStorage.setItem("notices",JSON.stringify(notices));
+  await db.collection("notices").add({
+    title, content, date:new Date().toLocaleString()
+  });
   renderNotices();
 }
-function renderNotices(){
-  const box=document.getElementById("noticeList");
-  const data=JSON.parse(localStorage.getItem("notices")||"[]");
-  box.innerHTML=data.map(n=>`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small></div>`).join('');
+
+async function deleteNotice(id){
+  if(!confirm("정말 삭제하시겠습니까?"))return;
+  await db.collection("notices").doc(id).delete();
+  renderNotices();
 }
 
-// 질문 저장/불러오기
-function ask(){
+async function renderNotices(){
+  const box=document.getElementById("noticeList");
+  const snapshot=await db.collection("notices").orderBy("date","desc").get();
+  box.innerHTML="";
+  snapshot.forEach(doc=>{
+    const n=doc.data();
+    box.innerHTML+=`
+      <div class='card'>
+        <b>${n.title}</b>
+        <p>${n.content}</p>
+        <small>${n.date}</small>
+        ${isAdmin?`<br><button onclick="deleteNotice('${doc.id}')">🗑️ 삭제</button>`:""}
+      </div>`;
+  });
+}
+
+// --- 질문 / 답변 / 삭제 ---
+async function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
-  if(!text)return;
-  const qs=JSON.parse(localStorage.getItem("questions")||"[]");
-  qs.unshift({name,text,date:new Date().toLocaleString()});
-  localStorage.setItem("questions",JSON.stringify(qs));
+  if(!text)return alert("질문 내용을 입력하세요");
+  await db.collection("questions").add({
+    name, text, answer:"", date:new Date().toLocaleString()
+  });
   renderQuestions();
 }
-function renderQuestions(){
+
+async function answerQuestion(id){
+  const ans=prompt("답변을 입력하세요:");
+  if(!ans)return;
+  await db.collection("questions").doc(id).update({answer:ans});
+  renderQuestions();
+}
+
+async function deleteQuestion(id){
+  if(!confirm("정말 삭제하시겠습니까?"))return;
+  await db.collection("questions").doc(id).delete();
+  renderQuestions();
+}
+
+async function renderQuestions(){
   const list=document.getElementById("qList");
-  const data=JSON.parse(localStorage.getItem("questions")||"[]");
-  list.innerHTML=data.map(q=>`<div class='card'><p><b>${q.name}</b>: ${q.text}</p><small>${q.date}</small></div>`).join('');
+  const snapshot=await db.collection("questions").orderBy("date","desc").get();
+  list.innerHTML="";
+  snapshot.forEach(doc=>{
+    const q=doc.data();
+    list.innerHTML+=`
+      <div class='card'>
+        <p><b>${q.name}</b>: ${q.text}</p>
+        <small>${q.date}</small>
+        ${q.answer?`<p style="color:#00b7ff;"><b>답변:</b> ${q.answer}</p>`:""}
+        ${isAdmin?`
+          <br>
+          <button onclick="answerQuestion('${doc.id}')">💬 답변</button>
+          <button onclick="deleteQuestion('${doc.id}')">🗑️ 삭제</button>
+        `:""}
+      </div>`;
+  });
 }
 
-// 뉴스 자동 업데이트 (무료 RSS)
-async function loadRSS(){
-  const feeds={
-    us:"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    uk:"https://feeds.bbci.co.uk/news/technology/rss.xml",
-    kr:"https://www.hankyung.com/feed/it",
-    cn:"https://www.scmp.com/rss/91/feed"
-  };
-  for(const [key,url] of Object.entries(feeds)){
-    try{
-      const res=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-      const data=await res.json();
-      const items=new window.DOMParser().parseFromString(data.contents,"text/xml").querySelectorAll("item");
-      document.getElementById(key+"News").innerHTML=
-        Array.from(items).slice(0,3).map(i=>`<a href="${i.querySelector("link").textContent}" target="_blank" style="color:#00b7ff;display:block;margin:5px 0;">${i.querySelector("title").textContent}</a>`).join('');
-    }catch(e){console.log(e);}
-  }
-}
-setInterval(loadRSS,600000);
-loadRSS();
-
+// --- 초기 로드 ---
 renderNotices();
 renderQuestions();
 document.getElementById("lastModified").textContent=document.lastModified;
