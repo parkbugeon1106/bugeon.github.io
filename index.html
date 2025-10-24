@@ -18,52 +18,121 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#000010,#001a33,#000010);
+  background:linear-gradient(135deg,#050005,#1a0012,#000007);
   color:#f5f5f5;overflow-x:hidden;
 }
+
+/* 상단 헤더 */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:10px 40px;background:rgba(0,0,0,.6);
-  border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
+  padding:10px 40px;
+  background:rgba(10,0,10,.7);
+  border-bottom:1px solid #ff004880;
+  backdrop-filter:blur(8px);
+  z-index:10;
 }
 header h1{
-  font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;
+  font-family:'Orbitron',sans-serif;
+  color:#ff0048;
+  cursor:pointer;
+  text-shadow:0 0 15px #ff004860;
 }
+
+/* 네비게이션 */
 nav a{
-  margin:0 10px;color:#fff;text-decoration:none;font-weight:600;
+  margin:0 10px;
+  color:#f0f0f0;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
-nav a:hover{color:#00e0ff}
+nav a:hover{
+  color:#ff4da6;
+  text-shadow:0 0 10px #ff005550;
+}
+
+/* 섹션 */
 section{
-  padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center
+  padding:100px 20px 80px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
 }
-h2{color:#00b7ff;margin-bottom:15px}
+h2{
+  color:#ff0048;
+  margin-bottom:15px;
+  text-shadow:0 0 12px #ff004850;
+}
+
+/* 카드 */
 .card{
-  background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+  background:rgba(255,255,255,.03);
+  border:1px solid #ff004880;
+  border-radius:15px;
+  padding:20px;
+  margin:20px 0;
+  box-shadow:0 0 20px #ff004820;
+  transition:transform .3s, box-shadow .3s;
 }
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 25px #ff004850;
+}
+
+/* 푸터 */
 footer{
-  border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
+  border-top:1px solid #ff004830;
+  text-align:center;
+  padding:20px;
+  color:#999;
 }
+
+/* 입력창 + 버튼 */
 input,textarea{
-  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none
+  width:90%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,.05);
+  color:#fff;
 }
 button{
-  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
-  font-weight:600;cursor:pointer;color:#000;
+  background:linear-gradient(135deg,#ff0048,#8800ff);
+  border:none;
+  padding:10px 25px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  color:#fff;
+  box-shadow:0 0 10px #ff004850;
+  transition:0.3s;
 }
-button:hover{background:#00e0ff}
-.hidden{display:none}
-.admin-only{display:none}
+button:hover{
+  background:linear-gradient(135deg,#ff1a60,#a020ff);
+  box-shadow:0 0 20px #ff004880;
+}
+
+/* 팀 카드 */
 .team-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px auto;width:80%;max-width:400px;
-  box-shadow:0 0 10px #00b7ff50;
+  background:rgba(255,255,255,.04);
+  border:1px solid #ff004870;
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
+  width:80%;
+  max-width:400px;
+  box-shadow:0 0 20px #ff004820;
 }
-.team-card h3{color:#00b7ff;margin-bottom:5px}
+.team-card h3{
+  color:#ff0048;
+  margin-bottom:5px;
+  text-shadow:0 0 8px #ff004850;
+}
 .team-card p{margin:4px 0}
+
+/* 반응형 */
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -89,7 +158,7 @@ button:hover{background:#00e0ff}
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff);margin-top:20px">
+  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #ff0048);margin-top:20px">
 </section>
 
 <!-- ABOUT -->
@@ -256,7 +325,7 @@ async function loadRSS(){
       const data=await res.json();
       const items=new window.DOMParser().parseFromString(data.contents,"text/xml").querySelectorAll("item");
       document.getElementById(key+"News").innerHTML=
-        Array.from(items).slice(0,3).map(i=>`<a href="${i.querySelector("link").textContent}" target="_blank" style="color:#00b7ff;display:block;margin:5px 0;">${i.querySelector("title").textContent}</a>`).join('');
+        Array.from(items).slice(0,3).map(i=>`<a href="${i.querySelector("link").textContent}" target="_blank" style="color:#ff0048;display:block;margin:5px 0;">${i.querySelector("title").textContent}</a>`).join('');
     }catch(e){console.log(e);}
   }
 }
