@@ -180,11 +180,12 @@ button:hover{background:#00e0ff}
   import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
+  // ✅ pjitcompany-hp 프로젝트로 연결
   const firebaseConfig = {
     apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-    authDomain: "pjitcompany-web.firebaseapp.com",
-    projectId: "pjitcompany-web",
-    storageBucket: "pjitcompany-web.appspot.com",
+    authDomain: "pjitcompany-hp.firebaseapp.com",
+    projectId: "pjitcompany-hp",
+    storageBucket: "pjitcompany-hp.appspot.com",
     messagingSenderId: "576854965361",
     appId: "1:576854965361:web:b01632afe33d766d076fd0",
     measurementId: "G-8KM8CYTSHF"
@@ -318,8 +319,6 @@ button:hover{background:#00e0ff}
   window.renderAll = function(){
     renderNotices();
     renderQuestions();
-
-    // ✅ 로그인 시 공지 작성칸 표시 (관리자만)
     const adminBox = document.getElementById("noticeWrite");
     if(currentUser && currentUser.email === "bagdoeon827@gmail.com"){
       adminBox.style.display = "block";
@@ -328,10 +327,7 @@ button:hover{background:#00e0ff}
     }
   };
 
-  window.addEventListener("load", ()=>{
-    renderAll();
-  });
-
+  window.addEventListener("load", ()=>{ renderAll(); });
   document.getElementById("lastModified").textContent = document.lastModified;
 </script>
 </body>
