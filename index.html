@@ -129,7 +129,8 @@ button:hover{background:#00e0ff}
 
 <!-- TEAM -->
 <section id="team">
-  <h2>팀 소개</h2>
+  <h2>팀원 소개</h2>
+
   <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
@@ -137,6 +138,7 @@ button:hover{background:#00e0ff}
     <p><b>생년:</b> 2010년생</p>
     <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
   </div>
+
   <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
@@ -144,6 +146,7 @@ button:hover{background:#00e0ff}
     <p><b>생년:</b> 2007년생</p>
     <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
   </div>
+
 </section>
 
 <!-- COMMUNITY -->
@@ -184,7 +187,7 @@ button:hover{background:#00e0ff}
 </footer>
 
 <script>
-// 🏠 홈으로 스크롤
+// 🏠 홈으로 이동
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
@@ -205,26 +208,23 @@ function login(){
   } else alert("로그인 실패");
 }
 
-// 공지 작성
+// 공지 저장/불러오기
 function writeNotice(){
   const title=document.getElementById("noticeTitle").value;
   const content=document.getElementById("noticeContent").value;
   if(!title||!content)return alert("내용을 입력하세요");
   const notices=JSON.parse(localStorage.getItem("notices")||"[]");
-  const n={title,content,date:new Date().toLocaleString()};
-  notices.unshift(n);
+  notices.unshift({title,content,date:new Date().toLocaleString()});
   localStorage.setItem("notices",JSON.stringify(notices));
   renderNotices();
 }
-
-// 공지 표시
 function renderNotices(){
   const box=document.getElementById("noticeList");
   const data=JSON.parse(localStorage.getItem("notices")||"[]");
   box.innerHTML=data.map(n=>`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small></div>`).join('');
 }
 
-// 질문 작성
+// 질문 저장/불러오기
 function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
@@ -234,8 +234,6 @@ function ask(){
   localStorage.setItem("questions",JSON.stringify(qs));
   renderQuestions();
 }
-
-// 질문 표시
 function renderQuestions(){
   const list=document.getElementById("qList");
   const data=JSON.parse(localStorage.getItem("questions")||"[]");
@@ -244,13 +242,13 @@ function renderQuestions(){
 
 // 뉴스 자동 업데이트 (무료 RSS)
 async function loadRSS(){
-  const feeds = {
-    us: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    uk: "https://feeds.bbci.co.uk/news/technology/rss.xml",
-    kr: "https://www.hankyung.com/feed/it",
-    cn: "https://www.scmp.com/rss/91/feed"
+  const feeds={
+    us:"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    uk:"https://feeds.bbci.co.uk/news/technology/rss.xml",
+    kr:"https://www.hankyung.com/feed/it",
+    cn:"https://www.scmp.com/rss/91/feed"
   };
-  for (const [key,url] of Object.entries(feeds)){
+  for(const [key,url] of Object.entries(feeds)){
     try{
       const res=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
       const data=await res.json();
