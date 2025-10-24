@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-<!-- SEO -->
 <meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
 <meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
 <meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
@@ -18,52 +17,64 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#000010,#001a33,#000010);
+  background:#000;
   color:#f5f5f5;overflow-x:hidden;
 }
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
   padding:10px 40px;background:rgba(0,0,0,.6);
-  border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
+  border-bottom:1px solid #ff0033;z-index:10;backdrop-filter:blur(8px);
 }
 header h1{
-  font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;
+  font-family:'Orbitron',sans-serif;color:#ff0033;cursor:pointer;
+  text-shadow:0 0 10px #ff0033,0 0 20px #ff3366;
 }
 nav a{
   margin:0 10px;color:#fff;text-decoration:none;font-weight:600;
+  transition:0.3s;
 }
-nav a:hover{color:#00e0ff}
+nav a:hover{color:#ff3366;text-shadow:0 0 8px #ff0033;}
 section{
   padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center
 }
-h2{color:#00b7ff;margin-bottom:15px}
+h2{color:#ff0033;margin-bottom:15px;text-shadow:0 0 10px #ff3366;}
 .card{
   background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+  border:1px solid #ff0033;border-radius:15px;
+  padding:20px;margin:20px 0;box-shadow:0 0 10px #ff003340
 }
 footer{
-  border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
+  border-top:1px solid #ff003340;text-align:center;padding:20px;color:#999
 }
 input,textarea{
-  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none
+  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none;
+  background:#111;color:#fff;
 }
 button{
-  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
-  font-weight:600;cursor:pointer;color:#000;
+  background:#ff0033;border:none;padding:10px 20px;border-radius:10px;
+  font-weight:600;cursor:pointer;color:#fff;
+  box-shadow:0 0 10px #ff0033;
 }
-button:hover{background:#00e0ff}
+button:hover{background:#ff3366;box-shadow:0 0 20px #ff3366;}
 .hidden{display:none}
 .admin-only{display:none}
 .team-card{
   background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
+  border:1px solid #ff0033;border-radius:15px;
   padding:20px;margin:20px auto;width:80%;max-width:400px;
-  box-shadow:0 0 10px #00b7ff50;
+  box-shadow:0 0 10px #ff003360;
 }
-.team-card h3{color:#00b7ff;margin-bottom:5px}
+.team-card h3{color:#ff0033;margin-bottom:5px}
 .team-card p{margin:4px 0}
+img.logo{
+  width:150px;filter:drop-shadow(0 0 25px #ff0033);
+  margin-top:20px;border-radius:12px;
+}
+#rubyCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
+  background:#000;
+}
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -72,6 +83,8 @@ button:hover{background:#00e0ff}
 </head>
 
 <body>
+<canvas id="rubyCanvas"></canvas>
+
 <header>
   <h1 onclick="scrollToSection('home')">PJ IT COMPANY</h1>
   <nav>
@@ -85,101 +98,10 @@ button:hover{background:#00e0ff}
   </nav>
 </header>
 
-<!-- HOME -->
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff);margin-top:20px">
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>회사 소개</h2>
-  <div class="card">
-    <p><strong>PJ IT COMPANY</strong>는 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.<br>
-    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
-    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
-  </div>
-  <h3>핵심 가치</h3>
-  <div class="card">창의 · 덕성 · 봉사</div>
-  <h3>연혁</h3>
-  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <h2>프로젝트</h2>
-  <div class="card">
-    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
-    <p>💰 비트코인 투자 프로그램 준비 중</p>
-    <p>💼 스타트업 투자 및 성장 지원</p>
-  </div>
-</section>
-
-<!-- NEWS -->
-<section id="news">
-  <h2>세계 뉴스</h2>
-  <div id="news-container">
-    <div class="card"><h3>🇺🇸 미국</h3><div id="usNews"></div></div>
-    <div class="card"><h3>🇬🇧 영국</h3><div id="ukNews"></div></div>
-    <div class="card"><h3>🇰🇷 한국</h3><div id="krNews"></div></div>
-    <div class="card"><h3>🇨🇳 중국</h3><div id="cnNews"></div></div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team">
-  <h2>팀원 소개</h2>
-
-  <div class="team-card">
-    <h3>박부건</h3>
-    <p><b>직책:</b> 개발자 / CEO</p>
-    <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
-    <p><b>생년:</b> 2010년생</p>
-    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
-  </div>
-
-  <div class="team-card">
-    <h3>정우진</h3>
-    <p><b>직책:</b> 개발자 / CEO</p>
-    <p><b>사용 언어:</b> Python, HTML, C</p>
-    <p><b>생년:</b> 2007년생</p>
-    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
-  </div>
-
-</section>
-
-<!-- COMMUNITY -->
-<section id="community">
-  <h2>커뮤니티 / 공지 게시판</h2>
-
-  <div id="loginBox">
-    <input id="adminId" placeholder="ID">
-    <input id="adminPw" type="password" placeholder="Password">
-    <button onclick="login()">로그인</button>
-  </div>
-
-  <div id="noticeWrite" class="admin-only">
-    <h3>공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목">
-    <textarea id="noticeContent" placeholder="내용"></textarea><br>
-    <button onclick="writeNotice()">등록</button>
-  </div>
-
-  <h3>공지사항</h3>
-  <div id="noticeList" class="card"></div>
-
-  <h3>질문 게시판</h3>
-  <input id="qName" placeholder="이름">
-  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br>
-  <button onclick="ask()">등록</button>
-  <div id="qList"></div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>📧 <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
+  <img src="logo.png" class="logo" alt="로고">
 </section>
 
 <footer>
@@ -187,83 +109,49 @@ button:hover{background:#00e0ff}
 </footer>
 
 <script>
-// 🏠 홈으로 이동
+// 스크롤 이동
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
+document.getElementById("lastModified").textContent=document.lastModified;
 
-// 관리자 로그인
-let isAdmin = localStorage.getItem("isAdmin") === "true";
-if(isAdmin) document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
+// 루비 입자 애니메이션
+const canvas=document.getElementById('rubyCanvas');
+const ctx=canvas.getContext('2d');
+let particles=[];
+resizeCanvas();
+window.addEventListener('resize',resizeCanvas);
 
-function login(){
-  const id=document.getElementById("adminId").value;
-  const pw=document.getElementById("adminPw").value;
-  if(id==="doeon1106" && pw==="doeon1106^^"){
-    isAdmin=true;
-    localStorage.setItem("isAdmin","true");
-    document.getElementById("loginBox").classList.add("hidden");
-    document.querySelectorAll(".admin-only").forEach(e=>e.style.display="block");
-    alert("관리자 로그인 성공");
-  } else alert("로그인 실패");
-}
-
-// 공지 저장/불러오기
-function writeNotice(){
-  const title=document.getElementById("noticeTitle").value;
-  const content=document.getElementById("noticeContent").value;
-  if(!title||!content)return alert("내용을 입력하세요");
-  const notices=JSON.parse(localStorage.getItem("notices")||"[]");
-  notices.unshift({title,content,date:new Date().toLocaleString()});
-  localStorage.setItem("notices",JSON.stringify(notices));
-  renderNotices();
-}
-function renderNotices(){
-  const box=document.getElementById("noticeList");
-  const data=JSON.parse(localStorage.getItem("notices")||"[]");
-  box.innerHTML=data.map(n=>`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small></div>`).join('');
-}
-
-// 질문 저장/불러오기
-function ask(){
-  const name=document.getElementById("qName").value||"익명";
-  const text=document.getElementById("qText").value;
-  if(!text)return;
-  const qs=JSON.parse(localStorage.getItem("questions")||"[]");
-  qs.unshift({name,text,date:new Date().toLocaleString()});
-  localStorage.setItem("questions",JSON.stringify(qs));
-  renderQuestions();
-}
-function renderQuestions(){
-  const list=document.getElementById("qList");
-  const data=JSON.parse(localStorage.getItem("questions")||"[]");
-  list.innerHTML=data.map(q=>`<div class='card'><p><b>${q.name}</b>: ${q.text}</p><small>${q.date}</small></div>`).join('');
-}
-
-// 뉴스 자동 업데이트 (무료 RSS)
-async function loadRSS(){
-  const feeds={
-    us:"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    uk:"https://feeds.bbci.co.uk/news/technology/rss.xml",
-    kr:"https://www.hankyung.com/feed/it",
-    cn:"https://www.scmp.com/rss/91/feed"
-  };
-  for(const [key,url] of Object.entries(feeds)){
-    try{
-      const res=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-      const data=await res.json();
-      const items=new window.DOMParser().parseFromString(data.contents,"text/xml").querySelectorAll("item");
-      document.getElementById(key+"News").innerHTML=
-        Array.from(items).slice(0,3).map(i=>`<a href="${i.querySelector("link").textContent}" target="_blank" style="color:#00b7ff;display:block;margin:5px 0;">${i.querySelector("title").textContent}</a>`).join('');
-    }catch(e){console.log(e);}
+function resizeCanvas(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  particles=[];
+  for(let i=0;i<100;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:canvas.height+Math.random()*canvas.height,
+      size:Math.random()*2+1,
+      speed:Math.random()*0.5+0.2,
+      alpha:Math.random()*0.6+0.2
+    });
   }
 }
-setInterval(loadRSS,600000);
-loadRSS();
 
-renderNotices();
-renderQuestions();
-document.getElementById("lastModified").textContent=document.lastModified;
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let p of particles){
+    p.y-=p.speed;
+    if(p.y<0)p.y=canvas.height+Math.random()*canvas.height;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,0,50,${p.alpha})`;
+    ctx.shadowBlur=10;
+    ctx.shadowColor="#ff0033";
+    ctx.fill();
+  }
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 </body>
 </html>
