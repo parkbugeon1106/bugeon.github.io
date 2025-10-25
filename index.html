@@ -1,101 +1,334 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-  <!-- ✅ Google Search Console 인증 -->
-  <meta name="google-site-verification" content="iZ44_BcqVp6a52sGeeBxd3FSDDERhlBNqARlosUwWjc" />
+<!-- SEO -->
+<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
+<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
+<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
+<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
+<meta property="og:image" content="logo.png">
 
-  <!-- 🔥 SEO 최적화 -->
-  <title>PJ IT COMPANY | 기술과 투자로 세상을 바꾸는 AI·IT기업</title>
-  <meta name="description" content="PJ IT COMPANY — AI, 로봇, IT개발, 스타트업 투자 전문 기업. 기술과 투자로 세상을 바꾸는 혁신 IT기업. 박부건 & 정우진 공동 창립.">
-  <meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, AI, 인공지능, 로봇, IT기업, 스타트업, 투자, 개발, 기술, 혁신, PJIT, 회사, 공식, 홈페이지">
-  <meta name="author" content="PJ IT COMPANY">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pjitcompany.github.io/">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- 🔥 SNS/카톡 미리보기 -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
-  <meta property="og:description" content="기술과 투자로 세상을 바꾸는 AI·IT기업 | 박부건 & 정우진">
-  <meta property="og:image" content="https://pjitcompany.github.io/logo.png">
-  <meta property="og:url" content="https://pjitcompany.github.io/">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PJ IT COMPANY 공식 홈페이지">
-  <meta name="twitter:description" content="기술과 투자로 세상을 바꾸는 AI·IT기업 | 박부건 & 정우진">
-  <meta name="twitter:image" content="https://pjitcompany.github.io/logo.png">
-
-  <link rel="icon" href="https://pjitcompany.github.io/logo.png" type="image/png">
-
-  <!-- 🔥 구조화 데이터 (구글 공식정보 카드용) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "PJ IT COMPANY",
-    "url": "https://pjitcompany.github.io/",
-    "logo": "https://pjitcompany.github.io/logo.png",
-    "founders": [
-      {"@type": "Person", "name": "박부건"},
-      {"@type": "Person", "name": "정우진"}
-    ],
-    "description": "PJ IT COMPANY — AI, 로봇, IT개발, 스타트업 투자 전문 기업",
-    "sameAs": [
-      "https://github.com/pjitcompany",
-      "https://instagram.com/pjitcompany",
-      "https://x.com/pjitcompany"
-    ]
-  }
-  </script>
-
-  <!-- 🔥 글꼴 & 스타일 -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(135deg,#000010,#001a33,#000010);
-      color:#f5f5f5;overflow-x:hidden;
-    }
-    header{
-      position:fixed;top:0;left:0;width:100%;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:10px 40px;background:rgba(0,0,0,.6);
-      border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
-    }
-    header h1{font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;}
-    nav a{margin:0 10px;color:#fff;text-decoration:none;font-weight:600;}
-    nav a:hover{color:#00e0ff}
-    section{padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center}
-    h2{color:#00b7ff;margin-bottom:15px}
-    .card{
-      background:rgba(255,255,255,.05);
-      border:1px solid #00b7ff;border-radius:15px;
-      padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
-    }
-    footer{border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999}
-    input,textarea{width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none}
-    button{
-      background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
-      font-weight:600;cursor:pointer;color:#000;
-    }
-    button:hover{background:#00e0ff}
-    .hidden{display:none}
-    .admin-only{display:none}
-    .team-card{
-      background:rgba(255,255,255,.05);
-      border:1px solid #00b7ff;border-radius:15px;
-      padding:20px;margin:20px auto;width:80%;max-width:400px;
-      box-shadow:0 0 10px #00b7ff50;
-    }
-    .team-card h3{color:#00b7ff;margin-bottom:5px}
-    .team-card p{margin:4px 0}
-    @media (max-width:600px){
-      nav{display:flex;flex-wrap:wrap;justify-content:center}
-      section{padding:90px 10px}
-    }
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#000010,#001a33,#000010);
+  color:#f5f5f5;overflow-x:hidden;
+}
+header{
+  position:fixed;top:0;left:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 40px;background:rgba(0,0,0,.6);
+  border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
+}
+header h1{
+  font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;
+}
+nav a{
+  margin:0 10px;color:#fff;text-decoration:none;font-weight:600;
+}
+nav a:hover{color:#00e0ff}
+section{
+  padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center
+}
+h2{color:#00b7ff;margin-bottom:15px}
+.card{
+  background:rgba(255,255,255,.05);
+  border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+}
+footer{
+  border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
+}
+input,textarea{
+  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none
+}
+button{
+  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
+  font-weight:600;cursor:pointer;color:#000;
+}
+button:hover{background:#00e0ff}
+.hidden{display:none}
+.admin-only{display:none}
+.team-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid #00b7ff;border-radius:15px;
+  padding:20px;margin:20px auto;width:80%;max-width:400px;
+  box-shadow:0 0 10px #00b7ff50;
+}
+.team-card h3{color:#00b7ff;margin-bottom:5px}
+.team-card p{margin:4px 0}
+@media (max-width:600px){
+  nav{display:flex;flex-wrap:wrap;justify-content:center}
+  section{padding:90px 10px}
+}
+</style>
 </head>
+
+<body>
+<header>
+  <h1 onclick="scrollToSection('home')">PJ IT COMPANY</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#news">News</a>
+    <a href="#team">Team</a>
+    <a href="#community">Community</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
+  <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
+  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff);margin-top:20px">
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>회사 소개</h2>
+  <div class="card">
+    <p><strong>PJ IT COMPANY</strong>는 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.<br>
+    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
+    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
+  </div>
+  <h3>핵심 가치</h3>
+  <div class="card">창의 · 덕성 · 봉사</div>
+  <h3>연혁</h3>
+  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>프로젝트</h2>
+  <div class="card">
+    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
+    <p>💰 비트코인 투자 프로그램 준비 중</p>
+    <p>💼 스타트업 투자 및 성장 지원</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <h2>팀원 소개</h2>
+
+  <div class="team-card">
+    <h3>박부건</h3>
+    <p><b>직책:</b> 개발자 / CEO</p>
+    <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
+    <p><b>생년:</b> 2010년생</p>
+    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
+  </div>
+
+  <div class="team-card">
+    <h3>정우진</h3>
+    <p><b>직책:</b> 개발자 / CEO</p>
+    <p><b>사용 언어:</b> Python, HTML, C</p>
+    <p><b>생년:</b> 2007년생</p>
+    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
+  </div>
+
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <h2>커뮤니티 / 공지 게시판</h2>
+
+  <div id="loginBox">
+    <button onclick="login()">로그인</button>
+    <button onclick="logout()">로그아웃</button>
+  </div>
+
+  <div id="noticeWrite" class="admin-only">
+    <h3>공지 작성</h3>
+    <input id="noticeTitle" placeholder="제목">
+    <textarea id="noticeContent" placeholder="내용"></textarea><br>
+    <button onclick="writeNotice()">등록</button>
+  </div>
+
+  <h3>공지사항</h3>
+  <div id="noticeList" class="card"></div>
+
+  <h3>질문 게시판</h3>
+  <input id="qName" placeholder="이름">
+  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br>
+  <button onclick="ask()">등록</button>
+  <div id="qList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>📧 <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
+</section>
+
+<footer>
+  © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
+</footer>
+
+<!-- ✅ Firebase SDK (v11 모듈 방식 완전 적용) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+
+  // ✅ pjitcompany-hp 프로젝트로 연결
+  const firebaseConfig = {
+    apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
+    authDomain: "pjitcompany-hp.firebaseapp.com",
+    projectId: "pjitcompany-hp",
+    storageBucket: "pjitcompany-hp.appspot.com",
+    messagingSenderId: "576854965361",
+    appId: "1:576854965361:web:b01632afe33d766d076fd0",
+    measurementId: "G-8KM8CYTSHF"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  let currentUser = null;
+
+  // 🏠 스크롤 이동
+  window.scrollToSection = function(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  };
+
+  // ✅ 로그인
+  window.login = async function(){
+    const email = prompt("이메일을 입력하세요:");
+    const password = prompt("비밀번호를 입력하세요:");
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      currentUser = userCredential.user;
+      alert("로그인 성공!");
+      renderAll();
+    } catch (error) {
+      alert("로그인 실패 (" + error.code + "): " + error.message);
+    }
+  };
+
+  // 🚪 로그아웃
+  window.logout = async function(){
+    await signOut(auth);
+    currentUser = null;
+    alert("로그아웃되었습니다.");
+    renderAll();
+  };
+
+  // 로그인 상태 감시
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    renderAll();
+  });
+
+  // 공지 작성
+  window.writeNotice = async function(){
+    if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
+    const title = document.getElementById("noticeTitle").value;
+    const content = document.getElementById("noticeContent").value;
+    if(!title || !content) return alert("내용을 입력하세요");
+    await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
+    document.getElementById("noticeTitle").value = "";
+    document.getElementById("noticeContent").value = "";
+    renderNotices();
+  };
+
+  // 공지 삭제
+  window.deleteNotice = async function(id){
+    if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
+    if(!confirm("정말 삭제하시겠습니까?")) return;
+    await deleteDoc(doc(db, "notices", id));
+    renderNotices();
+  };
+
+  // 공지 출력
+  async function renderNotices(){
+    const box = document.getElementById("noticeList");
+    const q = query(collection(db, "notices"), orderBy("date", "desc"));
+    const snapshot = await getDocs(q);
+    box.innerHTML = "";
+    snapshot.forEach((docu)=>{
+      const n = docu.data();
+      box.innerHTML += `
+        <div class='card'>
+          <b>${n.title}</b>
+          <p>${n.content}</p>
+          <small>${n.date}</small>
+          ${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}
+        </div>`;
+    });
+  }
+
+  // 질문 작성
+  window.ask = async function(){
+    const name = document.getElementById("qName").value || "익명";
+    const text = document.getElementById("qText").value;
+    if(!text) return alert("질문을 입력하세요");
+    await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
+    renderQuestions();
+  };
+
+  // 질문 답변
+  window.answerQuestion = async function(id){
+    if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
+    const ans = prompt("답변을 입력하세요:");
+    if(!ans) return;
+    await updateDoc(doc(db, "questions", id), { answer: ans });
+    renderQuestions();
+  };
+
+  // 질문 삭제
+  window.deleteQuestion = async function(id){
+    if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
+    if(!confirm("정말 삭제하시겠습니까?")) return;
+    await deleteDoc(doc(db, "questions", id));
+    renderQuestions();
+  };
+
+  // 질문 출력
+  async function renderQuestions(){
+    const list = document.getElementById("qList");
+    const q = query(collection(db, "questions"), orderBy("date", "desc"));
+    const snapshot = await getDocs(q);
+    list.innerHTML = "";
+    snapshot.forEach((docu)=>{
+      const qd = docu.data();
+      list.innerHTML += `
+        <div class='card'>
+          <p><b>${qd.name}</b>: ${qd.text}</p>
+          <small>${qd.date}</small>
+          ${qd.answer ? `<p style="color:#00b7ff;"><b>답변:</b> ${qd.answer}</p>` : ""}
+          ${currentUser ? `
+            <br>
+            <button onclick="answerQuestion('${docu.id}')">💬 답변</button>
+            <button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>
+          ` : ""}
+        </div>`;
+    });
+  }
+
+  // 전체 렌더링
+  window.renderAll = function(){
+    renderNotices();
+    renderQuestions();
+    const adminBox = document.getElementById("noticeWrite");
+    if(currentUser && currentUser.email === "bagdoeon827@gmail.com"){
+      adminBox.style.display = "block";
+    } else {
+      adminBox.style.display = "none";
+    }
+  };
+
+  window.addEventListener("load", ()=>{ renderAll(); });
+  document.getElementById("lastModified").textContent = document.lastModified;
+</script>
+</body>
+</html>
