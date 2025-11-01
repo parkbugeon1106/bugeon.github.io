@@ -64,6 +64,21 @@ button:hover{background:#00e0ff}
 }
 .team-card h3{color:#00b7ff;margin-bottom:5px}
 .team-card p{margin:4px 0}
+.project-btn{
+  display:inline-block;
+  margin-top:8px;
+  background:#00b7ff;
+  color:#000;
+  padding:8px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+.project-btn:hover{
+  background:#00e0ff;
+  transform:scale(1.05);
+}
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -109,6 +124,15 @@ button:hover{background:#00e0ff}
 <!-- PROJECTS -->
 <section id="projects">
   <h2>프로젝트</h2>
+
+  <!-- ✅ 추가된 코인 사이트 프로젝트 -->
+  <div class="card">
+    <h3>실시간 코인 가격 웹사이트 <span style="color:#00e0ff;">(완료)</span></h3>
+    <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
+       target="_blank" 
+       class="project-btn">🔗 바로가기</a>
+  </div>
+
   <div class="card">
     <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
     <p>💰 비트코인 투자 프로그램 준비 중</p>
@@ -180,7 +204,6 @@ button:hover{background:#00e0ff}
   import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
-  // ✅ pjitcompany-hp 프로젝트로 연결
   const firebaseConfig = {
     apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
     authDomain: "pjitcompany-hp.firebaseapp.com",
@@ -196,12 +219,10 @@ button:hover{background:#00e0ff}
   const auth = getAuth(app);
   let currentUser = null;
 
-  // 🏠 스크롤 이동
   window.scrollToSection = function(id){
     document.getElementById(id).scrollIntoView({behavior:'smooth'});
   };
 
-  // ✅ 로그인
   window.login = async function(){
     const email = prompt("이메일을 입력하세요:");
     const password = prompt("비밀번호를 입력하세요:");
@@ -215,7 +236,6 @@ button:hover{background:#00e0ff}
     }
   };
 
-  // 🚪 로그아웃
   window.logout = async function(){
     await signOut(auth);
     currentUser = null;
@@ -223,13 +243,11 @@ button:hover{background:#00e0ff}
     renderAll();
   };
 
-  // 로그인 상태 감시
   onAuthStateChanged(auth, (user) => {
     currentUser = user;
     renderAll();
   });
 
-  // 공지 작성
   window.writeNotice = async function(){
     if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
     const title = document.getElementById("noticeTitle").value;
@@ -241,7 +259,6 @@ button:hover{background:#00e0ff}
     renderNotices();
   };
 
-  // 공지 삭제
   window.deleteNotice = async function(id){
     if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
     if(!confirm("정말 삭제하시겠습니까?")) return;
@@ -249,7 +266,6 @@ button:hover{background:#00e0ff}
     renderNotices();
   };
 
-  // 공지 출력
   async function renderNotices(){
     const box = document.getElementById("noticeList");
     const q = query(collection(db, "notices"), orderBy("date", "desc"));
@@ -267,7 +283,6 @@ button:hover{background:#00e0ff}
     });
   }
 
-  // 질문 작성
   window.ask = async function(){
     const name = document.getElementById("qName").value || "익명";
     const text = document.getElementById("qText").value;
@@ -276,7 +291,6 @@ button:hover{background:#00e0ff}
     renderQuestions();
   };
 
-  // 질문 답변
   window.answerQuestion = async function(id){
     if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
     const ans = prompt("답변을 입력하세요:");
@@ -285,7 +299,6 @@ button:hover{background:#00e0ff}
     renderQuestions();
   };
 
-  // 질문 삭제
   window.deleteQuestion = async function(id){
     if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
     if(!confirm("정말 삭제하시겠습니까?")) return;
@@ -293,7 +306,6 @@ button:hover{background:#00e0ff}
     renderQuestions();
   };
 
-  // 질문 출력
   async function renderQuestions(){
     const list = document.getElementById("qList");
     const q = query(collection(db, "questions"), orderBy("date", "desc"));
@@ -315,7 +327,6 @@ button:hover{background:#00e0ff}
     });
   }
 
-  // 전체 렌더링
   window.renderAll = function(){
     renderNotices();
     renderQuestions();
