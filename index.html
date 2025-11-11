@@ -60,6 +60,23 @@ button:hover{background:#00e0ff}
 .team-card:hover{transform:scale(1.03);box-shadow:0 0 20px #00b7ff80;cursor:pointer;}
 .team-card h3{color:#00b7ff;margin-bottom:5px}
 .team-card p{margin:4px 0}
+
+/* 모달 애니메이션 */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9); }
+}
+#profileModal.show {
+  display: flex !important;
+  animation: fadeIn 0.35s ease-out forwards;
+}
+#profileModal.hide {
+  animation: fadeOut 0.25s ease-in forwards;
+}
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -193,8 +210,8 @@ background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:100
   </div>
 </div>
 
+<!-- Firebase -->
 <script type="module">
-// ✅ Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
@@ -208,7 +225,6 @@ const firebaseConfig = {
   appId: "1:576854965361:web:b01632afe33d766d076fd0",
   measurementId: "G-8KM8CYTSHF"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -310,19 +326,16 @@ window.renderAll = function(){
   renderNotices();
   renderQuestions();
   const adminBox = document.getElementById("noticeWrite");
-  if(currentUser && currentUser.email === "bagdoeon827@gmail.com"){
-    adminBox.style.display = "block";
-  } else {
-    adminBox.style.display = "none";
-  }
+  adminBox.style.display = (currentUser && currentUser.email === "bagdoeon827@gmail.com") ? "block" : "none";
 };
 
 window.addEventListener("load", ()=>{ renderAll(); });
 document.getElementById("lastModified").textContent = document.lastModified;
 </script>
 
+<!-- ✅ 팀원 경력 모달 JS (전역 실행) -->
 <script>
-function showProfile(name){
+window.showProfile = function(name){
   const profiles = {
     "박부건": [
       "OMIX IT COMPANY 창립자",
@@ -334,23 +347,4 @@ function showProfile(name){
       "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
       "2023 영재원 내 해커톤(일명 해발해) 1등",
       "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
-      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
-      "전국 에그드랍 대회 1등",
-      "2023~2024 해외 외국 개발팀 team2 개발팀장"
-    ],
-    "정우진": [
-      "PJ IT COMPANY 창립자",
-      "부산 과학고등학교 영재원 우수 수료",
-      "과학기술정보통신부 장관상 수상",
-      "화학 올림피아드 장려상 수상",
-      "부산과학전람회 우수상",
-      "부산과학전람회 특별상",
-      "전국과학전람회 특별상"
-    ]
-  };
-
-  document.getElementById("modalName").innerText = name;
-  const contentBox = document.getElementById("modalContent");
-  contentBox.innerHTML = "";
-  (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
-    contentBox.innerHTML += `<li
+      "2024~2025 과학 영재원 내 '남정
