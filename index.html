@@ -46,39 +46,20 @@ h2{color:#00b7ff;margin-bottom:15px}
 footer{
   border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
 }
-input,textarea{
-  width:90%;padding:10px;margin:6px 0;border-radius:10px;border:none
-}
 button{
   background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
   font-weight:600;cursor:pointer;color:#000;
 }
 button:hover{background:#00e0ff}
-.hidden{display:none}
-.admin-only{display:none}
 .team-card{
   background:rgba(255,255,255,.05);
   border:1px solid #00b7ff;border-radius:15px;
   padding:20px;margin:20px auto;width:80%;max-width:400px;
-  box-shadow:0 0 10px #00b7ff50;
+  box-shadow:0 0 10px #00b7ff50;transition:0.3s;
 }
+.team-card:hover{transform:scale(1.03);box-shadow:0 0 20px #00b7ff80;cursor:pointer;}
 .team-card h3{color:#00b7ff;margin-bottom:5px}
 .team-card p{margin:4px 0}
-.project-btn{
-  display:inline-block;
-  margin-top:8px;
-  background:#00b7ff;
-  color:#000;
-  padding:8px 16px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-}
-.project-btn:hover{
-  background:#00e0ff;
-  transform:scale(1.05);
-}
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -125,12 +106,12 @@ button:hover{background:#00e0ff}
 <section id="projects">
   <h2>프로젝트</h2>
 
-  <!-- ✅ 추가된 코인 사이트 프로젝트 -->
   <div class="card">
     <h3>실시간 코인 가격 웹사이트 <span style="color:#00e0ff;">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
        target="_blank" 
-       class="project-btn">🔗 바로가기</a>
+       style="display:inline-block;margin-top:8px;background:#00b7ff;color:#000;
+       padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;">🔗 바로가기</a>
   </div>
 
   <div class="card">
@@ -144,7 +125,7 @@ button:hover{background:#00e0ff}
 <section id="team">
   <h2>팀원 소개</h2>
 
-  <div class="team-card">
+  <div class="team-card" onclick="showProfile('박부건')">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
@@ -152,14 +133,13 @@ button:hover{background:#00e0ff}
     <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
   </div>
 
-  <div class="team-card">
+  <div class="team-card" onclick="showProfile('정우진')">
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, HTML, C</p>
     <p><b>생년:</b> 2007년생</p>
     <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
   </div>
-
 </section>
 
 <!-- COMMUNITY -->
@@ -173,8 +153,8 @@ button:hover{background:#00e0ff}
 
   <div id="noticeWrite" class="admin-only">
     <h3>공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목">
-    <textarea id="noticeContent" placeholder="내용"></textarea><br>
+    <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;">
+    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
     <button onclick="writeNotice()">등록</button>
   </div>
 
@@ -182,8 +162,8 @@ button:hover{background:#00e0ff}
   <div id="noticeList" class="card"></div>
 
   <h3>질문 게시판</h3>
-  <input id="qName" placeholder="이름">
-  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br>
+  <input id="qName" placeholder="이름" style="width:90%;padding:10px;border-radius:10px;border:none;">
+  <textarea id="qText" placeholder="질문을 작성하세요" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
   <button onclick="ask()">등록</button>
   <div id="qList"></div>
 </section>
@@ -198,148 +178,179 @@ button:hover{background:#00e0ff}
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- ✅ Firebase SDK (v11 모듈 방식 완전 적용) -->
+<!-- ✅ 팀원 경력 모달 -->
+<div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:100;">
+  <div style="background:#0a0a0a;border:1px solid #00b7ff;border-radius:15px;
+  padding:30px;max-width:700px;width:90%;color:#f5f5f5;text-align:left;
+  box-shadow:0 0 20px #00b7ff80;">
+    <h2 id="modalName" style="color:#00b7ff;text-align:center;"></h2>
+    <ul id="modalContent" style="margin-top:15px;line-height:1.8;"></ul>
+    <div style="text-align:center;margin-top:20px;">
+      <button onclick="closeProfile()" style="background:#00b7ff;border:none;
+      color:#000;font-weight:600;padding:10px 25px;border-radius:10px;cursor:pointer;">닫기</button>
+    </div>
+  </div>
+</div>
+
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+// ✅ Firebase SDK
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-    authDomain: "pjitcompany-hp.firebaseapp.com",
-    projectId: "pjitcompany-hp",
-    storageBucket: "pjitcompany-hp.appspot.com",
-    messagingSenderId: "576854965361",
-    appId: "1:576854965361:web:b01632afe33d766d076fd0",
-    measurementId: "G-8KM8CYTSHF"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
+  authDomain: "pjitcompany-hp.firebaseapp.com",
+  projectId: "pjitcompany-hp",
+  storageBucket: "pjitcompany-hp.appspot.com",
+  messagingSenderId: "576854965361",
+  appId: "1:576854965361:web:b01632afe33d766d076fd0",
+  measurementId: "G-8KM8CYTSHF"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  let currentUser = null;
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+let currentUser = null;
 
-  window.scrollToSection = function(id){
-    document.getElementById(id).scrollIntoView({behavior:'smooth'});
-  };
+window.scrollToSection = function(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+};
 
-  window.login = async function(){
-    const email = prompt("이메일을 입력하세요:");
-    const password = prompt("비밀번호를 입력하세요:");
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      currentUser = userCredential.user;
-      alert("로그인 성공!");
-      renderAll();
-    } catch (error) {
-      alert("로그인 실패 (" + error.code + "): " + error.message);
-    }
-  };
-
-  window.logout = async function(){
-    await signOut(auth);
-    currentUser = null;
-    alert("로그아웃되었습니다.");
+window.login = async function(){
+  const email = prompt("이메일을 입력하세요:");
+  const password = prompt("비밀번호를 입력하세요:");
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    currentUser = userCredential.user;
+    alert("로그인 성공!");
     renderAll();
-  };
+  } catch (error) {
+    alert("로그인 실패 (" + error.code + "): " + error.message);
+  }
+};
 
-  onAuthStateChanged(auth, (user) => {
-    currentUser = user;
-    renderAll();
+window.logout = async function(){
+  await signOut(auth);
+  currentUser = null;
+  alert("로그아웃되었습니다.");
+  renderAll();
+};
+
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+  renderAll();
+});
+
+window.writeNotice = async function(){
+  if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
+  const title = document.getElementById("noticeTitle").value;
+  const content = document.getElementById("noticeContent").value;
+  if(!title || !content) return alert("내용을 입력하세요");
+  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
+  document.getElementById("noticeTitle").value = "";
+  document.getElementById("noticeContent").value = "";
+  renderNotices();
+};
+
+window.deleteNotice = async function(id){
+  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
+  if(!confirm("정말 삭제하시겠습니까?")) return;
+  await deleteDoc(doc(db, "notices", id));
+  renderNotices();
+};
+
+async function renderNotices(){
+  const box = document.getElementById("noticeList");
+  const q = query(collection(db, "notices"), orderBy("date", "desc"));
+  const snapshot = await getDocs(q);
+  box.innerHTML = "";
+  snapshot.forEach((docu)=>{
+    const n = docu.data();
+    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
   });
+}
 
-  window.writeNotice = async function(){
-    if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
-    const title = document.getElementById("noticeTitle").value;
-    const content = document.getElementById("noticeContent").value;
-    if(!title || !content) return alert("내용을 입력하세요");
-    await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
-    document.getElementById("noticeTitle").value = "";
-    document.getElementById("noticeContent").value = "";
-    renderNotices();
-  };
+window.ask = async function(){
+  const name = document.getElementById("qName").value || "익명";
+  const text = document.getElementById("qText").value;
+  if(!text) return alert("질문을 입력하세요");
+  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
+  renderQuestions();
+};
 
-  window.deleteNotice = async function(id){
-    if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-    if(!confirm("정말 삭제하시겠습니까?")) return;
-    await deleteDoc(doc(db, "notices", id));
-    renderNotices();
-  };
+window.answerQuestion = async function(id){
+  if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
+  const ans = prompt("답변을 입력하세요:");
+  if(!ans) return;
+  await updateDoc(doc(db, "questions", id), { answer: ans });
+  renderQuestions();
+};
 
-  async function renderNotices(){
-    const box = document.getElementById("noticeList");
-    const q = query(collection(db, "notices"), orderBy("date", "desc"));
-    const snapshot = await getDocs(q);
-    box.innerHTML = "";
-    snapshot.forEach((docu)=>{
-      const n = docu.data();
-      box.innerHTML += `
-        <div class='card'>
-          <b>${n.title}</b>
-          <p>${n.content}</p>
-          <small>${n.date}</small>
-          ${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}
-        </div>`;
-    });
+window.deleteQuestion = async function(id){
+  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
+  if(!confirm("정말 삭제하시겠습니까?")) return;
+  await deleteDoc(doc(db, "questions", id));
+  renderQuestions();
+};
+
+async function renderQuestions(){
+  const list = document.getElementById("qList");
+  const q = query(collection(db, "questions"), orderBy("date", "desc"));
+  const snapshot = await getDocs(q);
+  list.innerHTML = "";
+  snapshot.forEach((docu)=>{
+    const qd = docu.data();
+    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style="color:#00b7ff;"><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser ? `<br><button onclick="answerQuestion('${docu.id}')">💬 답변</button><button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
+  });
+}
+
+window.renderAll = function(){
+  renderNotices();
+  renderQuestions();
+  const adminBox = document.getElementById("noticeWrite");
+  if(currentUser && currentUser.email === "bagdoeon827@gmail.com"){
+    adminBox.style.display = "block";
+  } else {
+    adminBox.style.display = "none";
   }
+};
 
-  window.ask = async function(){
-    const name = document.getElementById("qName").value || "익명";
-    const text = document.getElementById("qText").value;
-    if(!text) return alert("질문을 입력하세요");
-    await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
-    renderQuestions();
-  };
-
-  window.answerQuestion = async function(id){
-    if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
-    const ans = prompt("답변을 입력하세요:");
-    if(!ans) return;
-    await updateDoc(doc(db, "questions", id), { answer: ans });
-    renderQuestions();
-  };
-
-  window.deleteQuestion = async function(id){
-    if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-    if(!confirm("정말 삭제하시겠습니까?")) return;
-    await deleteDoc(doc(db, "questions", id));
-    renderQuestions();
-  };
-
-  async function renderQuestions(){
-    const list = document.getElementById("qList");
-    const q = query(collection(db, "questions"), orderBy("date", "desc"));
-    const snapshot = await getDocs(q);
-    list.innerHTML = "";
-    snapshot.forEach((docu)=>{
-      const qd = docu.data();
-      list.innerHTML += `
-        <div class='card'>
-          <p><b>${qd.name}</b>: ${qd.text}</p>
-          <small>${qd.date}</small>
-          ${qd.answer ? `<p style="color:#00b7ff;"><b>답변:</b> ${qd.answer}</p>` : ""}
-          ${currentUser ? `
-            <br>
-            <button onclick="answerQuestion('${docu.id}')">💬 답변</button>
-            <button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>
-          ` : ""}
-        </div>`;
-    });
-  }
-
-  window.renderAll = function(){
-    renderNotices();
-    renderQuestions();
-    const adminBox = document.getElementById("noticeWrite");
-    if(currentUser && currentUser.email === "bagdoeon827@gmail.com"){
-      adminBox.style.display = "block";
-    } else {
-      adminBox.style.display = "none";
-    }
-  };
-
-  window.addEventListener("load", ()=>{ renderAll(); });
-  document.getElementById("lastModified").textContent = document.lastModified;
+window.addEventListener("load", ()=>{ renderAll(); });
+document.getElementById("lastModified").textContent = document.lastModified;
 </script>
-</body>
-</html>
+
+<script>
+function showProfile(name){
+  const profiles = {
+    "박부건": [
+      "OMIX IT COMPANY 창립자",
+      "PJ IT COMPANY 창립자",
+      "2021~2023 발명 영재원 전체 수석",
+      "2023 영재원 팀 'technolage' 내 프로그래머",
+      "2023~2025 과학 영재원 물리과 전체 수석",
+      "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
+      "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
+      "2023 영재원 내 해커톤(일명 해발해) 1등",
+      "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
+      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
+      "전국 에그드랍 대회 1등",
+      "2023~2024 해외 외국 개발팀 team2 개발팀장"
+    ],
+    "정우진": [
+      "PJ IT COMPANY 창립자",
+      "부산 과학고등학교 영재원 우수 수료",
+      "과학기술정보통신부 장관상 수상",
+      "화학 올림피아드 장려상 수상",
+      "부산과학전람회 우수상",
+      "부산과학전람회 특별상",
+      "전국과학전람회 특별상"
+    ]
+  };
+
+  document.getElementById("modalName").innerText = name;
+  const contentBox = document.getElementById("modalContent");
+  contentBox.innerHTML = "";
+  (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
+    contentBox.innerHTML += `<li
