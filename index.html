@@ -142,7 +142,7 @@ button:hover{background:#00e0ff}
 <section id="team">
   <h2>팀원 소개</h2>
 
-  <div class="team-card" onclick="showProfile('박부건')">
+  <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
@@ -150,7 +150,7 @@ button:hover{background:#00e0ff}
     <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
   </div>
 
-  <div class="team-card" onclick="showProfile('정우진')">
+  <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, HTML, C</p>
@@ -158,42 +158,6 @@ button:hover{background:#00e0ff}
     <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
   </div>
 </section>
-
-<!-- COMMUNITY -->
-<section id="community">
-  <h2>커뮤니티 / 공지 게시판</h2>
-
-  <div id="loginBox">
-    <button onclick="login()">로그인</button>
-    <button onclick="logout()">로그아웃</button>
-  </div>
-
-  <div id="noticeWrite" class="admin-only">
-    <h3>공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;">
-    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
-    <button onclick="writeNotice()">등록</button>
-  </div>
-
-  <h3>공지사항</h3>
-  <div id="noticeList" class="card"></div>
-
-  <h3>질문 게시판</h3>
-  <input id="qName" placeholder="이름" style="width:90%;padding:10px;border-radius:10px;border:none;">
-  <textarea id="qText" placeholder="질문을 작성하세요" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
-  <button onclick="ask()">등록</button>
-  <div id="qList"></div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>📧 <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
-</section>
-
-<footer>
-  © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
-</footer>
 
 <!-- ✅ 팀원 경력 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
@@ -210,132 +174,12 @@ background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:100
   </div>
 </div>
 
-<!-- Firebase -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-  authDomain: "pjitcompany-hp.firebaseapp.com",
-  projectId: "pjitcompany-hp",
-  storageBucket: "pjitcompany-hp.appspot.com",
-  messagingSenderId: "576854965361",
-  appId: "1:576854965361:web:b01632afe33d766d076fd0",
-  measurementId: "G-8KM8CYTSHF"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-let currentUser = null;
-
-window.scrollToSection = function(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-};
-
-window.login = async function(){
-  const email = prompt("이메일을 입력하세요:");
-  const password = prompt("비밀번호를 입력하세요:");
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    currentUser = userCredential.user;
-    alert("로그인 성공!");
-    renderAll();
-  } catch (error) {
-    alert("로그인 실패 (" + error.code + "): " + error.message);
-  }
-};
-
-window.logout = async function(){
-  await signOut(auth);
-  currentUser = null;
-  alert("로그아웃되었습니다.");
-  renderAll();
-};
-
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  renderAll();
-});
-
-window.writeNotice = async function(){
-  if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
-  const title = document.getElementById("noticeTitle").value;
-  const content = document.getElementById("noticeContent").value;
-  if(!title || !content) return alert("내용을 입력하세요");
-  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
-  document.getElementById("noticeTitle").value = "";
-  document.getElementById("noticeContent").value = "";
-  renderNotices();
-};
-
-window.deleteNotice = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "notices", id));
-  renderNotices();
-};
-
-async function renderNotices(){
-  const box = document.getElementById("noticeList");
-  const q = query(collection(db, "notices"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  box.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const n = docu.data();
-    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.ask = async function(){
-  const name = document.getElementById("qName").value || "익명";
-  const text = document.getElementById("qText").value;
-  if(!text) return alert("질문을 입력하세요");
-  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
-  renderQuestions();
-};
-
-window.answerQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
-  const ans = prompt("답변을 입력하세요:");
-  if(!ans) return;
-  await updateDoc(doc(db, "questions", id), { answer: ans });
-  renderQuestions();
-};
-
-window.deleteQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "questions", id));
-  renderQuestions();
-};
-
-async function renderQuestions(){
-  const list = document.getElementById("qList");
-  const q = query(collection(db, "questions"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  list.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const qd = docu.data();
-    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style="color:#00b7ff;"><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser ? `<br><button onclick="answerQuestion('${docu.id}')">💬 답변</button><button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.renderAll = function(){
-  renderNotices();
-  renderQuestions();
-  const adminBox = document.getElementById("noticeWrite");
-  adminBox.style.display = (currentUser && currentUser.email === "bagdoeon827@gmail.com") ? "block" : "none";
-};
-
-window.addEventListener("load", ()=>{ renderAll(); });
-document.getElementById("lastModified").textContent = document.lastModified;
-</script>
-
-<!-- ✅ 팀원 경력 모달 JS (전역 실행) -->
 <script>
-window.showProfile = function(name){
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("profileModal");
+  const nameBox = document.getElementById("modalName");
+  const contentBox = document.getElementById("modalContent");
+
   const profiles = {
     "박부건": [
       "OMIX IT COMPANY 창립자",
@@ -362,27 +206,31 @@ window.showProfile = function(name){
     ]
   };
 
-  const modal = document.getElementById("profileModal");
-  const nameBox = document.getElementById("modalName");
-  const contentBox = document.getElementById("modalContent");
+  function showProfile(name){
+    nameBox.innerText = name;
+    contentBox.innerHTML = "";
+    (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
+      contentBox.innerHTML += `<li>${item}</li>`;
+    });
+    modal.classList.remove("hide");
+    modal.classList.add("show");
+    modal.style.display = "flex";
+  }
 
-  nameBox.innerText = name;
-  contentBox.innerHTML = "";
-  (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
-    contentBox.innerHTML += `<li>${item}</li>`;
+  window.closeProfile = function(){
+    modal.classList.remove("show");
+    modal.classList.add("hide");
+    setTimeout(()=>{ modal.style.display = "none"; }, 250);
+  };
+
+  document.querySelectorAll(".team-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const name = card.querySelector("h3").innerText.trim();
+      showProfile(name);
+    });
   });
-
-  modal.classList.remove("hide");
-  modal.classList.add("show");
-  modal.style.display = "flex";
-};
-
-window.closeProfile = function(){
-  const modal = document.getElementById("profileModal");
-  modal.classList.remove("show");
-  modal.classList.add("hide");
-  setTimeout(()=>{ modal.style.display = "none"; }, 250);
-};
+});
 </script>
+
 </body>
 </html>
