@@ -347,4 +347,42 @@ window.showProfile = function(name){
       "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
       "2023 영재원 내 해커톤(일명 해발해) 1등",
       "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
-      "2024~2025 과학 영재원 내 '남정
+      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
+      "전국 에그드랍 대회 1등",
+      "2023~2024 해외 외국 개발팀 team2 개발팀장"
+    ],
+    "정우진": [
+      "PJ IT COMPANY 창립자",
+      "부산 과학고등학교 영재원 우수 수료",
+      "과학기술정보통신부 장관상 수상",
+      "화학 올림피아드 장려상 수상",
+      "부산과학전람회 우수상",
+      "부산과학전람회 특별상",
+      "전국과학전람회 특별상"
+    ]
+  };
+
+  const modal = document.getElementById("profileModal");
+  const nameBox = document.getElementById("modalName");
+  const contentBox = document.getElementById("modalContent");
+
+  nameBox.innerText = name;
+  contentBox.innerHTML = "";
+  (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
+    contentBox.innerHTML += `<li>${item}</li>`;
+  });
+
+  modal.classList.remove("hide");
+  modal.classList.add("show");
+  modal.style.display = "flex";
+};
+
+window.closeProfile = function(){
+  const modal = document.getElementById("profileModal");
+  modal.classList.remove("show");
+  modal.classList.add("hide");
+  setTimeout(()=>{ modal.style.display = "none"; }, 250);
+};
+</script>
+</body>
+</html>
