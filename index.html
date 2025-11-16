@@ -17,7 +17,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:#000000 !important; /* ✅ 완전 블랙 배경 */
+  background:#000000 !important;
   color:#f5f5f5;
   overflow-x:hidden;
 }
@@ -43,8 +43,6 @@ header h1:hover{
   color:#ff3355;
   text-shadow:0 0 40px #ff3355,0 0 80px #ff3355;
 }
-
-/* ===== 네비게이션 ===== */
 nav a{
   margin:0 10px;
   color:#fff;
@@ -70,10 +68,10 @@ h2{
   text-shadow:0 0 30px #990012,0 0 60px #990012;
 }
 
-/* ===== 카드 및 팀카드 ===== */
+/* ===== 카드 ===== */
 .card, .team-card {
-  background:#390909 !important; /* ✅ 박스 내부 색상 */
-  border:none !important;        /* ✅ 테두리 완전 제거 */
+  background:#390909 !important;
+  border:none !important;
   outline:none !important;
   border-radius:15px;
   padding:20px;
@@ -105,16 +103,10 @@ button:hover{
 }
 
 /* ===== 모달 ===== */
-#profileModal.show {
-  display:flex !important;
-  animation:fadeIn 0.35s ease-out forwards;
-}
-#profileModal.hide {
-  animation:fadeOut 0.25s ease-in forwards;
-}
+#profileModal.show { display:flex !important; animation:fadeIn 0.35s ease-out forwards; }
+#profileModal.hide { animation:fadeOut 0.25s ease-in forwards; }
 @keyframes fadeIn {0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
 @keyframes fadeOut {0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
-
 #profileModal>div{
   background:#390909 !important;
   border:none !important;
@@ -141,11 +133,6 @@ footer{
   color:#888;
   background:#000000;
 }
-
-@media (max-width:600px){
-  nav{display:flex;flex-wrap:wrap;justify-content:center}
-  section{padding:90px 10px}
-}
 </style>
 </head>
 
@@ -167,7 +154,6 @@ footer{
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #990012);margin-top:20px">
 </section>
 
 <!-- ABOUT -->
@@ -178,28 +164,17 @@ footer{
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3>핵심 가치</h3>
-  <div class="card">창의 · 덕성 · 봉사</div>
-  <h3>연혁</h3>
-  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
   <h2>프로젝트</h2>
-
   <div class="card">
     <h3>실시간 코인 가격 웹사이트 <span style="color:#fff;">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
-       target="_blank" 
+       target="_blank"
        style="display:inline-block;margin-top:8px;background:#990012;color:#fff;
-       padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;">🔗 바로가기</a>
-  </div>
-
-  <div class="card">
-    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
-    <p>💰 비트코인 투자 프로그램 준비 중</p>
-    <p>💼 스타트업 투자 및 성장 지원</p>
+       padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
   </div>
 </section>
 
@@ -207,27 +182,24 @@ footer{
 <section id="team">
   <h2>팀원 소개</h2>
 
-  <div class="team-card" onclick="showProfile('박부건')">
+  <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
-    <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
-    <p><b>생년:</b> 2010년생</p>
-    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com" style="color:#f5f5f5;">bagdoeon827@gmail.com</a></p>
+    <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
+    <button onclick="showProfile('박부건')">📜 경력 보기</button>
   </div>
 
-  <div class="team-card" onclick="showProfile('정우진')">
+  <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
-    <p><b>사용 언어:</b> Python, HTML, C</p>
-    <p><b>생년:</b> 2007년생</p>
-    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com" style="color:#f5f5f5;">jeromesone@gmail.com</a></p>
+    <p><b>언어:</b> Python, HTML, C</p>
+    <button onclick="showProfile('정우진')">📜 경력 보기</button>
   </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- 커뮤니티 -->
 <section id="community">
   <h2>커뮤니티 / 공지 게시판</h2>
-
   <div id="loginBox">
     <button onclick="login()">로그인</button>
     <button onclick="logout()">로그아웃</button>
@@ -260,7 +232,7 @@ footer{
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- ✅ 팀원 경력 모달 -->
+<!-- ✅ 경력 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:100;">
   <div>
@@ -272,129 +244,50 @@ background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:100
   </div>
 </div>
 
-<!-- Firebase -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-  authDomain: "pjitcompany-hp.firebaseapp.com",
-  projectId: "pjitcompany-hp",
-  storageBucket: "pjitcompany-hp.appspot.com",
-  messagingSenderId: "576854965361",
-  appId: "1:576854965361:web:b01632afe33d766d076fd0",
-  measurementId: "G-8KM8CYTSHF"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-let currentUser = null;
-
-window.scrollToSection = function(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-};
-
-window.login = async function(){
-  const email = prompt("이메일을 입력하세요:");
-  const password = prompt("비밀번호를 입력하세요:");
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    currentUser = userCredential.user;
-    alert("로그인 성공!");
-    renderAll();
-  } catch (error) {
-    alert("로그인 실패 (" + error.code + "): " + error.message);
-  }
-};
-
-window.logout = async function(){
-  await signOut(auth);
-  currentUser = null;
-  alert("로그아웃되었습니다.");
-  renderAll();
-};
-
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  renderAll();
-});
-
-window.writeNotice = async function(){
-  if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
-  const title = document.getElementById("noticeTitle").value;
-  const content = document.getElementById("noticeContent").value;
-  if(!title || !content) return alert("내용을 입력하세요");
-  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
-  document.getElementById("noticeTitle").value = "";
-  document.getElementById("noticeContent").value = "";
-  renderNotices();
-};
-
-window.deleteNotice = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "notices", id));
-  renderNotices();
-};
-
-async function renderNotices(){
-  const box = document.getElementById("noticeList");
-  const q = query(collection(db, "notices"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  box.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const n = docu.data();
-    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.ask = async function(){
-  const name = document.getElementById("qName").value || "익명";
-  const text = document.getElementById("qText").value;
-  if(!text) return alert("질문을 입력하세요");
-  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
-  renderQuestions();
-};
-
-window.answerQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
-  const ans = prompt("답변을 입력하세요:");
-  if(!ans) return;
-  await updateDoc(doc(db, "questions", id), { answer: ans });
-  renderQuestions();
-};
-
-window.deleteQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "questions", id));
-  renderQuestions();
-};
-
-async function renderQuestions(){
-  const list = document.getElementById("qList");
-  const q = query(collection(db, "questions"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  list.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const qd = docu.data();
-    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style="color:#990012;"><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser ? `<br><button onclick="answerQuestion('${docu.id}')">💬 답변</button><button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.renderAll = function(){
-  renderNotices();
-  renderQuestions();
-  const adminBox = document.getElementById("noticeWrite");
-  adminBox.style.display = (currentUser && currentUser.email === "bagdoeon827@gmail.com") ? "block" : "none";
-};
-
-window.addEventListener("load", ()=>{ renderAll(); });
-document.getElementById("lastModified").textContent = document.lastModified;
-</script>
-
-<!-- ✅ 팀원 경력 모달 JS -->
 <script>
-window
+const profiles = {
+  "박부건": [
+    "OMIX IT COMPANY 창립자",
+    "PJ IT COMPANY 창립자",
+    "2021~2023 발명 영재원 전체 수석",
+    "2023 영재원 팀 'technolage' 내 프로그래머",
+    "2023~2025 과학 영재원 물리과 전체 수석",
+    "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
+    "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
+    "2023 영재원 내 해커톤(일명 해발해) 1등",
+    "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
+    "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
+    "전국 에그드랍 대회 1등",
+    "2023~2024 해외 외국 개발팀 team2 개발팀장"
+  ],
+  "정우진": [
+    "PJ IT COMPANY 창립자",
+    "부산 과학고등학교 영재원 우수 수료",
+    "과학기술정보통신부 장관상 수상",
+    "화학 올림피아드 장려상 수상",
+    "부산과학전람회 우수상",
+    "부산과학전람회 특별상",
+    "전국과학전람회 특별상"
+  ]
+};
+
+function showProfile(name){
+  const modal=document.getElementById("profileModal");
+  const nameBox=document.getElementById("modalName");
+  const contentBox=document.getElementById("modalContent");
+  nameBox.innerText=name;
+  contentBox.innerHTML="";
+  profiles[name].forEach(item=>{
+    contentBox.innerHTML+=`<li>${item}</li>`;
+  });
+  modal.style.display="flex";
+  modal.classList.add("show");
+}
+function closeProfile(){
+  const modal=document.getElementById("profileModal");
+  modal.classList.remove("show");
+  setTimeout(()=>modal.style.display="none",200);
+}
+</script>
+</body>
+</html>
