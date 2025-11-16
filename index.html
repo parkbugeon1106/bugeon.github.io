@@ -41,7 +41,6 @@ header h1{
 }
 header h1:hover{
   color:#ff3355;
-  text-shadow:0 0 40px #ff3355,0 0 80px #ff3355;
 }
 nav a{
   margin:0 10px;
@@ -52,7 +51,6 @@ nav a{
 }
 nav a:hover{
   color:#990012;
-  text-shadow:0 0 20px #990012;
 }
 
 /* ===== 섹션 ===== */
@@ -65,7 +63,6 @@ section{
 h2{
   color:#990012;
   margin-bottom:15px;
-  text-shadow:0 0 30px #990012,0 0 60px #990012;
 }
 
 /* ===== 카드 ===== */
@@ -77,7 +74,6 @@ h2{
   padding:20px;
   margin:20px auto;
   color:#fff;
-  box-shadow:none !important;
   transition:0.3s;
 }
 .card:hover, .team-card:hover {
@@ -85,33 +81,29 @@ h2{
   background:#4a0a0a !important;
 }
 
-/* ===== 버튼 ===== */
+/* ===== 버튼 (깔끔 버전) ===== */
 button{
-  background:#2a0707; /* ✅ 박스보다 조금 더 어두운 색 */
+  background:#2a0707; /* 박스보다 살짝 어두운 톤 */
   border:none;
   padding:10px 20px;
-  border-radius:10px;
+  border-radius:8px;
   font-weight:600;
   cursor:pointer;
   color:#fff;
-  transition:0.3s;
-  box-shadow:0 0 15px #99001250;
+  transition:background 0.3s ease;
 }
 button:hover{
-  background:#390909; /* hover 시 약간 밝게 */
-  box-shadow:0 0 25px #990012,0 0 50px #990012;
+  background:#3b0a0a; /* hover 시 약간 밝게 */
 }
 
 /* ===== 모달 ===== */
-#profileModal.show { display:flex !important; animation:fadeIn 0.35s ease-out forwards; }
-#profileModal.hide { animation:fadeOut 0.25s ease-in forwards; }
+#profileModal.show { display:flex !important; animation:fadeIn 0.3s ease-out forwards; }
+#profileModal.hide { animation:fadeOut 0.2s ease-in forwards; }
 @keyframes fadeIn {0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
 @keyframes fadeOut {0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
 #profileModal>div{
   background:#390909 !important;
   border:none !important;
-  outline:none !important;
-  box-shadow:none !important;
   border-radius:15px;
   padding:30px;
   max-width:700px;
@@ -121,13 +113,11 @@ button:hover{
 }
 #profileModal h2{
   color:#fff;
-  text-shadow:0 0 30px #990012,0 0 60px #990012;
   text-align:center;
 }
 
 /* ===== 푸터 ===== */
 footer{
-  border-top:none;
   text-align:center;
   padding:20px;
   color:#888;
@@ -191,30 +181,6 @@ footer{
     <p><b>언어:</b> Python, HTML, C</p>
     <button onclick="showProfile('정우진')">📜 경력 보기</button>
   </div>
-</section>
-
-<section id="community">
-  <h2>커뮤니티 / 공지 게시판</h2>
-  <div id="loginBox">
-    <button onclick="login()">로그인</button>
-    <button onclick="logout()">로그아웃</button>
-  </div>
-
-  <div id="noticeWrite" class="admin-only">
-    <h3>공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;">
-    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
-    <button onclick="writeNotice()">등록</button>
-  </div>
-
-  <h3>공지사항</h3>
-  <div id="noticeList" class="card"></div>
-
-  <h3>질문 게시판</h3>
-  <input id="qName" placeholder="이름" style="width:90%;padding:10px;border-radius:10px;border:none;">
-  <textarea id="qText" placeholder="질문을 작성하세요" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
-  <button onclick="ask()">등록</button>
-  <div id="qList"></div>
 </section>
 
 <section id="contact">
