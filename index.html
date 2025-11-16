@@ -8,14 +8,10 @@
 <!-- SEO -->
 <meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업" />
 <meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오" />
-<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지" />
-<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업" />
-<meta property="og:image" content="logo.png" />
 
-<!-- 폰트 -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-<!-- Pretendard 폰트 (로고 밑 문장용) -->
 <style>
 @font-face {
   font-family: 'Pretendard';
@@ -23,32 +19,31 @@
   font-weight: 600;
   font-display: swap;
 }
-</style>
 
-<style>
+/* 색상 변수 */
 :root {
   --bg: #080000;
-  --card: #390909;
   --accent: #990012;
-  --accent-hover: #b80018;
+  --card: #390909;
+  --button: #2b0000;
   --text: #ffffff;
-  --shadow: rgba(153, 0, 18, 0.6);
 }
 
+/* 공통 */
 *{box-sizing:border-box;margin:0;padding:0}
 body{
+  background-color: var(--bg) !important;
   font-family:'Poppins',sans-serif;
-  background-color:#080000 !important;
   color:var(--text);
   overflow-x:hidden;
 }
 
 /* 글로우 공통 */
-.glow-text{
+.glow{
   text-shadow:
-    0 0 8px var(--accent),
-    0 0 20px var(--accent),
-    0 0 40px var(--accent);
+    0 0 10px var(--accent),
+    0 0 30px var(--accent),
+    0 0 60px var(--accent);
 }
 
 /* 헤더 */
@@ -56,27 +51,21 @@ header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
   padding:10px 40px;
-  background:rgba(0,0,0,0.9);
+  background:#080000;
   border-bottom:2px solid var(--accent);
   z-index:10;
-  backdrop-filter:blur(8px);
 }
 header h1{
   font-family:'Orbitron',sans-serif;
   color:var(--accent);
-  text-shadow:0 0 10px var(--accent),0 0 40px var(--accent);
+  text-shadow:0 0 10px var(--accent),0 0 30px var(--accent);
   cursor:pointer;
-  transition:0.3s;
 }
-header h1:hover{color:var(--accent-hover);}
 nav a{
-  margin:0 10px;
-  color:var(--text);
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
+  margin:0 10px;color:var(--text);
+  text-decoration:none;font-weight:600;
 }
-nav a:hover{color:var(--accent);text-shadow:0 0 15px var(--accent);}
+nav a:hover{color:var(--accent);text-shadow:0 0 20px var(--accent);}
 
 /* 섹션 */
 section{
@@ -87,8 +76,8 @@ section{
 }
 h2{
   color:var(--accent);
+  text-shadow:0 0 30px var(--accent);
   margin-bottom:15px;
-  text-shadow:0 0 25px var(--accent);
 }
 
 /* 카드 */
@@ -99,79 +88,38 @@ h2{
   padding:20px;
   margin:20px auto;
   color:var(--text);
-  box-shadow:0 0 20px var(--shadow);
+  box-shadow:0 0 25px rgba(153,0,18,0.4);
   transition:0.3s;
 }
-.card:hover, .team-card:hover{
+.card:hover,.team-card:hover{
   transform:scale(1.02);
   box-shadow:0 0 35px var(--accent);
 }
 
 /* 버튼 */
 button{
-  background:#2b0000;
+  background:var(--button);
   border:none;
+  color:var(--text);
   padding:10px 20px;
   border-radius:8px;
   font-weight:600;
   cursor:pointer;
-  color:var(--text);
   transition:0.3s;
   text-shadow:0 0 10px var(--accent);
 }
 button:hover{
   background:var(--accent);
-  box-shadow:0 0 20px var(--accent);
   color:#fff;
+  box-shadow:0 0 25px var(--accent);
 }
 
 /* 로고 */
 .logo-img{
-  width:160px;
+  width:150px;
   margin-top:20px;
   filter:drop-shadow(0 0 25px var(--accent));
 }
-
-/* 로그인 박스 */
-.login-box{
-  background:var(--card);
-  border:none;
-  border-radius:15px;
-  padding:20px;
-  width:90%;
-  max-width:400px;
-  margin:20px auto;
-  color:var(--text);
-  box-shadow:0 0 20px var(--shadow);
-}
-.login-box input{
-  width:90%;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  margin:5px 0;
-  background:#222;
-  color:var(--text);
-}
-.login-box input:focus{outline:1px solid var(--accent);}
-
-/* 모달 */
-#profileModal.show{display:flex !important;animation:fadeIn 0.3s ease-out forwards;}
-#profileModal.hide{animation:fadeOut 0.2s ease-in forwards;}
-@keyframes fadeIn{0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
-@keyframes fadeOut{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
-#profileModal>div{
-  background:var(--card);
-  border:none;
-  border-radius:15px;
-  padding:30px;
-  max-width:700px;
-  width:90%;
-  color:var(--text);
-  text-align:left;
-  box-shadow:0 0 30px var(--accent);
-}
-#profileModal h2{text-align:center;color:var(--accent);text-shadow:0 0 25px var(--accent);}
 
 /* 푸터 */
 footer{
@@ -179,23 +127,33 @@ footer{
   padding:20px;
   color:#aaa;
   background:var(--bg);
+  border-top:1px solid var(--accent);
 }
+
+/* 모달 */
+#profileModal.show{display:flex !important;}
+#profileModal>div{
+  background:var(--card);
+  border:none;
+  border-radius:15px;
+  padding:30px;
+  color:var(--text);
+  box-shadow:0 0 30px var(--accent);
+}
+#profileModal h2{color:var(--accent);text-align:center;text-shadow:0 0 30px var(--accent);}
 
 /* 반응형 */
 @media(max-width:768px){
   header{flex-direction:column;padding:15px;}
-  nav{justify-content:center;gap:8px;flex-wrap:wrap;}
+  nav{flex-wrap:wrap;justify-content:center;}
   section{padding:80px 10px 60px;}
-  .card,.team-card,.login-box{width:95%;padding:15px;}
-  h2{font-size:1.4rem;}
-  button{padding:8px 15px;font-size:0.9rem;}
 }
 </style>
 </head>
 
 <body>
 <header>
-  <h1 onclick="scrollToSection('home')" class="glow-text">PJ IT COMPANY</h1>
+  <h1 class="glow" onclick="scrollToSection('home')">PJ IT COMPANY</h1>
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -206,51 +164,47 @@ footer{
   </nav>
 </header>
 
-<!-- HOME -->
 <section id="home">
-  <h2 class="glow-text">안녕하세요, PJ IT COMPANY 입니다.</h2>
-  <img src="logo.png" alt="PJ IT COMPANY 로고" class="logo-img" />
+  <h2 class="glow">안녕하세요, PJ IT COMPANY 입니다.</h2>
+  <img src="logo.png" alt="로고" class="logo-img">
   <!-- ✅ Pretendard 폰트 적용 문장 -->
   <p style="
     font-family: 'Pretendard', sans-serif;
     font-weight: 600;
     font-size: 17px;
-    margin-top: 10px;
     color: #fff;
+    margin-top: 10px;
     text-shadow:
-      0 0 10px #990012,
-      0 0 25px #990012,
-      0 0 45px #990012;
+      0 0 12px #990012,
+      0 0 30px #990012,
+      0 0 60px #990012;
   ">
     기술과 투자로 세상을 바꾸는 IT 기업
   </p>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <h2 class="glow-text">회사 소개</h2>
+  <h2 class="glow">회사 소개</h2>
   <div class="card">
     <p><strong>PJ IT COMPANY</strong>는 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.<br>
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3 class="glow-text" style="margin-top:30px;">핵심 가치</h3>
-  <div class="card">창의 · 덕성 · 봉사</div>
-  <h3 class="glow-text" style="margin-top:30px;">연혁</h3>
+  <div class="card">핵심 가치 — 창의 · 덕성 · 봉사</div>
   <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
-  <h2 class="glow-text">프로젝트</h2>
+  <h2 class="glow">프로젝트</h2>
   <div class="card">
     <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
        target="_blank"
-       style="display:inline-block;margin-top:8px;background:var(--accent);color:#fff;
-       padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
+       style="display:inline-block;margin-top:8px;background:var(--accent);
+       color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;">
+       🔗 바로가기
+    </a>
   </div>
-
   <div class="card">
     <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
     <p>💰 비트코인 투자 프로그램 준비 중</p>
@@ -258,67 +212,29 @@ footer{
   </div>
 </section>
 
-<!-- TEAM -->
 <section id="team">
-  <h2 class="glow-text">팀원 소개</h2>
+  <h2 class="glow">팀원 소개</h2>
   <div class="team-card">
-    <h3 class="glow-text">박부건</h3>
-    <p><b>직책:</b> 개발자 / CEO</p>
+    <h3 class="glow">박부건</h3>
+    <p>개발자 / CEO</p>
     <button onclick="showProfile('박부건')">📜 경력 보기</button>
   </div>
-
   <div class="team-card">
-    <h3 class="glow-text">정우진</h3>
-    <p><b>직책:</b> 개발자 / CEO</p>
+    <h3 class="glow">정우진</h3>
+    <p>개발자 / CEO</p>
     <button onclick="showProfile('정우진')">📜 경력 보기</button>
   </div>
-</section>
-
-<!-- COMMUNITY -->
-<section id="community">
-  <h2 class="glow-text">커뮤니티 / 공지 게시판</h2>
-  <div class="login-box" id="loginBox">
-    <h3 class="glow-text">관리자 로그인</h3>
-    <input id="emailInput" type="email" placeholder="이메일 입력" />
-    <input id="passwordInput" type="password" placeholder="비밀번호 입력" />
-    <button onclick="login()">로그인</button>
-    <button onclick="logout()">로그아웃</button>
-  </div>
-
-  <div id="noticeWrite" class="admin-only" style="display:none;">
-    <h3 class="glow-text">공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목" />
-    <textarea id="noticeContent" placeholder="내용"
-      style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
-    <button onclick="writeNotice()">등록</button>
-  </div>
-
-  <h3 class="glow-text" style="margin-top:40px;">공지사항</h3>
-  <div id="noticeList" class="card"></div>
-
-  <h3 class="glow-text" style="margin-top:40px;">질문 게시판</h3>
-  <input id="qName" placeholder="이름" />
-  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br />
-  <button onclick="ask()">등록</button>
-  <div id="qList"></div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="glow-text">Contact</h2>
-  <p>📧 <a href="mailto:bagdoeon827@gmail.com" style="color:var(--accent);text-shadow:0 0 15px var(--accent);">bagdoeon827@gmail.com</a></p>
 </section>
 
 <footer>
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- 경력 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:100;">
+background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
   <div>
-    <h2 id="modalName" class="glow-text"></h2>
-    <ul id="modalContent" style="margin-top:15px;line-height:1.8;"></ul>
+    <h2 id="modalName"></h2>
+    <ul id="modalContent"></ul>
     <div style="text-align:center;margin-top:20px;">
       <button onclick="closeProfile()">닫기</button>
     </div>
@@ -353,18 +269,11 @@ function showProfile(name){
     ]
   };
   const modal=document.getElementById("profileModal");
-  const nameBox=document.getElementById("modalName");
-  const contentBox=document.getElementById("modalContent");
-  nameBox.innerText=name;
-  contentBox.innerHTML=profiles[name].map(i=>`<li>${i}</li>`).join("");
+  document.getElementById("modalName").innerText=name;
+  document.getElementById("modalContent").innerHTML=profiles[name].map(i=>`<li>${i}</li>`).join("");
   modal.style.display="flex";
-  modal.classList.add("show");
 }
-function closeProfile(){
-  const modal=document.getElementById("profileModal");
-  modal.classList.remove("show");
-  setTimeout(()=>modal.style.display="none",200);
-}
+function closeProfile(){document.getElementById("profileModal").style.display="none";}
 document.getElementById("lastModified").textContent=document.lastModified;
 </script>
 </body>
