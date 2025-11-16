@@ -28,71 +28,71 @@ body{
   font-family:'Poppins',sans-serif;
   color:var(--text);
   overflow-x:hidden;
-  font-size:51px; 
+  font-size:17px;
 }
 
 /* 글로우 */
 .glow{
   text-shadow:
-    0 0 20px var(--accent),
-    0 0 50px var(--accent),
-    0 0 100px var(--accent);
+    0 0 10px var(--accent),
+    0 0 25px var(--accent),
+    0 0 45px var(--accent);
 }
 
 /* 헤더 */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:30px 60px;
+  padding:15px 40px;
   background:#080000;
-  border-bottom:3px solid var(--accent);
+  border-bottom:2px solid var(--accent);
   z-index:10;
 }
 header h1{
   font-family:'Orbitron',sans-serif;
   color:var(--accent);
-  font-size:90px;
-  text-shadow:0 0 20px var(--accent),0 0 60px var(--accent);
+  font-size:40px;
+  text-shadow:0 0 15px var(--accent),0 0 30px var(--accent);
   cursor:pointer;
 }
 nav a{
-  margin:0 20px;
+  margin:0 12px;
   color:var(--text);
   text-decoration:none;
   font-weight:600;
-  font-size:45px;
+  font-size:18px;
 }
-nav a:hover{color:var(--accent);text-shadow:0 0 40px var(--accent);}
+nav a:hover{color:var(--accent);text-shadow:0 0 20px var(--accent);}
 
 /* 섹션 */
 section{
-  padding:250px 30px 200px;
-  max-width:1400px;
+  padding:120px 20px 80px;
+  max-width:1000px;
   margin:auto;
   text-align:center;
 }
 h2{
   color:var(--accent);
-  text-shadow:0 0 60px var(--accent);
-  margin-bottom:30px;
-  font-size:78px;
+  text-shadow:0 0 30px var(--accent);
+  margin-bottom:15px;
+  font-size:28px;
 }
 
 /* 카드 */
 .card, .team-card{
   background:var(--card);
   border:none;
-  border-radius:25px;
-  padding:60px;
-  margin:40px auto;
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
   color:var(--text);
-  box-shadow:0 0 45px rgba(153,0,18,0.5);
+  box-shadow:0 0 25px rgba(153,0,18,0.4);
   transition:0.3s;
-  font-size:51px;
+  font-size:17px;
 }
 .card:hover,.team-card:hover{
   transform:scale(1.02);
-  box-shadow:0 0 60px var(--accent);
+  box-shadow:0 0 35px var(--accent);
 }
 
 /* 버튼 */
@@ -100,32 +100,32 @@ button{
   background:var(--button);
   border:none;
   color:var(--text);
-  padding:30px 50px;
-  border-radius:16px;
-  font-weight:700;
-  font-size:48px;
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:17px;
   cursor:pointer;
   transition:0.3s;
-  text-shadow:0 0 20px var(--accent);
+  text-shadow:0 0 10px var(--accent);
 }
 button:hover{
   background:var(--accent);
   color:#fff;
-  box-shadow:0 0 40px var(--accent);
+  box-shadow:0 0 25px var(--accent);
 }
 
 /* 로고 */
 .logo-img{
-  width:400px;
-  margin-top:60px;
-  filter:drop-shadow(0 0 50px var(--accent));
+  width:150px;
+  margin-top:20px;
+  filter:drop-shadow(0 0 25px var(--accent));
 }
 
 /* Pretendard 문장 (로고 아래) */
 .pretendard-text{
   font-family:'Pretendard',sans-serif;
   font-weight:600;
-  font-size:51px;
+  font-size:51px; /* ✅ 오직 이 문장만 51px */
   color:#fff;
   margin-top:20px;
   text-shadow:
@@ -139,31 +139,30 @@ button:hover{
 #profileModal>div{
   background:var(--card);
   border:none;
-  border-radius:25px;
-  padding:60px;
+  border-radius:15px;
+  padding:30px;
   color:var(--text);
-  box-shadow:0 0 60px var(--accent);
-  font-size:51px;
+  box-shadow:0 0 30px var(--accent);
+  font-size:17px;
 }
 
 /* 푸터 */
 footer{
   text-align:center;
-  padding:60px;
+  padding:20px;
   color:#aaa;
   background:var(--bg);
-  border-top:2px solid var(--accent);
-  font-size:48px;
+  border-top:1px solid var(--accent);
+  font-size:15px;
 }
 
 /* 반응형 */
 @media(max-width:768px){
-  body{font-size:32px;}
-  h2{font-size:50px;}
-  header h1{font-size:60px;}
-  nav a{font-size:28px;}
-  button{font-size:30px;}
-  .card{padding:30px;}
+  body{font-size:14px;}
+  h2{font-size:22px;}
+  header h1{font-size:26px;}
+  nav a{font-size:15px;}
+  .pretendard-text{font-size:34px;}
 }
 </style>
 </head>
@@ -194,10 +193,8 @@ footer{
     <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
        target="_blank"
-       style="display:inline-block;margin-top:20px;background:var(--accent);
-       color:#fff;padding:20px 40px;border-radius:12px;text-decoration:none;font-size:48px;">
-       🔗 바로가기
-    </a>
+       style="display:inline-block;margin-top:8px;background:var(--accent);
+       color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;">🔗 바로가기</a>
   </div>
   <div class="card">
     <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
@@ -229,7 +226,7 @@ background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
   <div>
     <h2 id="modalName"></h2>
     <ul id="modalContent"></ul>
-    <div style="text-align:center;margin-top:40px;">
+    <div style="text-align:center;margin-top:20px;">
       <button onclick="closeProfile()">닫기</button>
     </div>
   </div>
