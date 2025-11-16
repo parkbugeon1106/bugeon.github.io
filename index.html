@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
+<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
+<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
+<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
+<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
+<meta property="og:image" content="logo.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:#000000 !important; /* 완전 블랙 */
+  background:#000000 !important; /* ✅ 완전 블랙 배경 */
   color:#f5f5f5;
   overflow-x:hidden;
 }
@@ -66,19 +72,19 @@ h2{
 
 /* ===== 카드 및 팀카드 ===== */
 .card, .team-card {
-  background:#390909 !important; /* 정확히 지정한 색상 */
-  border:none !important;
+  background:#390909 !important; /* ✅ 박스 내부 색상 */
+  border:none !important;        /* ✅ 테두리 완전 제거 */
   outline:none !important;
   border-radius:15px;
   padding:20px;
   margin:20px auto;
   color:#fff;
-  box-shadow:none !important;
+  box-shadow:none !important;    /* ✅ 그림자 제거 */
   transition:0.3s;
 }
 .card:hover, .team-card:hover {
   transform:scale(1.02);
-  background:#4a0a0a !important;
+  background:#4a0a0a !important; /* hover 시 약간 밝은 색 */
 }
 
 /* ===== 버튼 ===== */
@@ -133,8 +139,9 @@ footer{
   text-align:center;
   padding:20px;
   color:#888;
-  background:#000;
+  background:#000000;
 }
+
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -177,6 +184,12 @@ footer{
        style="display:inline-block;margin-top:8px;background:#990012;color:#fff;
        padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
   </div>
+
+  <div class="card">
+    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
+    <p>💰 비트코인 투자 프로그램 준비 중</p>
+    <p>💼 스타트업 투자 및 성장 지원</p>
+  </div>
 </section>
 
 <section id="team">
@@ -206,6 +219,10 @@ background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:100
     </div>
   </div>
 </div>
+
+<footer>
+  © 2025 PJ IT COMPANY | All rights reserved.
+</footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
