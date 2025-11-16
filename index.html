@@ -16,18 +16,18 @@
 
 <style>
 :root {
-  --bg: #080000;          /* ✅ 전체 배경 */
+  --bg: #080000;          /* 배경 */
   --card: #390909;        /* 박스 내부 */
-  --accent: #990012;      /* 포인트 (레드와인) */
+  --accent: #990012;      /* 포인트 */
   --accent-hover: #b80018;
-  --text: #ffffff;        /* 기본 글자색 */
-  --shadow: rgba(153, 0, 18, 0.45);
+  --text: #ffffff;        /* 글자색 */
+  --shadow: rgba(153, 0, 18, 0.6);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:var(--bg);
+  background-color:#080000 !important; /* ✅ 절대 강제 지정 */
   color:var(--text);
   overflow-x:hidden;
 }
@@ -37,7 +37,7 @@ header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
   padding:10px 40px;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.9);
   border-bottom:2px solid var(--accent);
   z-index:10;
   backdrop-filter:blur(8px);
@@ -45,7 +45,7 @@ header{
 header h1{
   font-family:'Orbitron',sans-serif;
   color:var(--accent);
-  text-shadow:0 0 20px var(--accent);
+  text-shadow:0 0 30px var(--accent), 0 0 60px var(--accent);
   cursor:pointer;
   transition:0.3s;
 }
@@ -69,7 +69,7 @@ section{
 h2{
   color:var(--accent);
   margin-bottom:15px;
-  text-shadow:0 0 25px var(--accent);
+  text-shadow:0 0 40px var(--accent), 0 0 80px var(--accent);
 }
 
 /* 카드 */
@@ -80,12 +80,12 @@ h2{
   padding:20px;
   margin:20px auto;
   color:var(--text);
-  box-shadow:0 0 15px var(--shadow);
+  box-shadow:0 0 20px var(--shadow);
   transition:0.3s;
 }
 .card:hover, .team-card:hover{
   transform:scale(1.02);
-  box-shadow:0 0 25px var(--accent);
+  box-shadow:0 0 30px var(--accent);
 }
 
 /* 버튼 */
@@ -101,13 +101,14 @@ button{
 }
 button:hover{
   background:var(--accent);
+  box-shadow:0 0 20px var(--accent);
 }
 
 /* 로고 */
 .logo-img{
   width:160px;
   margin-top:20px;
-  filter:drop-shadow(0 0 20px var(--accent));
+  filter:drop-shadow(0 0 30px var(--accent));
 }
 
 /* 로그인 박스 */
@@ -147,7 +148,7 @@ button:hover{
   width:90%;
   color:var(--text);
   text-align:left;
-  box-shadow:0 0 20px var(--accent);
+  box-shadow:0 0 30px var(--accent);
 }
 #profileModal h2{text-align:center;color:var(--accent);}
 
@@ -199,9 +200,9 @@ footer{
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3>핵심 가치</h3>
+  <h3 style="color:var(--accent);margin-top:30px;">핵심 가치</h3>
   <div class="card">창의 · 덕성 · 봉사</div>
-  <h3>연혁</h3>
+  <h3 style="color:var(--accent);margin-top:30px;">연혁</h3>
   <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
@@ -258,10 +259,10 @@ footer{
     <button onclick="writeNotice()">등록</button>
   </div>
 
-  <h3>공지사항</h3>
+  <h3 style="color:var(--accent);margin-top:40px;">공지사항</h3>
   <div id="noticeList" class="card"></div>
 
-  <h3>질문 게시판</h3>
+  <h3 style="color:var(--accent);margin-top:40px;">질문 게시판</h3>
   <input id="qName" placeholder="이름" />
   <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br />
   <button onclick="ask()">등록</button>
