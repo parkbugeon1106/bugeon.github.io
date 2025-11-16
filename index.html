@@ -16,159 +16,173 @@
 
 <style>
 :root {
-  /* 🎨 COLOR PALETTE */
-  --n: #444444;          /* 기본 배경 (Neutral) */
   --bg: #cccccc;         /* 전체 배경 */
-  --text: #111111;       /* 기본 텍스트 */
-  --card: #b8b8b8;       /* 카드 배경 */
-  --accent: #990012;     /* 포인트(레드와인) */
-  --accent-light: #b80018; /* 버튼 hover */
+  --card: #390909;       /* 박스 내부 */
+  --accent: #990012;     /* 포인트 색상 (레드와인) */
+  --accent-hover: #b80018;
+  --text: #111111;
   --white: #ffffff;
+  --shadow: rgba(0,0,0,0.2);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* ===== 헤더 ===== */
-header {
-  position: fixed; top: 0; left: 0; width: 100%;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 10px 40px;
-  background: rgba(255,255,255,0.85);
-  border-bottom: 2px solid var(--accent);
-  z-index: 10;
-  backdrop-filter: blur(8px);
+/* 헤더 */
+header{
+  position:fixed;top:0;left:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 40px;
+  background:#444444;
+  border-bottom:2px solid var(--accent);
+  z-index:10;
+  backdrop-filter:blur(8px);
 }
-header h1 {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--accent);
-  text-shadow: 0 0 15px var(--accent);
-  cursor: pointer;
-  transition: 0.3s;
+header h1{
+  font-family:'Orbitron',sans-serif;
+  color:var(--accent);
+  text-shadow:0 0 15px var(--accent);
+  cursor:pointer;
+  transition:0.3s;
 }
-header h1:hover { color: var(--accent-light); }
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
+header h1:hover{
+  color:var(--accent-hover);
 }
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
+nav a{
+  margin:0 10px;
+  color:var(--white);
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
-nav a:hover { color: var(--accent); }
-
-/* ===== 섹션 ===== */
-section {
-  padding: 100px 20px 80px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
-}
-h2 {
-  color: var(--accent);
-  margin-bottom: 15px;
+nav a:hover{
+  color:var(--accent);
 }
 
-/* ===== 카드 ===== */
-.card, .team-card {
-  background: var(--card);
-  border: none !important;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  color: var(--text);
-  transition: 0.3s;
+/* 섹션 */
+section{
+  padding:100px 20px 80px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
 }
-.card:hover, .team-card:hover {
-  transform: scale(1.02);
-  background: var(--n);
+h2{
+  color:var(--accent);
+  margin-bottom:15px;
+  text-shadow:0 0 20px var(--accent);
 }
 
-/* ===== 버튼 ===== */
-button {
-  background: var(--accent);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--white);
-  transition: background 0.3s ease;
+/* 카드 */
+.card, .team-card{
+  background:var(--card);
+  border:none !important;
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
+  color:var(--white);
+  box-shadow:0 3px 10px var(--shadow);
+  transition:0.3s;
 }
-button:hover { background: var(--accent-light); }
-
-/* ===== 로그인 박스 ===== */
-.login-box {
-  background: var(--card);
-  border: none;
-  border-radius: 15px;
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
-  margin: 20px auto;
-  color: var(--text);
-}
-.login-box input {
-  width: 90%;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  margin: 5px 0;
-  background: #ddd;
-  color: var(--text);
-}
-.login-box input:focus { outline: 1px solid var(--accent); }
-
-/* ===== 로고 ===== */
-.logo-img {
-  width: 160px;
-  margin-top: 20px;
-  filter: drop-shadow(0 0 20px var(--accent));
+.card:hover, .team-card:hover{
+  transform:scale(1.02);
+  background:#4a0a0a;
 }
 
-/* ===== 모달 ===== */
-#profileModal.show { display: flex !important; animation: fadeIn 0.3s ease-out forwards; }
-#profileModal.hide { animation: fadeOut 0.2s ease-in forwards; }
-@keyframes fadeIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
-@keyframes fadeOut { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.9); } }
-#profileModal > div {
-  background: var(--card);
-  border: none;
-  border-radius: 15px;
-  padding: 30px;
-  max-width: 700px;
-  width: 90%;
-  color: var(--text);
-  text-align: left;
+/* 버튼 */
+button{
+  background:#2b0000;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--white);
+  transition:0.3s;
 }
-#profileModal h2 { text-align: center; color: var(--accent); }
-
-/* ===== 푸터 ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: var(--text);
-  background: var(--bg);
+button:hover{
+  background:var(--accent);
 }
 
-/* ===== 모바일 반응형 ===== */
-@media (max-width: 768px) {
-  header { flex-direction: column; padding: 15px; }
-  nav { justify-content: center; gap: 8px; }
-  section { padding: 80px 10px 60px; }
-  .card, .team-card, .login-box { width: 95%; padding: 15px; }
-  h2 { font-size: 1.4rem; }
-  header h1 { font-size: 1.6rem; }
-  button { padding: 8px 15px; font-size: 0.9rem; }
+/* 로고 */
+.logo-img{
+  width:160px;
+  margin-top:20px;
+  filter:drop-shadow(0 0 15px var(--accent));
+}
+
+/* 로그인 박스 */
+.login-box{
+  background:var(--card);
+  border:none;
+  border-radius:15px;
+  padding:20px;
+  width:90%;
+  max-width:400px;
+  margin:20px auto;
+  color:var(--white);
+  box-shadow:0 3px 10px var(--shadow);
+}
+.login-box input{
+  width:90%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  margin:5px 0;
+  background:#ddd;
+  color:var(--text);
+}
+.login-box input:focus{outline:1px solid var(--accent);}
+
+/* 모달 */
+#profileModal.show{
+  display:flex !important;
+  animation:fadeIn 0.3s ease-out forwards;
+}
+#profileModal.hide{
+  animation:fadeOut 0.2s ease-in forwards;
+}
+@keyframes fadeIn{
+  0%{opacity:0;transform:scale(0.9);}
+  100%{opacity:1;transform:scale(1);}
+}
+@keyframes fadeOut{
+  0%{opacity:1;transform:scale(1);}
+  100%{opacity:0;transform:scale(0.9);}
+}
+#profileModal>div{
+  background:var(--card);
+  border:none;
+  border-radius:15px;
+  padding:30px;
+  max-width:700px;
+  width:90%;
+  color:var(--white);
+  text-align:left;
+  box-shadow:0 0 20px var(--shadow);
+}
+#profileModal h2{text-align:center;color:var(--accent);}
+
+/* 푸터 */
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--text);
+  background:var(--bg);
+}
+
+/* 반응형 */
+@media(max-width:768px){
+  header{flex-direction:column;padding:15px;}
+  nav{justify-content:center;gap:8px;flex-wrap:wrap;}
+  section{padding:80px 10px 60px;}
+  .card,.team-card,.login-box{width:95%;padding:15px;}
+  h2{font-size:1.4rem;}
+  button{padding:8px 15px;font-size:0.9rem;}
 }
 </style>
 </head>
@@ -186,28 +200,50 @@ footer {
   </nav>
 </header>
 
-<!-- ✅ HOME -->
+<!-- HOME -->
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <img src="logo.png" alt="PJ IT COMPANY 로고" class="logo-img" />
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
 </section>
 
-<!-- ✅ PROJECTS -->
+<!-- ABOUT -->
+<section id="about">
+  <h2>회사 소개</h2>
+  <div class="card">
+    <p><strong>PJ IT COMPANY</strong>는 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.<br>
+    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
+    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
+  </div>
+  <h3>핵심 가치</h3>
+  <div class="card">창의 · 덕성 · 봉사</div>
+  <h3>연혁</h3>
+  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects">
   <h2>프로젝트</h2>
+
   <div class="card">
     <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
        target="_blank"
-       style="display:inline-block;margin-top:8px;background:var(--accent);color:var(--white);
+       style="display:inline-block;margin-top:8px;background:var(--accent);color:#fff;
        padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
+  </div>
+
+  <div class="card">
+    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
+    <p>💰 비트코인 투자 프로그램 준비 중</p>
+    <p>💼 스타트업 투자 및 성장 지원</p>
   </div>
 </section>
 
-<!-- ✅ TEAM -->
+<!-- TEAM -->
 <section id="team">
   <h2>팀원 소개</h2>
+
   <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
@@ -221,7 +257,7 @@ footer {
   </div>
 </section>
 
-<!-- ✅ COMMUNITY -->
+<!-- COMMUNITY -->
 <section id="community">
   <h2>커뮤니티 / 공지 게시판</h2>
   <div class="login-box" id="loginBox">
@@ -235,7 +271,8 @@ footer {
   <div id="noticeWrite" class="admin-only" style="display:none;">
     <h3>공지 작성</h3>
     <input id="noticeTitle" placeholder="제목" />
-    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br />
+    <textarea id="noticeContent" placeholder="내용"
+      style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
     <button onclick="writeNotice()">등록</button>
   </div>
 
@@ -249,6 +286,7 @@ footer {
   <div id="qList"></div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
   <p>📧 <a href="mailto:bagdoeon827@gmail.com" style="color:var(--accent);">bagdoeon827@gmail.com</a></p>
@@ -258,9 +296,9 @@ footer {
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- ✅ 경력 모달 -->
+<!-- 경력 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100;">
+background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:100;">
   <div>
     <h2 id="modalName"></h2>
     <ul id="modalContent" style="margin-top:15px;line-height:1.8;"></ul>
@@ -271,25 +309,46 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100
 </div>
 
 <script>
-function showProfile(name) {
-  const profiles = {
-    "박부건": ["OMIX IT COMPANY 창립자", "PJ IT COMPANY 창립자", "과학 영재원 전체 수석", "해커톤 1등", "전국 에그드랍 대회 1등"],
-    "정우진": ["PJ IT COMPANY 창립자", "부산과학고 영재원 우수 수료", "과기정통부 장관상 수상"]
+function showProfile(name){
+  const profiles={
+    "박부건":[
+      "OMIX IT COMPANY 창립자",
+      "PJ IT COMPANY 창립자",
+      "2021~2023 발명 영재원 전체 수석",
+      "2023 영재원 팀 'technolage' 내 프로그래머",
+      "2023~2025 과학 영재원 물리과 전체 수석",
+      "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
+      "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
+      "2023 영재원 내 해커톤(일명 해발해) 1등",
+      "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
+      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
+      "전국 에그드랍 대회 1등",
+      "2023~2024 해외 외국 개발팀 team2 개발팀장"
+    ],
+    "정우진":[
+      "PJ IT COMPANY 창립자",
+      "부산 과학고등학교 영재원 우수 수료",
+      "과학기술정보통신부 장관상 수상",
+      "화학 올림피아드 장려상 수상",
+      "부산과학전람회 우수상",
+      "부산과학전람회 특별상",
+      "전국과학전람회 특별상"
+    ]
   };
-  const modal = document.getElementById("profileModal");
-  const nameBox = document.getElementById("modalName");
-  const contentBox = document.getElementById("modalContent");
-  nameBox.innerText = name;
-  contentBox.innerHTML = profiles[name].map(item => `<li>${item}</li>`).join("");
-  modal.style.display = "flex";
+  const modal=document.getElementById("profileModal");
+  const nameBox=document.getElementById("modalName");
+  const contentBox=document.getElementById("modalContent");
+  nameBox.innerText=name;
+  contentBox.innerHTML=profiles[name].map(i=>`<li>${i}</li>`).join("");
+  modal.style.display="flex";
   modal.classList.add("show");
 }
-function closeProfile() {
-  const modal = document.getElementById("profileModal");
+function closeProfile(){
+  const modal=document.getElementById("profileModal");
   modal.classList.remove("show");
-  setTimeout(() => (modal.style.display = "none"), 200);
+  setTimeout(()=>modal.style.display="none",200);
 }
-document.getElementById("lastModified").textContent = document.lastModified;
+document.getElementById("lastModified").textContent=document.lastModified;
 </script>
 </body>
 </html>
