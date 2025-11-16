@@ -5,19 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
-<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
-<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
-<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
-<meta property="og:image" content="logo.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:#000000 !important;
+  background:#000000 !important; /* 완전 블랙 */
   color:#f5f5f5;
   overflow-x:hidden;
 }
@@ -35,16 +29,16 @@ header{
 header h1{
   font-family:'Orbitron',sans-serif;
   color:#990012;
-  text-shadow:0 0 15px rgba(153,0,18,1),0 0 30px rgba(153,0,18,1),0 0 60px rgba(153,0,18,1);
+  text-shadow:0 0 25px #990012,0 0 60px #990012;
   cursor:pointer;
   transition:0.3s;
 }
 header h1:hover{
   color:#ff3355;
-  text-shadow:0 0 30px rgba(255,50,70,1),0 0 60px rgba(255,50,70,1);
+  text-shadow:0 0 40px #ff3355,0 0 80px #ff3355;
 }
 
-/* ===== 내비게이션 ===== */
+/* ===== 네비게이션 ===== */
 nav a{
   margin:0 10px;
   color:#fff;
@@ -54,7 +48,7 @@ nav a{
 }
 nav a:hover{
   color:#990012;
-  text-shadow:0 0 20px rgba(153,0,18,1);
+  text-shadow:0 0 20px #990012;
 }
 
 /* ===== 섹션 ===== */
@@ -67,25 +61,24 @@ section{
 h2{
   color:#990012;
   margin-bottom:15px;
-  text-shadow:0 0 25px rgba(153,0,18,1),0 0 60px rgba(153,0,18,1);
+  text-shadow:0 0 30px #990012,0 0 60px #990012;
 }
 
-/* ===== 카드 및 팀카드 공통 ===== */
+/* ===== 카드 및 팀카드 ===== */
 .card, .team-card {
-  background:#390909 !important; /* ✅ 박스 내부 색상 변경 */
-  border:none !important;        /* ✅ 테두리 완전 제거 */
-  border-width:0 !important;
+  background:#390909 !important; /* 정확히 지정한 색상 */
+  border:none !important;
   outline:none !important;
   border-radius:15px;
   padding:20px;
   margin:20px auto;
   color:#fff;
-  box-shadow:none;
+  box-shadow:none !important;
   transition:0.3s;
 }
 .card:hover, .team-card:hover {
   transform:scale(1.02);
-  background:#4b0b0b !important; /* hover 시 약간 밝게 */
+  background:#4a0a0a !important;
 }
 
 /* ===== 버튼 ===== */
@@ -98,20 +91,12 @@ button{
   cursor:pointer;
   color:#fff;
   transition:0.3s;
-  box-shadow:0 0 25px rgba(153,0,18,0.8),0 0 50px rgba(153,0,18,0.6);
+  box-shadow:0 0 30px #990012,0 0 60px #990012;
 }
 button:hover{
   background:#ff3355;
-  box-shadow:0 0 40px rgba(255,50,70,1),0 0 80px rgba(255,50,70,0.9);
+  box-shadow:0 0 60px #ff3355,0 0 100px #ff3355;
 }
-
-/* ===== 팀 카드 내부 텍스트 ===== */
-.team-card h3{
-  color:#fff;
-  margin-bottom:5px;
-  text-shadow:0 0 20px rgba(255,0,0,1),0 0 40px rgba(255,0,0,1);
-}
-.team-card p{margin:4px 0}
 
 /* ===== 모달 ===== */
 #profileModal.show {
@@ -121,15 +106,10 @@ button:hover{
 #profileModal.hide {
   animation:fadeOut 0.25s ease-in forwards;
 }
-@keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeOut {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.9); }
-}
-#profileModal > div {
+@keyframes fadeIn {0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
+@keyframes fadeOut {0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
+
+#profileModal>div{
   background:#390909 !important;
   border:none !important;
   outline:none !important;
@@ -141,9 +121,9 @@ button:hover{
   color:#f5f5f5;
   text-align:left;
 }
-#profileModal h2 {
+#profileModal h2{
   color:#fff;
-  text-shadow:0 0 30px rgba(255,0,0,1),0 0 60px rgba(255,0,0,0.9);
+  text-shadow:0 0 30px #990012,0 0 60px #990012;
   text-align:center;
 }
 
@@ -153,9 +133,8 @@ footer{
   text-align:center;
   padding:20px;
   color:#888;
-  background:#000000;
+  background:#000;
 }
-
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
   section{padding:90px 10px}
@@ -170,9 +149,7 @@ footer{
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
-    <a href="#news">News</a>
     <a href="#team">Team</a>
-    <a href="#community">Community</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -180,7 +157,6 @@ footer{
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 60px rgba(153,0,18,1));margin-top:20px">
 </section>
 
 <section id="about">
@@ -190,10 +166,6 @@ footer{
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3 style="color:#f5f5f5;text-shadow:0 0 20px rgba(255,0,0,1);">핵심 가치</h3>
-  <div class="card">창의 · 덕성 · 봉사</div>
-  <h3 style="color:#f5f5f5;text-shadow:0 0 20px rgba(255,0,0,1);">연혁</h3>
-  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
 <section id="projects">
@@ -201,26 +173,18 @@ footer{
   <div class="card">
     <h3>실시간 코인 가격 웹사이트 <span style="color:#fff;">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
-       target="_blank" 
+       target="_blank"
        style="display:inline-block;margin-top:8px;background:#990012;color:#fff;
        padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
-  </div>
-
-  <div class="card">
-    <p>🎮 Ziwa 팀의 게임 개발 참여 (현재 진행 중)</p>
-    <p>💰 비트코인 투자 프로그램 준비 중</p>
-    <p>💼 스타트업 투자 및 성장 지원</p>
   </div>
 </section>
 
 <section id="team">
   <h2>팀원 소개</h2>
-
   <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
-    <p><b>생년:</b> 2010년생</p>
     <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com" style="color:#f5f5f5;">bagdoeon827@gmail.com</a></p>
   </div>
 
@@ -228,7 +192,6 @@ footer{
     <h3>정우진</h3>
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, HTML, C</p>
-    <p><b>생년:</b> 2007년생</p>
     <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com" style="color:#f5f5f5;">jeromesone@gmail.com</a></p>
   </div>
 </section>
@@ -258,45 +221,32 @@ document.addEventListener("DOMContentLoaded", () => {
       "2023 영재원 팀 'technolage' 내 프로그래머",
       "2023~2025 과학 영재원 물리과 전체 수석",
       "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
-      "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
-      "2023 영재원 내 해커톤(일명 해발해) 1등",
-      "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
-      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
-      "전국 에그드랍 대회 1등",
-      "2023~2024 해외 외국 개발팀 team2 개발팀장"
+      "전국 에그드랍 대회 1등"
     ],
     "정우진": [
       "PJ IT COMPANY 창립자",
       "부산 과학고등학교 영재원 우수 수료",
-      "과학기술정보통신부 장관상 수상",
-      "화학 올림피아드 장려상 수상",
-      "부산과학전람회 우수상",
-      "부산과학전람회 특별상",
-      "전국과학전람회 특별상"
+      "과학기술정보통신부 장관상 수상"
     ]
   };
 
   function showProfile(name){
     nameBox.innerText = name;
     contentBox.innerHTML = "";
-    (profiles[name] || ["경력 정보가 없습니다."]).forEach(item => {
+    (profiles[name] || ["경력 정보 없음"]).forEach(item=>{
       contentBox.innerHTML += `<li>${item}</li>`;
     });
-    modal.classList.remove("hide");
     modal.classList.add("show");
-    modal.style.display = "flex";
+    modal.style.display="flex";
   }
-
-  window.closeProfile = function(){
+  window.closeProfile=function(){
     modal.classList.remove("show");
-    modal.classList.add("hide");
-    setTimeout(()=>{ modal.style.display = "none"; }, 250);
-  };
-
-  document.querySelectorAll(".team-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const name = card.querySelector("h3").innerText.trim();
-      showProfile(name);
+    setTimeout(()=>modal.style.display="none",200);
+  }
+  document.querySelectorAll(".team-card").forEach(c=>{
+    c.addEventListener("click",()=>{
+      const n=c.querySelector("h3").innerText.trim();
+      showProfile(n);
     });
   });
 });
