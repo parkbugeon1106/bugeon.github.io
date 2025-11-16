@@ -200,6 +200,7 @@ footer{
     <button onclick="logout()">로그아웃</button>
   </div>
 
+  <!-- 관리자 전용 영역 -->
   <div id="noticeWrite" style="display:none;">
     <h3>공지 작성</h3>
     <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;margin:5px;"><br>
@@ -207,10 +208,10 @@ footer{
     <button onclick="writeNotice()">등록</button>
   </div>
 
-  <h3> 공지사항</h3>
+  <h3>공지사항</h3>
   <div id="noticeList" class="card"></div>
 
-  <h3> 질문 게시판</h3>
+  <h3>질문 게시판</h3>
   <input id="qName" placeholder="이름" style="width:90%;padding:10px;border-radius:10px;border:none;margin:5px;"><br>
   <textarea id="qText" placeholder="질문을 작성하세요" style="width:90%;padding:10px;border-radius:10px;border:none;margin:5px;"></textarea><br>
   <button onclick="ask()">등록</button>
@@ -230,7 +231,7 @@ footer{
   </div>
 </div>
 
-<!-- Firebase 기능 -->
+<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
@@ -245,7 +246,6 @@ const firebaseConfig = {
   appId: "1:576854965361:web:b01632afe33d766d076fd0",
   measurementId: "G-8KM8CYTSHF"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -253,85 +253,117 @@ let currentUser = null;
 
 window.scrollToSection = function(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});};
 
+// ✅ 로그인: 관리자만 권한 부여
 window.login = async function(){
-  const email = prompt("이메일:");
+  const email = prompt("관리자 이메일:");
   const password = prompt("비밀번호:");
-  try{
-    const userCredential = await signInWithEmailAndPassword(auth,email,password);
-    currentUser=userCredential.user;
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    currentUser = userCredential.user;
     alert("로그인 성공!");
     renderAll();
-  }catch(err){alert("로그인 실패: "+err.message);}
+  } catch (error) {
+    alert("로그인 실패: " + error.message);
+  }
 };
-window.logout = async function(){await signOut(auth);currentUser=null;alert("로그아웃되었습니다.");renderAll();};
-onAuthStateChanged(auth,(user)=>{currentUser=user;renderAll();});
 
+// ✅ 로그아웃
+window.logout = async function(){
+  await signOut(auth);
+  currentUser = null;
+  alert("로그아웃되었습니다.");
+  renderAll();
+};
+
+// ✅ 상태 감시
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+  renderAll();
+});
+
+// ✅ 공지 작성
 window.writeNotice = async function(){
-  if(!currentUser) return alert("관리자만 작성 가능");
-  const title=document.getElementById("noticeTitle").value;
-  const content=document.getElementById("noticeContent").value;
-  if(!title||!content) return alert("내용을 입력하세요");
-  await addDoc(collection(db,"notices"),{title,content,date:new Date().toLocaleString()});
+  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 작성할 수 있습니다.");
+  const title = document.getElementById("noticeTitle").value;
+  const content = document.getElementById("noticeContent").value;
+  if (!title || !content) return alert("내용을 입력하세요.");
+  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
   renderNotices();
 };
 
+// ✅ 공지 삭제
 window.deleteNotice = async function(id){
-  if(!currentUser) return alert("관리자만 삭제 가능");
-  await deleteDoc(doc(db,"notices",id));
+  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 삭제할 수 있습니다.");
+  await deleteDoc(doc(db, "notices", id));
   renderNotices();
 };
 
+// ✅ 공지 렌더링
 async function renderNotices(){
-  const box=document.getElementById("noticeList");
-  const q=query(collection(db,"notices"),orderBy("date","desc"));
-  const snap=await getDocs(q);
-  box.innerHTML="";
-  snap.forEach((d)=>{
-    const n=d.data();
-    box.innerHTML+=`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser?`<br><button onclick="deleteNotice('${d.id}')">삭제</button>`:""}</div>`;
+  const box = document.getElementById("noticeList");
+  const q = query(collection(db, "notices"), orderBy("date", "desc"));
+  const snapshot = await getDocs(q);
+  box.innerHTML = "";
+  snapshot.forEach((docu)=>{
+    const n = docu.data();
+    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser && currentUser.email === "bagdoeon827@gmail.com" ? `<br><button onclick="deleteNotice('${docu.id}')">삭제</button>` : ""}</div>`;
   });
 }
 
+// ✅ 질문 등록
 window.ask = async function(){
-  const name=document.getElementById("qName").value||"익명";
-  const text=document.getElementById("qText").value;
-  if(!text) return alert("질문을 입력하세요");
-  await addDoc(collection(db,"questions"),{name,text,answer:"",date:new Date().toLocaleString()});
+  const name = document.getElementById("qName").value || "익명";
+  const text = document.getElementById("qText").value;
+  if (!text) return alert("질문을 입력하세요.");
+  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
   renderQuestions();
 };
 
+// ✅ 질문 답변 / 삭제
 window.answerQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 답변 가능");
-  const ans=prompt("답변 입력:");
-  if(!ans) return;
-  await updateDoc(doc(db,"questions",id),{answer:ans});
+  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 답변할 수 있습니다.");
+  const ans = prompt("답변을 입력하세요:");
+  if (!ans) return;
+  await updateDoc(doc(db, "questions", id), { answer: ans });
   renderQuestions();
 };
 
 window.deleteQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 삭제 가능");
-  await deleteDoc(doc(db,"questions",id));
+  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 삭제할 수 있습니다.");
+  await deleteDoc(doc(db, "questions", id));
   renderQuestions();
 };
 
+// ✅ 질문 렌더링
 async function renderQuestions(){
-  const list=document.getElementById("qList");
-  const q=query(collection(db,"questions"),orderBy("date","desc"));
-  const snap=await getDocs(q);
-  list.innerHTML="";
-  snap.forEach((d)=>{
-    const qd=d.data();
-    list.innerHTML+=`<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer?`<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>`:""}${currentUser?`<br><button onclick="answerQuestion('${d.id}')">답변</button><button onclick="deleteQuestion('${d.id}')">삭제</button>`:""}</div>`;
+  const list = document.getElementById("qList");
+  const q = query(collection(db, "questions"), orderBy("date", "desc"));
+  const snapshot = await getDocs(q);
+  list.innerHTML = "";
+  snapshot.forEach((docu)=>{
+    const qd = docu.data();
+    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser && currentUser.email === "bagdoeon827@gmail.com" ? `<br><button onclick="answerQuestion('${docu.id}')">답변</button><button onclick="deleteQuestion('${docu.id}')">삭제</button>` : ""}</div>`;
   });
 }
 
-window.renderAll=function(){
-  renderNotices();renderQuestions();
-  document.getElementById("noticeWrite").style.display=(currentUser&&currentUser.email==="bagdoeon827@gmail.com")?"block":"none";
+// ✅ UI 렌더링 통합
+window.renderAll = function(){
+  renderNotices();
+  renderQuestions();
+
+  // 로그인 여부에 따라 관리자 UI 제어
+  const adminEmail = "bagdoeon827@gmail.com";
+  const noticeWrite = document.getElementById("noticeWrite");
+
+  if (currentUser && currentUser.email === adminEmail) {
+    noticeWrite.style.display = "block";
+  } else {
+    noticeWrite.style.display = "none";
+  }
 };
 
-window.addEventListener("load",()=>{renderAll();});
-document.getElementById("lastModified").textContent=document.lastModified;
+window.addEventListener("load", ()=>{renderAll();});
+document.getElementById("lastModified").textContent = document.lastModified;
 </script>
 
 <script>
