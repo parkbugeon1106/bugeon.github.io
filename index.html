@@ -5,13 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-<!-- SEO -->
-<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업" />
-<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오" />
-
-<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
 <style>
 @font-face {
   font-family: 'Pretendard';
@@ -20,7 +14,6 @@
   font-display: swap;
 }
 
-/* 색상 변수 */
 :root {
   --bg: #080000;
   --accent: #990012;
@@ -29,71 +22,77 @@
   --text: #ffffff;
 }
 
-/* 공통 */
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  background-color: var(--bg) !important;
+  background-color:var(--bg)!important;
   font-family:'Poppins',sans-serif;
   color:var(--text);
   overflow-x:hidden;
+  font-size:51px; /* ✅ 전체 글자 크기 3배 */
 }
 
-/* 글로우 공통 */
+/* 글로우 */
 .glow{
   text-shadow:
-    0 0 10px var(--accent),
-    0 0 30px var(--accent),
-    0 0 60px var(--accent);
+    0 0 20px var(--accent),
+    0 0 50px var(--accent),
+    0 0 100px var(--accent);
 }
 
 /* 헤더 */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:10px 40px;
+  padding:30px 60px;
   background:#080000;
-  border-bottom:2px solid var(--accent);
+  border-bottom:3px solid var(--accent);
   z-index:10;
 }
 header h1{
   font-family:'Orbitron',sans-serif;
   color:var(--accent);
-  text-shadow:0 0 10px var(--accent),0 0 30px var(--accent);
+  font-size:90px;
+  text-shadow:0 0 20px var(--accent),0 0 60px var(--accent);
   cursor:pointer;
 }
 nav a{
-  margin:0 10px;color:var(--text);
-  text-decoration:none;font-weight:600;
+  margin:0 20px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:45px;
 }
-nav a:hover{color:var(--accent);text-shadow:0 0 20px var(--accent);}
+nav a:hover{color:var(--accent);text-shadow:0 0 40px var(--accent);}
 
 /* 섹션 */
 section{
-  padding:100px 20px 80px;
-  max-width:1000px;
+  padding:250px 30px 200px;
+  max-width:1400px;
   margin:auto;
   text-align:center;
 }
 h2{
   color:var(--accent);
-  text-shadow:0 0 30px var(--accent);
-  margin-bottom:15px;
+  text-shadow:0 0 60px var(--accent);
+  margin-bottom:30px;
+  font-size:78px;
 }
 
 /* 카드 */
 .card, .team-card{
   background:var(--card);
   border:none;
-  border-radius:15px;
-  padding:20px;
-  margin:20px auto;
+  border-radius:25px;
+  padding:60px;
+  margin:40px auto;
   color:var(--text);
-  box-shadow:0 0 25px rgba(153,0,18,0.4);
+  box-shadow:0 0 45px rgba(153,0,18,0.5);
   transition:0.3s;
+  font-size:51px;
 }
 .card:hover,.team-card:hover{
   transform:scale(1.02);
-  box-shadow:0 0 35px var(--accent);
+  box-shadow:0 0 60px var(--accent);
 }
 
 /* 버튼 */
@@ -101,52 +100,70 @@ button{
   background:var(--button);
   border:none;
   color:var(--text);
-  padding:10px 20px;
-  border-radius:8px;
-  font-weight:600;
+  padding:30px 50px;
+  border-radius:16px;
+  font-weight:700;
+  font-size:48px;
   cursor:pointer;
   transition:0.3s;
-  text-shadow:0 0 10px var(--accent);
+  text-shadow:0 0 20px var(--accent);
 }
 button:hover{
   background:var(--accent);
   color:#fff;
-  box-shadow:0 0 25px var(--accent);
+  box-shadow:0 0 40px var(--accent);
 }
 
 /* 로고 */
 .logo-img{
-  width:150px;
+  width:400px;
+  margin-top:60px;
+  filter:drop-shadow(0 0 50px var(--accent));
+}
+
+/* Pretendard 문장 (로고 아래) */
+.pretendard-text{
+  font-family:'Pretendard',sans-serif;
+  font-weight:600;
+  font-size:51px;
+  color:#fff;
   margin-top:20px;
-  filter:drop-shadow(0 0 25px var(--accent));
+  text-shadow:
+    0 0 20px #990012,
+    0 0 50px #990012,
+    0 0 100px #990012;
+}
+
+/* 모달 */
+#profileModal.show{display:flex!important;}
+#profileModal>div{
+  background:var(--card);
+  border:none;
+  border-radius:25px;
+  padding:60px;
+  color:var(--text);
+  box-shadow:0 0 60px var(--accent);
+  font-size:51px;
 }
 
 /* 푸터 */
 footer{
   text-align:center;
-  padding:20px;
+  padding:60px;
   color:#aaa;
   background:var(--bg);
-  border-top:1px solid var(--accent);
+  border-top:2px solid var(--accent);
+  font-size:48px;
 }
-
-/* 모달 */
-#profileModal.show{display:flex !important;}
-#profileModal>div{
-  background:var(--card);
-  border:none;
-  border-radius:15px;
-  padding:30px;
-  color:var(--text);
-  box-shadow:0 0 30px var(--accent);
-}
-#profileModal h2{color:var(--accent);text-align:center;text-shadow:0 0 30px var(--accent);}
 
 /* 반응형 */
 @media(max-width:768px){
-  header{flex-direction:column;padding:15px;}
-  nav{flex-wrap:wrap;justify-content:center;}
-  section{padding:80px 10px 60px;}
+  body{font-size:32px;}
+  h2{font-size:50px;}
+  header h1{font-size:60px;}
+  nav a{font-size:28px;}
+  button{font-size:30px;}
+  .card{padding:30px;}
 }
 </style>
 </head>
@@ -159,39 +176,16 @@ footer{
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#team">Team</a>
-    <a href="#community">Community</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section id="home">
   <h2 class="glow">안녕하세요, PJ IT COMPANY 입니다.</h2>
-  <img src="logo.png" alt="로고" class="logo-img">
-  <!-- ✅ Pretendard 폰트 적용 문장 -->
-  <p style="
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    color: #fff;
-    margin-top: 10px;
-    text-shadow:
-      0 0 12px #990012,
-      0 0 30px #990012,
-      0 0 60px #990012;
-  ">
+  <img src="logo.png" alt="로고" class="logo-img" />
+  <p class="pretendard-text">
     기술과 투자로 세상을 바꾸는 IT 기업
   </p>
-</section>
-
-<section id="about">
-  <h2 class="glow">회사 소개</h2>
-  <div class="card">
-    <p><strong>PJ IT COMPANY</strong>는 창립자 박부건과 정우진이 설립한 기술 및 투자 기업입니다.<br>
-    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
-    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
-  </div>
-  <div class="card">핵심 가치 — 창의 · 덕성 · 봉사</div>
-  <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
 <section id="projects">
@@ -200,8 +194,8 @@ footer{
     <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
        target="_blank"
-       style="display:inline-block;margin-top:8px;background:var(--accent);
-       color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;">
+       style="display:inline-block;margin-top:20px;background:var(--accent);
+       color:#fff;padding:20px 40px;border-radius:12px;text-decoration:none;font-size:48px;">
        🔗 바로가기
     </a>
   </div>
@@ -235,7 +229,7 @@ background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
   <div>
     <h2 id="modalName"></h2>
     <ul id="modalContent"></ul>
-    <div style="text-align:center;margin-top:20px;">
+    <div style="text-align:center;margin-top:40px;">
       <button onclick="closeProfile()">닫기</button>
     </div>
   </div>
