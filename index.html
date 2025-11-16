@@ -18,47 +18,110 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#000010,#001a33,#000010);
-  color:#f5f5f5;overflow-x:hidden;
+  background:linear-gradient(135deg,#000000,#3D0000,#000000);
+  color:#f5f5f5;
+  overflow-x:hidden;
 }
+
+/* 헤더 */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:10px 40px;background:rgba(0,0,0,.6);
-  border-bottom:1px solid #00b7ff;z-index:10;backdrop-filter:blur(8px);
+  padding:10px 40px;
+  background:rgba(20,0,0,0.7);
+  border-bottom:1px solid #950101;
+  z-index:10;
+  backdrop-filter:blur(8px);
 }
 header h1{
-  font-family:'Orbitron',sans-serif;color:#00b7ff;cursor:pointer;
+  font-family:'Orbitron',sans-serif;
+  color:#FF0000;
+  text-shadow:0 0 10px rgba(255,0,0,0.6);
+  cursor:pointer;
+  transition:0.3s;
 }
+header h1:hover{
+  color:#ff4d4d;
+  text-shadow:0 0 20px rgba(255,0,0,0.8);
+}
+
+/* 네비게이션 */
 nav a{
-  margin:0 10px;color:#fff;text-decoration:none;font-weight:600;
+  margin:0 10px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
-nav a:hover{color:#00e0ff}
+nav a:hover{
+  color:#FF0000;
+  text-shadow:0 0 8px rgba(255,0,0,0.7);
+}
+
+/* 섹션 */
 section{
-  padding:100px 20px 80px;max-width:1000px;margin:auto;text-align:center
+  padding:100px 20px 80px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
 }
-h2{color:#00b7ff;margin-bottom:15px}
+h2{
+  color:#FF0000;
+  margin-bottom:15px;
+  text-shadow:0 0 8px rgba(255,0,0,0.5);
+}
+
+/* 카드 */
 .card{
-  background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px 0;box-shadow:0 0 10px #00b7ff20
+  background:rgba(61,0,0,0.3);
+  border:1px solid #950101;
+  border-radius:15px;
+  padding:20px;
+  margin:20px 0;
+  box-shadow:0 0 15px rgba(255,0,0,0.2);
+  transition:0.3s;
 }
-footer{
-  border-top:1px solid #00b7ff40;text-align:center;padding:20px;color:#999
+.card:hover{
+  box-shadow:0 0 25px rgba(255,0,0,0.5);
 }
+
+/* 버튼 */
 button{
-  background:#00b7ff;border:none;padding:10px 20px;border-radius:10px;
-  font-weight:600;cursor:pointer;color:#000;
+  background:#950101;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  color:#fff;
+  transition:0.3s;
 }
-button:hover{background:#00e0ff}
+button:hover{
+  background:#FF0000;
+  box-shadow:0 0 15px rgba(255,0,0,0.6);
+}
+
+/* 팀 카드 */
 .team-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid #00b7ff;border-radius:15px;
-  padding:20px;margin:20px auto;width:80%;max-width:400px;
-  box-shadow:0 0 10px #00b7ff50;transition:0.3s;
+  background:rgba(61,0,0,0.25);
+  border:1px solid #950101;
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
+  width:80%;
+  max-width:400px;
+  box-shadow:0 0 10px rgba(255,0,0,0.2);
+  transition:0.3s;
 }
-.team-card:hover{transform:scale(1.03);box-shadow:0 0 20px #00b7ff80;cursor:pointer;}
-.team-card h3{color:#00b7ff;margin-bottom:5px}
+.team-card:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px rgba(255,0,0,0.6);
+  cursor:pointer;
+}
+.team-card h3{
+  color:#FF0000;
+  margin-bottom:5px;
+}
 .team-card p{margin:4px 0}
 
 /* 모달 애니메이션 */
@@ -76,6 +139,15 @@ button:hover{background:#00e0ff}
 }
 #profileModal.hide {
   animation: fadeOut 0.25s ease-in forwards;
+}
+
+/* 푸터 */
+footer{
+  border-top:1px solid #950101;
+  text-align:center;
+  padding:20px;
+  color:#888;
+  background:rgba(30,0,0,0.5);
 }
 @media (max-width:600px){
   nav{display:flex;flex-wrap:wrap;justify-content:center}
@@ -102,7 +174,7 @@ button:hover{background:#00e0ff}
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
-  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px #00b7ff);margin-top:20px">
+  <img src="logo.png" alt="로고" style="width:150px;filter:drop-shadow(0 0 20px rgba(255,0,0,0.8));margin-top:20px">
 </section>
 
 <!-- ABOUT -->
@@ -113,9 +185,9 @@ button:hover{background:#00e0ff}
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3>핵심 가치</h3>
+  <h3 style="color:#FF0000;">핵심 가치</h3>
   <div class="card">창의 · 덕성 · 봉사</div>
-  <h3>연혁</h3>
+  <h3 style="color:#FF0000;">연혁</h3>
   <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
@@ -124,10 +196,10 @@ button:hover{background:#00e0ff}
   <h2>프로젝트</h2>
 
   <div class="card">
-    <h3>실시간 코인 가격 웹사이트 <span style="color:#00e0ff;">(완료)</span></h3>
+    <h3>실시간 코인 가격 웹사이트 <span style="color:#FF0000;">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
        target="_blank" 
-       style="display:inline-block;margin-top:8px;background:#00b7ff;color:#000;
+       style="display:inline-block;margin-top:8px;background:#950101;color:#fff;
        padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;">🔗 바로가기</a>
   </div>
 
@@ -147,7 +219,7 @@ button:hover{background:#00e0ff}
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
     <p><b>생년:</b> 2010년생</p>
-    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com">bagdoeon827@gmail.com</a></p>
+    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com" style="color:#FF6666;">bagdoeon827@gmail.com</a></p>
   </div>
 
   <div class="team-card">
@@ -155,21 +227,21 @@ button:hover{background:#00e0ff}
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, HTML, C</p>
     <p><b>생년:</b> 2007년생</p>
-    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com">jeromesone@gmail.com</a></p>
+    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com" style="color:#FF6666;">jeromesone@gmail.com</a></p>
   </div>
 </section>
 
 <!-- ✅ 팀원 경력 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:100;">
-  <div style="background:#0a0a0a;border:1px solid #00b7ff;border-radius:15px;
+background:rgba(0,0,0,0.85);justify-content:center;align-items:center;z-index:100;">
+  <div style="background:#1a0000;border:1px solid #950101;border-radius:15px;
   padding:30px;max-width:700px;width:90%;color:#f5f5f5;text-align:left;
-  box-shadow:0 0 20px #00b7ff80;">
-    <h2 id="modalName" style="color:#00b7ff;text-align:center;"></h2>
+  box-shadow:0 0 25px rgba(255,0,0,0.7);">
+    <h2 id="modalName" style="color:#FF0000;text-align:center;text-shadow:0 0 10px rgba(255,0,0,0.7);"></h2>
     <ul id="modalContent" style="margin-top:15px;line-height:1.8;"></ul>
     <div style="text-align:center;margin-top:20px;">
-      <button onclick="closeProfile()" style="background:#00b7ff;border:none;
-      color:#000;font-weight:600;padding:10px 25px;border-radius:10px;cursor:pointer;">닫기</button>
+      <button onclick="closeProfile()" style="background:#950101;border:none;
+      color:#fff;font-weight:600;padding:10px 25px;border-radius:10px;cursor:pointer;">닫기</button>
     </div>
   </div>
 </div>
