@@ -1,119 +1,162 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
-<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업">
-<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오">
-<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지">
-<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업">
-<meta property="og:image" content="logo.png">
+<meta name="description" content="PJ IT COMPANY — 투자, IT개발, AI, 로봇, 스타트업 지원 전문 기업" />
+<meta name="keywords" content="PJ IT COMPANY, 박부건, 정우진, 스타트업, 투자, AI, 로봇, IT, 개발, 포트폴리오" />
+<meta property="og:title" content="PJ IT COMPANY 공식 홈페이지" />
+<meta property="og:description" content="기술과 투자로 세상을 바꾸는 IT 기업" />
+<meta property="og:image" content="logo.png" />
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Poppins',sans-serif;
-  background:#000000;
-  color:#f5f5f5;
-  overflow-x:hidden;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000000;
+  color: #f5f5f5;
+  overflow-x: hidden;
 }
 
 /* ===== 헤더 ===== */
-header{
-  position:fixed;top:0;left:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 40px;
-  background:rgba(0,0,0,0.7);
-  border-bottom:1px solid #990012;
-  z-index:10;
-  backdrop-filter:blur(8px);
+header {
+  position: fixed; top: 0; left: 0; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #990012;
+  z-index: 10;
+  backdrop-filter: blur(8px);
 }
-header h1{
-  font-family:'Orbitron',sans-serif;
-  color:#990012;
-  text-shadow:0 0 25px #990012,0 0 60px #990012;
-  cursor:pointer;
-  transition:0.3s;
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #990012;
+  text-shadow: 0 0 25px #990012, 0 0 60px #990012;
+  cursor: pointer;
+  transition: 0.3s;
 }
-header h1:hover{
-  color:#ff3355;
+header h1:hover { color: #ff3355; }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
 }
-nav a{
-  margin:0 10px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
 }
-nav a:hover{color:#990012}
+nav a:hover { color: #990012; }
 
 /* ===== 섹션 ===== */
-section{
-  padding:100px 20px 80px;
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
+section {
+  padding: 100px 20px 80px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
 }
-h2{
-  color:#990012;
-  margin-bottom:15px;
+h2 {
+  color: #990012;
+  margin-bottom: 15px;
 }
 
 /* ===== 카드 ===== */
 .card, .team-card {
-  background:#390909 !important;
-  border:none !important;
-  border-radius:15px;
-  padding:20px;
-  margin:20px auto;
-  color:#fff;
-  transition:0.3s;
+  background: #390909 !important;
+  border: none !important;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  color: #fff;
+  transition: 0.3s;
 }
 .card:hover, .team-card:hover {
-  transform:scale(1.02);
-  background:#4a0a0a !important;
+  transform: scale(1.02);
+  background: #4a0a0a !important;
 }
 
 /* ===== 버튼 ===== */
-button{
-  background:#2a0707;
-  border:none;
-  padding:10px 20px;
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-  color:#fff;
-  transition:background 0.3s ease;
+button {
+  background: #2a0707;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.3s ease;
 }
-button:hover{background:#3b0a0a}
+button:hover { background: #3b0a0a; }
+
+/* ===== 로그인 박스 ===== */
+.login-box {
+  background: #390909;
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  color: #fff;
+}
+.login-box input {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px 0;
+  background: #2a0707;
+  color: #fff;
+}
+.login-box input:focus { outline: 1px solid #990012; }
+
+/* ===== 로고 ===== */
+.logo-img {
+  width: 160px;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 25px #990012);
+}
 
 /* ===== 모달 ===== */
-#profileModal.show { display:flex !important; animation:fadeIn 0.3s ease-out forwards; }
-#profileModal.hide { animation:fadeOut 0.2s ease-in forwards; }
-@keyframes fadeIn {0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
-@keyframes fadeOut {0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
-#profileModal>div{
-  background:#390909;
-  border:none;
-  border-radius:15px;
-  padding:30px;
-  max-width:700px;
-  width:90%;
-  color:#f5f5f5;
-  text-align:left;
+#profileModal.show { display: flex !important; animation: fadeIn 0.3s ease-out forwards; }
+#profileModal.hide { animation: fadeOut 0.2s ease-in forwards; }
+@keyframes fadeIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes fadeOut { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.9); } }
+#profileModal > div {
+  background: #390909;
+  border: none;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  color: #f5f5f5;
+  text-align: left;
 }
-#profileModal h2{text-align:center;color:#fff}
+#profileModal h2 { text-align: center; color: #fff; }
 
 /* ===== 푸터 ===== */
-footer{
-  text-align:center;
-  padding:20px;
-  color:#888;
-  background:#000000;
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  background: #000000;
+}
+
+/* ===== 모바일 반응형 ===== */
+@media (max-width: 768px) {
+  header { flex-direction: column; padding: 15px; }
+  nav { justify-content: center; gap: 8px; }
+  section { padding: 80px 10px 60px; }
+  .card, .team-card, .login-box { width: 95%; padding: 15px; }
+  h2 { font-size: 1.4rem; }
+  header h1 { font-size: 1.6rem; }
+  button { padding: 8px 15px; font-size: 0.9rem; }
 }
 </style>
 </head>
@@ -125,30 +168,20 @@ footer{
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
-    <a href="#news">News</a>
     <a href="#team">Team</a>
     <a href="#community">Community</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- HOME -->
+<!-- ✅ HOME -->
 <section id="home">
   <h2>안녕하세요, PJ IT COMPANY 입니다.</h2>
+  <img src="logo.png" alt="PJ IT COMPANY 로고" class="logo-img" />
   <p>기술과 투자로 세상을 바꾸는 IT 기업</p>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>회사 소개</h2>
-  <div class="card">
-    <p><strong>PJ IT COMPANY</strong>는 공동창립자 박부건, 정우진이 창립립한 기술 및 투자 기업입니다.<br>
-    우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
-    스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
-  </div>
-</section>
-
-<!-- PROJECTS -->
+<!-- ✅ PROJECTS -->
 <section id="projects">
   <h2>프로젝트</h2>
   <div class="card">
@@ -160,37 +193,37 @@ footer{
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- ✅ TEAM -->
 <section id="team">
   <h2>팀원 소개</h2>
   <div class="team-card">
     <h3>박부건</h3>
-    <p><b>직책:</b> 소프트웨어개발자 / AI개발자 / CEO</p>
-    <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
+    <p><b>직책:</b> 개발자 / CEO</p>
     <button onclick="showProfile('박부건')">📜 경력 보기</button>
   </div>
 
   <div class="team-card">
     <h3>정우진</h3>
-    <p><b>직책:</b> AI 개발자 / 하드웨어개발자자 / CEO</p>
-    <p><b>언어:</b> 한국어, Python, C, C++, C#, Java, JavaScript, Wolfram, HTML, CSS</p>
+    <p><b>직책:</b> 개발자 / CEO</p>
     <button onclick="showProfile('정우진')">📜 경력 보기</button>
   </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- ✅ COMMUNITY -->
 <section id="community">
   <h2>커뮤니티 / 공지 게시판</h2>
-
-  <div id="loginBox">
+  <div class="login-box" id="loginBox">
+    <h3>관리자 로그인</h3>
+    <input id="emailInput" type="email" placeholder="이메일 입력" />
+    <input id="passwordInput" type="password" placeholder="비밀번호 입력" />
     <button onclick="login()">로그인</button>
     <button onclick="logout()">로그아웃</button>
   </div>
 
-  <div id="noticeWrite" class="admin-only">
+  <div id="noticeWrite" class="admin-only" style="display:none;">
     <h3>공지 작성</h3>
-    <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;">
-    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
+    <input id="noticeTitle" placeholder="제목" />
+    <textarea id="noticeContent" placeholder="내용" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br />
     <button onclick="writeNotice()">등록</button>
   </div>
 
@@ -198,13 +231,12 @@ footer{
   <div id="noticeList" class="card"></div>
 
   <h3>질문 게시판</h3>
-  <input id="qName" placeholder="이름" style="width:90%;padding:10px;border-radius:10px;border:none;">
-  <textarea id="qText" placeholder="질문을 작성하세요" style="width:90%;padding:10px;border-radius:10px;border:none;margin-top:5px;"></textarea><br>
+  <input id="qName" placeholder="이름" />
+  <textarea id="qText" placeholder="질문을 작성하세요"></textarea><br />
   <button onclick="ask()">등록</button>
   <div id="qList"></div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
   <p>📧 <a href="mailto:bagdoeon827@gmail.com" style="color:#f5f5f5;">bagdoeon827@gmail.com</a></p>
@@ -226,174 +258,26 @@ background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:100
   </div>
 </div>
 
-<!-- ✅ Firebase -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
-  authDomain: "pjitcompany-hp.firebaseapp.com",
-  projectId: "pjitcompany-hp",
-  storageBucket: "pjitcompany-hp.appspot.com",
-  messagingSenderId: "576854965361",
-  appId: "1:576854965361:web:b01632afe33d766d076fd0",
-  measurementId: "G-8KM8CYTSHF"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-let currentUser = null;
-
-window.login = async function(){
-  const email = prompt("이메일을 입력하세요:");
-  const password = prompt("비밀번호를 입력하세요:");
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    currentUser = userCredential.user;
-    alert("로그인 성공!");
-    renderAll();
-  } catch (error) {
-    alert("로그인 실패 (" + error.code + "): " + error.message);
-  }
-};
-
-window.logout = async function(){
-  await signOut(auth);
-  currentUser = null;
-  alert("로그아웃되었습니다.");
-  renderAll();
-};
-
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  renderAll();
-});
-
-window.writeNotice = async function(){
-  if(!currentUser) return alert("관리자만 작성할 수 있습니다.");
-  const title = document.getElementById("noticeTitle").value;
-  const content = document.getElementById("noticeContent").value;
-  if(!title || !content) return alert("내용을 입력하세요");
-  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
-  document.getElementById("noticeTitle").value = "";
-  document.getElementById("noticeContent").value = "";
-  renderNotices();
-};
-
-window.deleteNotice = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "notices", id));
-  renderNotices();
-};
-
-async function renderNotices(){
-  const box = document.getElementById("noticeList");
-  const q = query(collection(db, "notices"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  box.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const n = docu.data();
-    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser ? `<br><button onclick="deleteNotice('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.ask = async function(){
-  const name = document.getElementById("qName").value || "익명";
-  const text = document.getElementById("qText").value;
-  if(!text) return alert("질문을 입력하세요");
-  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
-  renderQuestions();
-};
-
-window.answerQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 답변할 수 있습니다.");
-  const ans = prompt("답변을 입력하세요:");
-  if(!ans) return;
-  await updateDoc(doc(db, "questions", id), { answer: ans });
-  renderQuestions();
-};
-
-window.deleteQuestion = async function(id){
-  if(!currentUser) return alert("관리자만 삭제할 수 있습니다.");
-  if(!confirm("정말 삭제하시겠습니까?")) return;
-  await deleteDoc(doc(db, "questions", id));
-  renderQuestions();
-};
-
-async function renderQuestions(){
-  const list = document.getElementById("qList");
-  const q = query(collection(db, "questions"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  list.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const qd = docu.data();
-    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style='color:#990012;'><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser ? `<br><button onclick="answerQuestion('${docu.id}')">💬 답변</button><button onclick="deleteQuestion('${docu.id}')">🗑️ 삭제</button>` : ""}</div>`;
-  });
-}
-
-window.renderAll = function(){
-  renderNotices();
-  renderQuestions();
-  const adminBox = document.getElementById("noticeWrite");
-  adminBox.style.display = (currentUser && currentUser.email === "bagdoeon827@gmail.com") ? "block" : "none";
-};
-window.addEventListener("load", ()=>{ renderAll(); });
-document.getElementById("lastModified").textContent = document.lastModified;
-</script>
-
-<!-- ✅ 경력 모달 JS -->
 <script>
-const profiles = {
-  "박부건": [
-    "OMIX IT COMPANY 창립자",
-    "PJ IT COMPANY 공동창립자",
-    "2021~2023 발명 영재원 전체 수석",
-    "2023 영재원 팀 'technolage' 내 프로그래머",
-    "2023~2025 과학 영재원 물리과 전체 수석",
-    "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
-    "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
-    "2023 영재원 내 해커톤(일명 해발해) 1등",
-    "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
-    "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 프로그래머",
-    "전국 에그드랍 대회 1등",
-    "2023~2024 해외 외국 개발팀(airlock-team2 개발팀장)",
-    "2020~현재 프로그래머",
-    "배부름"
-  ],
-  "정우진": [
-    "PJ IT COMPANY 공동창립자",
-    "2019~2022 과학영재",
-    "과학고등학교 영재원 최우수 수료",
-    "과학기술정보통신부 장관상 수상",
-    "화학 올림피아드 장려상 수상",
-    "부산과학전람회 우수상",
-    "부산과학전람회 특상 단독 프로그래머",
-    "전국과학전람회 특상 단독 프로그래머",
-    "근처 맥도날드 기둥 하나 세움(추측)",
-    "배고픔"
-  ]
-};
-
-function showProfile(name){
-  const modal=document.getElementById("profileModal");
-  const nameBox=document.getElementById("modalName");
-  const contentBox=document.getElementById("modalContent");
-  nameBox.innerText=name;
-  contentBox.innerHTML="";
-  profiles[name].forEach(item=>{
-    contentBox.innerHTML+=`<li>${item}</li>`;
-  });
-  modal.style.display="flex";
+function showProfile(name) {
+  const profiles = {
+    "박부건": ["OMIX IT COMPANY 창립자", "PJ IT COMPANY 창립자", "과학 영재원 전체 수석", "해커톤 1등", "전국 에그드랍 대회 1등"],
+    "정우진": ["PJ IT COMPANY 창립자", "부산과학고 영재원 우수 수료", "과기정통부 장관상 수상"]
+  };
+  const modal = document.getElementById("profileModal");
+  const nameBox = document.getElementById("modalName");
+  const contentBox = document.getElementById("modalContent");
+  nameBox.innerText = name;
+  contentBox.innerHTML = profiles[name].map(item => `<li>${item}</li>`).join("");
+  modal.style.display = "flex";
   modal.classList.add("show");
 }
-function closeProfile(){
-  const modal=document.getElementById("profileModal");
+function closeProfile() {
+  const modal = document.getElementById("profileModal");
   modal.classList.remove("show");
-  setTimeout(()=>modal.style.display="none",200);
+  setTimeout(() => (modal.style.display = "none"), 200);
 }
+document.getElementById("lastModified").textContent = document.lastModified;
 </script>
 </body>
 </html>
