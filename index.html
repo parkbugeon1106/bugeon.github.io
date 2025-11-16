@@ -18,12 +18,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Poppins',sans-serif;
-
-  /* ✅ 완전 블랙 배경 */
   background-color:#000000 !important;
   background-image:none !important;
   background:#000000 !important;
-
   color:#f5f5f5;
   overflow-x:hidden;
 }
@@ -89,8 +86,8 @@ h2{
 
 /* ===== 카드 ===== */
 .card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid #990012;
+  background:#800000; /* 마룬색 적용 */
+  border:none; /* 테두리 제거 */
   border-radius:15px;
   padding:20px;
   margin:20px 0;
@@ -128,8 +125,8 @@ button:hover{
 
 /* ===== 팀 카드 ===== */
 .team-card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid #990012;
+  background:#800000; /* 마룬색 */
+  border:none; /* 테두리 제거 */
   border-radius:15px;
   padding:20px;
   margin:20px auto;
@@ -148,11 +145,11 @@ button:hover{
   cursor:pointer;
 }
 .team-card h3{
-  color:#990012;
+  color:#f5f5f5;
   margin-bottom:5px;
   text-shadow:
-    0 0 20px rgba(153,0,18,1),
-    0 0 40px rgba(153,0,18,1);
+    0 0 20px rgba(255,0,0,1),
+    0 0 40px rgba(255,0,0,1);
 }
 .team-card p{margin:4px 0}
 
@@ -175,7 +172,7 @@ button:hover{
 
 /* ===== 푸터 ===== */
 footer{
-  border-top:1px solid #990012;
+  border-top:none;
   text-align:center;
   padding:20px;
   color:#888;
@@ -218,9 +215,9 @@ footer{
     우리는 웹·앱 개발, AI 로봇 연구, 투자 자문 등 여러 분야에서 혁신을 추구합니다.<br>
     스타트업을 지원하고, 투자를 통해 성장 가치를 창출합니다.</p>
   </div>
-  <h3 style="color:#990012;text-shadow:0 0 20px rgba(153,0,18,1);">핵심 가치</h3>
+  <h3 style="color:#f5f5f5;text-shadow:0 0 20px rgba(255,0,0,1);">핵심 가치</h3>
   <div class="card">창의 · 덕성 · 봉사</div>
-  <h3 style="color:#990012;text-shadow:0 0 20px rgba(153,0,18,1);">연혁</h3>
+  <h3 style="color:#f5f5f5;text-shadow:0 0 20px rgba(255,0,0,1);">연혁</h3>
   <div class="card">2025년 10월 3일 — PJ IT COMPANY 설립</div>
 </section>
 
@@ -228,7 +225,7 @@ footer{
 <section id="projects">
   <h2>프로젝트</h2>
   <div class="card">
-    <h3>실시간 코인 가격 웹사이트 <span style="color:#990012;">(완료)</span></h3>
+    <h3>실시간 코인 가격 웹사이트 <span style="color:#fff;">(완료)</span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html" 
        target="_blank" 
        style="display:inline-block;margin-top:8px;background:#990012;color:#fff;
@@ -252,7 +249,7 @@ footer{
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
     <p><b>생년:</b> 2010년생</p>
-    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com" style="color:#990012;">bagdoeon827@gmail.com</a></p>
+    <p><b>이메일:</b> <a href="mailto:bagdoeon827@gmail.com" style="color:#f5f5f5;">bagdoeon827@gmail.com</a></p>
   </div>
 
   <div class="team-card">
@@ -260,18 +257,18 @@ footer{
     <p><b>직책:</b> 개발자 / CEO</p>
     <p><b>사용 언어:</b> Python, HTML, C</p>
     <p><b>생년:</b> 2007년생</p>
-    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com" style="color:#990012;">jeromesone@gmail.com</a></p>
+    <p><b>이메일:</b> <a href="mailto:jeromesone@gmail.com" style="color:#f5f5f5;">jeromesone@gmail.com</a></p>
   </div>
 </section>
 
 <!-- 모달 -->
 <div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:100;">
-  <div style="background:#0a0a0a;border:1px solid #990012;border-radius:15px;
+  <div style="background:#800000;border:none;border-radius:15px;
   padding:30px;max-width:700px;width:90%;color:#f5f5f5;text-align:left;
   box-shadow:0 0 80px rgba(153,0,18,0.9);">
-    <h2 id="modalName" style="color:#990012;text-align:center;
-    text-shadow:0 0 30px rgba(153,0,18,1),0 0 60px rgba(153,0,18,0.9);"></h2>
+    <h2 id="modalName" style="color:#fff;text-align:center;
+    text-shadow:0 0 30px rgba(255,0,0,1),0 0 60px rgba(255,0,0,0.9);"></h2>
     <ul id="modalContent" style="margin-top:15px;line-height:1.8;"></ul>
     <div style="text-align:center;margin-top:20px;">
       <button onclick="closeProfile()" style="background:#990012;border:none;
