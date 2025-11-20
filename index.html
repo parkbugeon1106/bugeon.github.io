@@ -23,17 +23,15 @@
   --text: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background-color: var(--bg) !important;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text);
-  overflow-x: hidden;
-  font-size: 17px;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background-color:var(--bg)!important;
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  overflow-x:hidden;
+  font-size:17px;
 }
-
-.glow {
+.glow{
   text-shadow:
     0 0 10px var(--accent),
     0 0 25px var(--accent),
@@ -41,99 +39,92 @@ body {
 }
 
 /* Header */
-header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: #080000;
-  border-bottom: 2px solid var(--accent);
-  z-index: 10;
+header{
+  position:fixed;top:0;left:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 40px;
+  background:#080000;
+  border-bottom:2px solid var(--accent);
+  z-index:10;
 }
-header h1 {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--accent);
-  font-size: 40px;
-  text-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
-  cursor: pointer;
+header h1{
+  font-family:'Orbitron',sans-serif;
+  color:var(--accent);
+  font-size:40px;
+  text-shadow:0 0 15px var(--accent),0 0 30px var(--accent);
+  cursor:pointer;
 }
-nav a {
-  margin: 0 12px;
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 18px;
+nav a{
+  margin:0 12px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
 }
-nav a:hover {
-  color: var(--accent);
-  text-shadow: 0 0 20px var(--accent);
-}
+nav a:hover{color:var(--accent);text-shadow:0 0 20px var(--accent);}
 
 /* Sections */
-section {
-  padding: 120px 20px 80px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
+section{
+  padding:120px 20px 80px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
 }
-h2 {
-  color: var(--accent);
-  text-shadow: 0 0 30px var(--accent);
-  margin-bottom: 15px;
-  font-size: 28px;
+h2{
+  color:var(--accent);
+  text-shadow:0 0 30px var(--accent);
+  margin-bottom:15px;
+  font-size:28px;
 }
 
 /* Cards */
-.card, .team-card {
-  background: var(--card);
-  border: none;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  color: var(--text);
-  box-shadow: 0 0 25px rgba(153,0,18,0.4);
-  transition: 0.3s;
-  font-size: 17px;
+.card, .team-card{
+  background:var(--card);
+  border:none;
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
+  color:var(--text);
+  box-shadow:0 0 25px rgba(153,0,18,0.4);
+  transition:0.3s;
+  font-size:17px;
 }
-.card:hover, .team-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px var(--accent);
+.card:hover,.team-card:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 35px var(--accent);
 }
 
 /* Buttons */
-button {
-  background: var(--button);
-  border: none;
-  color: var(--text);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 17px;
-  cursor: pointer;
-  transition: 0.3s;
-  text-shadow: 0 0 10px var(--accent);
+button{
+  background:var(--button);
+  border:none;
+  color:var(--text);
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:17px;
+  cursor:pointer;
+  transition:0.3s;
+  text-shadow:0 0 10px var(--accent);
 }
-button:hover {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 0 25px var(--accent);
+button:hover{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 0 25px var(--accent);
 }
 
 /* Logo */
-.logo-img {
-  width: 150px;
-  margin-top: 20px;
-  filter: drop-shadow(0 0 25px var(--accent));
+.logo-img{
+  width:150px;
+  margin-top:20px;
+  filter:drop-shadow(0 0 25px var(--accent));
 }
-.pretendard-text {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 51px;
-  color: #fff;
-  margin-top: 20px;
+.pretendard-text{
+  font-family:'Pretendard',sans-serif;
+  font-weight:600;
+  font-size:51px;
+  color:#fff;
+  margin-top:20px;
   text-shadow:
     0 0 20px #990012,
     0 0 50px #990012,
@@ -141,33 +132,32 @@ button:hover {
 }
 
 /* Modal */
-#profileModal.show { display: flex !important; }
-#profileModal > div {
-  background: var(--card);
-  border: none;
-  border-radius: 15px;
-  padding: 30px;
-  color: var(--text);
-  box-shadow: 0 0 30px var(--accent);
-  font-size: 17px;
+#profileModal.show{display:flex!important;}
+#profileModal>div{
+  background:var(--card);
+  border:none;
+  border-radius:15px;
+  padding:30px;
+  color:var(--text);
+  box-shadow:0 0 30px var(--accent);
+  font-size:17px;
 }
 
 /* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
-  background: var(--bg);
-  border-top: 1px solid var(--accent);
-  font-size: 15px;
+footer{
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+  background:var(--bg);
+  border-top:1px solid var(--accent);
+  font-size:15px;
 }
-
-@media(max-width:768px) {
-  body { font-size: 14px; }
-  h2 { font-size: 22px; }
-  header h1 { font-size: 26px; }
-  nav a { font-size: 15px; }
-  .pretendard-text { font-size: 34px; }
+@media(max-width:768px){
+  body{font-size:14px;}
+  h2{font-size:22px;}
+  header h1{font-size:26px;}
+  nav a{font-size:15px;}
+  .pretendard-text{font-size:34px;}
 }
 </style>
 </head>
@@ -202,14 +192,12 @@ footer {
 
 <section id="team">
   <h2 class="glow">팀원 소개</h2>
-
   <div class="team-card">
     <h3>박부건</h3>
     <p><b>직책:</b> 웹개발자 / AI개발자 / CEO</p>
     <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
     <button onclick="showProfile('박부건')">경력 보기</button>
   </div>
-
   <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> AI개발자 / 하드웨어개발자 / CEO</p>
@@ -225,7 +213,6 @@ footer {
     <button onclick="logout()">로그아웃</button>
   </div>
 
-  <!-- 관리자 전용 영역 -->
   <div id="noticeWrite" style="display:none;">
     <h3>공지 작성</h3>
     <input id="noticeTitle" placeholder="제목" style="width:90%;padding:10px;border-radius:10px;border:none;margin:5px;"><br>
@@ -256,12 +243,12 @@ background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
   </div>
 </div>
 
-<!-- Firebase JS (정상작동 버전) -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+<!-- ✅ Firebase CDN 버전 (GitHub Pages 호환용) -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
 
+<script>
 const firebaseConfig = {
   apiKey: "AIzaSyCrq_RAL7jOWvX0f6yA7rEUflaxqPSFv9Q",
   authDomain: "pjitcompany-hp.firebaseapp.com",
@@ -271,98 +258,90 @@ const firebaseConfig = {
   appId: "1:576854965361:web:b01632afe33d766d076fd0",
   measurementId: "G-8KM8CYTSHF"
 };
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebase.auth();
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
 let currentUser = null;
 
-window.scrollToSection = (id)=>document.getElementById(id).scrollIntoView({behavior:'smooth'});
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 
-window.login = async function(){
+function login(){
   const email = prompt("관리자 이메일:");
-  const password = prompt("비밀번호:");
-  try{
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    currentUser=userCredential.user;
-    alert("로그인 성공!");
-    renderAll();
-  }catch(e){alert("로그인 실패: "+e.message);}
-};
+  const pw = prompt("비밀번호:");
+  auth.signInWithEmailAndPassword(email, pw)
+    .then(u=>{currentUser=u.user;alert("로그인 성공!");renderAll();})
+    .catch(e=>alert("로그인 실패: "+e.message));
+}
 
-window.logout = async function(){
-  await signOut(auth);
-  currentUser=null;
-  alert("로그아웃되었습니다.");
-  renderAll();
-};
+function logout(){
+  auth.signOut().then(()=>{currentUser=null;alert("로그아웃되었습니다.");renderAll();});
+}
 
-onAuthStateChanged(auth,(user)=>{currentUser=user;renderAll();});
+auth.onAuthStateChanged(u=>{currentUser=u;renderAll();});
 
-window.writeNotice = async function(){
+async function writeNotice(){
   if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 작성 가능");
   const t=document.getElementById("noticeTitle").value;
   const c=document.getElementById("noticeContent").value;
   if(!t||!c) return alert("내용을 입력하세요");
-  await addDoc(collection(db,"notices"),{title:t,content:c,date:new Date().toLocaleString()});
+  await db.collection("notices").add({title:t,content:c,date:new Date().toLocaleString()});
   renderNotices();
-};
+}
 
-window.deleteNotice = async function(id){
+async function deleteNotice(id){
   if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 삭제 가능");
-  await deleteDoc(doc(db,"notices",id));
+  await db.collection("notices").doc(id).delete();
   renderNotices();
-};
+}
 
 async function renderNotices(){
   const box=document.getElementById("noticeList");
-  const q=query(collection(db,"notices"),orderBy("date","desc"));
-  const snap=await getDocs(q);
+  const snap=await db.collection("notices").orderBy("date","desc").get();
   box.innerHTML="";
-  snap.forEach((d)=>{
-    const n=d.data();
-    box.innerHTML+=`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="deleteNotice('${d.id}')">삭제</button>`:""}</div>`;
+  snap.forEach(doc=>{
+    const n=doc.data();
+    box.innerHTML+=`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="deleteNotice('${doc.id}')">삭제</button>`:""}</div>`;
   });
 }
 
-window.ask = async function(){
+async function ask(){
   const name=document.getElementById("qName").value||"익명";
   const text=document.getElementById("qText").value;
   if(!text) return alert("질문을 입력하세요");
-  await addDoc(collection(db,"questions"),{name,text,answer:"",date:new Date().toLocaleString()});
+  await db.collection("questions").add({name,text,answer:"",date:new Date().toLocaleString()});
   renderQuestions();
-};
+}
 
-window.answerQuestion = async function(id){
+async function answerQuestion(id){
   if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 답변 가능");
   const ans=prompt("답변 입력:");
   if(!ans) return;
-  await updateDoc(doc(db,"questions",id),{answer:ans});
+  await db.collection("questions").doc(id).update({answer:ans});
   renderQuestions();
-};
+}
 
-window.deleteQuestion = async function(id){
+async function deleteQuestion(id){
   if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 삭제 가능");
-  await deleteDoc(doc(db,"questions",id));
+  await db.collection("questions").doc(id).delete();
   renderQuestions();
-};
+}
 
 async function renderQuestions(){
   const list=document.getElementById("qList");
-  const q=query(collection(db,"questions"),orderBy("date","desc"));
-  const snap=await getDocs(q);
+  const snap=await db.collection("questions").orderBy("date","desc").get();
   list.innerHTML="";
-  snap.forEach((d)=>{
-    const qd=d.data();
-    list.innerHTML+=`<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer?`<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>`:""}${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="answerQuestion('${d.id}')">답변</button><button onclick="deleteQuestion('${d.id}')">삭제</button>`:""}</div>`;
+  snap.forEach(doc=>{
+    const qd=doc.data();
+    list.innerHTML+=`<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer?`<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>`:""}${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="answerQuestion('${doc.id}')">답변</button><button onclick="deleteQuestion('${doc.id}')">삭제</button>`:""}</div>`;
   });
 }
 
-window.renderAll=function(){
+function renderAll(){
   renderNotices();
   renderQuestions();
   document.getElementById("noticeWrite").style.display=(currentUser&&currentUser.email==="bagdoeon827@gmail.com")?"block":"none";
-};
+}
 
 window.addEventListener("load",()=>{renderAll();});
 document.getElementById("lastModified").textContent=document.lastModified;
@@ -373,17 +352,13 @@ function showProfile(name){
   const profiles={
     "박부건":[
       "OMIX IT COMPANY 창립자","PJ IT COMPANY 공동창립자","2021~2023 발명 영재원 전체 수석",
-      "2023 영재원 팀 'technolage' 내 프로그래머","2023~2025 과학 영재원 물리과 전체 수석",
-      "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
-      "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
-      "2023 영재원 해커톤 1등","2024 정보+화학 융합 프로젝트 3등 (10개월)",
-      "2024~2025 '남정네들', '세 얼간이' 팀 프로그래머","전국 에그드랍 대회 1등",
-      "2023~2024 해외 개발팀 team2 개발팀장"
+      "2023 영재원 팀 'technolage' 프로그래머","2023~2025 과학 영재원 물리과 전체 수석",
+      "부산대 연계 프로그램 1등 수료","정보+발명 융합 프로젝트 1등","정보+화학 프로젝트 3등",
+      "해커톤 1등","전국 에그드랍 대회 1등","team2 해외 개발팀장"
     ],
     "정우진":[
-      "PJ IT COMPANY 공동창립자","과학고 영재원 최우수 수료","과학기술정보통신부 장관상 수상",
-      "화학 올림피아드 장려상 수상","부산과학전람회 우수상",
-      "부산과학전람회 특상","전국과학전람회 특상"
+      "PJ IT COMPANY 공동창립자","과학고 영재원 최우수 수료","과기정통부 장관상 수상",
+      "화학 올림피아드 장려상","부산과학전람회 특상","전국과학전람회 특상"
     ]
   };
   const modal=document.getElementById("profileModal");
