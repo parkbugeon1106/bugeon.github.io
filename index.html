@@ -388,4 +388,10 @@ function showProfile(name){
   };
   const modal=document.getElementById("profileModal");
   document.getElementById("modalName").innerText=name;
-  document.getElementById("modalContent").innerHTML=
+  document.getElementById("modalContent").innerHTML=profiles[name].map(i=>`<li>${i}</li>`).join("");
+  modal.style.display="flex";
+}
+function closeProfile(){document.getElementById("profileModal").style.display="none";}
+</script>
+</body>
+</html>
