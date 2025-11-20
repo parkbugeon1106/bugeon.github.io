@@ -6,6 +6,7 @@
 <title>PJ IT COMPANY | 박부건 & 정우진</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
 <style>
 @font-face {
   font-family: 'Pretendard';
@@ -22,15 +23,17 @@
   --text: #ffffff;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background-color:var(--bg)!important;
-  font-family:'Poppins',sans-serif;
-  color:var(--text);
-  overflow-x:hidden;
-  font-size:17px;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg) !important;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 17px;
 }
-.glow{
+
+.glow {
   text-shadow:
     0 0 10px var(--accent),
     0 0 25px var(--accent),
@@ -38,22 +41,179 @@ body{
 }
 
 /* Header */
-header{
-  position:fixed;top:0;left:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 40px;
-  background:#080000;
-  border-bottom:2px solid var(--acce웹개발자 / AI개발자 / CEO</p>
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #080000;
+  border-bottom: 2px solid var(--accent);
+  z-index: 10;
+}
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--accent);
+  font-size: 40px;
+  text-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
+  cursor: pointer;
+}
+nav a {
+  margin: 0 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+nav a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent);
+}
+
+/* Sections */
+section {
+  padding: 120px 20px 80px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+h2 {
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--accent);
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+/* Cards */
+.card, .team-card {
+  background: var(--card);
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  color: var(--text);
+  box-shadow: 0 0 25px rgba(153,0,18,0.4);
+  transition: 0.3s;
+  font-size: 17px;
+}
+.card:hover, .team-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px var(--accent);
+}
+
+/* Buttons */
+button {
+  background: var(--button);
+  border: none;
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 10px var(--accent);
+}
+button:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 25px var(--accent);
+}
+
+/* Logo */
+.logo-img {
+  width: 150px;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 25px var(--accent));
+}
+.pretendard-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 51px;
+  color: #fff;
+  margin-top: 20px;
+  text-shadow:
+    0 0 20px #990012,
+    0 0 50px #990012,
+    0 0 100px #990012;
+}
+
+/* Modal */
+#profileModal.show { display: flex !important; }
+#profileModal > div {
+  background: var(--card);
+  border: none;
+  border-radius: 15px;
+  padding: 30px;
+  color: var(--text);
+  box-shadow: 0 0 30px var(--accent);
+  font-size: 17px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+  background: var(--bg);
+  border-top: 1px solid var(--accent);
+  font-size: 15px;
+}
+
+@media(max-width:768px) {
+  body { font-size: 14px; }
+  h2 { font-size: 22px; }
+  header h1 { font-size: 26px; }
+  nav a { font-size: 15px; }
+  .pretendard-text { font-size: 34px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1 class="glow" onclick="scrollToSection('home')">PJ IT COMPANY</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#team">Team</a>
+    <a href="#community">Community</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h2 class="glow">안녕하세요, PJ IT COMPANY 입니다.</h2>
+  <img src="logo.png" alt="로고" class="logo-img" />
+  <p class="pretendard-text">기술과 투자로 세상을 바꾸는 IT 기업</p>
+</section>
+
+<section id="projects">
+  <h2 class="glow">프로젝트</h2>
+  <div class="card">
+    <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
+    <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
+       target="_blank"
+       style="display:inline-block;margin-top:8px;background:var(--accent);
+       color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
+  </div>
+</section>
+
+<section id="team">
+  <h2 class="glow">팀원 소개</h2>
+
+  <div class="team-card">
+    <h3>박부건</h3>
+    <p><b>직책:</b> 웹개발자 / AI개발자 / CEO</p>
     <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, Kotlin, Swift, Ruby, C#, HTML</p>
-    <p><b>직책:</b> 개발자 / CEO</p>
     <button onclick="showProfile('박부건')">경력 보기</button>
   </div>
 
   <div class="team-card">
     <h3>정우진</h3>
-    <p><b>직책:</b> AI 개발자 / 하드웨어개발자 / CEO</p>
+    <p><b>직책:</b> AI개발자 / 하드웨어개발자 / CEO</p>
     <p><b>언어:</b> 한국어, Python, C, C++, C#, Java, JavaScript, Wolfram, HTML, CSS</p>
-    <p><b>직책:</b> 개발자 / CEO</p>
     <button onclick="showProfile('정우진')">경력 보기</button>
   </div>
 </section>
@@ -87,8 +247,8 @@ header{
   © 2025 PJ IT COMPANY | 마지막 수정 : <span id="lastModified"></span>
 </footer>
 
-<!-- 팀원 경력 모달 -->
-<div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+<div id="profileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
   <div>
     <h2 id="modalName"></h2>
     <ul id="modalContent"></ul>
@@ -96,7 +256,7 @@ header{
   </div>
 </div>
 
-<!-- Firebase -->
+<!-- Firebase JS (정상작동 버전) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
@@ -111,161 +271,121 @@ const firebaseConfig = {
   appId: "1:576854965361:web:b01632afe33d766d076fd0",
   measurementId: "G-8KM8CYTSHF"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 let currentUser = null;
 
-window.scrollToSection = function(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});};
+window.scrollToSection = (id)=>document.getElementById(id).scrollIntoView({behavior:'smooth'});
 
-// ✅ 로그인: 관리자만 권한 부여
 window.login = async function(){
   const email = prompt("관리자 이메일:");
   const password = prompt("비밀번호:");
-  try {
+  try{
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    currentUser = userCredential.user;
+    currentUser=userCredential.user;
     alert("로그인 성공!");
     renderAll();
-  } catch (error) {
-    alert("로그인 실패: " + error.message);
-  }
+  }catch(e){alert("로그인 실패: "+e.message);}
 };
 
-// ✅ 로그아웃
 window.logout = async function(){
   await signOut(auth);
-  currentUser = null;
+  currentUser=null;
   alert("로그아웃되었습니다.");
   renderAll();
 };
 
-// ✅ 상태 감시
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  renderAll();
-});
+onAuthStateChanged(auth,(user)=>{currentUser=user;renderAll();});
 
-// ✅ 공지 작성
 window.writeNotice = async function(){
-  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 작성할 수 있습니다.");
-  const title = document.getElementById("noticeTitle").value;
-  const content = document.getElementById("noticeContent").value;
-  if (!title || !content) return alert("내용을 입력하세요.");
-  await addDoc(collection(db, "notices"), { title, content, date: new Date().toLocaleString() });
+  if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 작성 가능");
+  const t=document.getElementById("noticeTitle").value;
+  const c=document.getElementById("noticeContent").value;
+  if(!t||!c) return alert("내용을 입력하세요");
+  await addDoc(collection(db,"notices"),{title:t,content:c,date:new Date().toLocaleString()});
   renderNotices();
 };
 
-// ✅ 공지 삭제
 window.deleteNotice = async function(id){
-  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 삭제할 수 있습니다.");
-  await deleteDoc(doc(db, "notices", id));
+  if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 삭제 가능");
+  await deleteDoc(doc(db,"notices",id));
   renderNotices();
 };
 
-// ✅ 공지 렌더링
 async function renderNotices(){
-  const box = document.getElementById("noticeList");
-  const q = query(collection(db, "notices"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  box.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const n = docu.data();
-    box.innerHTML += `<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser && currentUser.email === "bagdoeon827@gmail.com" ? `<br><button onclick="deleteNotice('${docu.id}')">삭제</button>` : ""}</div>`;
+  const box=document.getElementById("noticeList");
+  const q=query(collection(db,"notices"),orderBy("date","desc"));
+  const snap=await getDocs(q);
+  box.innerHTML="";
+  snap.forEach((d)=>{
+    const n=d.data();
+    box.innerHTML+=`<div class='card'><b>${n.title}</b><p>${n.content}</p><small>${n.date}</small>${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="deleteNotice('${d.id}')">삭제</button>`:""}</div>`;
   });
 }
 
-// ✅ 질문 등록
 window.ask = async function(){
-  const name = document.getElementById("qName").value || "익명";
-  const text = document.getElementById("qText").value;
-  if (!text) return alert("질문을 입력하세요.");
-  await addDoc(collection(db, "questions"), { name, text, answer: "", date: new Date().toLocaleString() });
+  const name=document.getElementById("qName").value||"익명";
+  const text=document.getElementById("qText").value;
+  if(!text) return alert("질문을 입력하세요");
+  await addDoc(collection(db,"questions"),{name,text,answer:"",date:new Date().toLocaleString()});
   renderQuestions();
 };
 
-// ✅ 질문 답변 / 삭제
 window.answerQuestion = async function(id){
-  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 답변할 수 있습니다.");
-  const ans = prompt("답변을 입력하세요:");
-  if (!ans) return;
-  await updateDoc(doc(db, "questions", id), { answer: ans });
+  if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 답변 가능");
+  const ans=prompt("답변 입력:");
+  if(!ans) return;
+  await updateDoc(doc(db,"questions",id),{answer:ans});
   renderQuestions();
 };
 
 window.deleteQuestion = async function(id){
-  if (!currentUser || currentUser.email !== "bagdoeon827@gmail.com") return alert("관리자만 삭제할 수 있습니다.");
-  await deleteDoc(doc(db, "questions", id));
+  if(!currentUser || currentUser.email!=="bagdoeon827@gmail.com") return alert("관리자만 삭제 가능");
+  await deleteDoc(doc(db,"questions",id));
   renderQuestions();
 };
 
-// ✅ 질문 렌더링
 async function renderQuestions(){
-  const list = document.getElementById("qList");
-  const q = query(collection(db, "questions"), orderBy("date", "desc"));
-  const snapshot = await getDocs(q);
-  list.innerHTML = "";
-  snapshot.forEach((docu)=>{
-    const qd = docu.data();
-    list.innerHTML += `<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer ? `<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>` : ""}${currentUser && currentUser.email === "bagdoeon827@gmail.com" ? `<br><button onclick="answerQuestion('${docu.id}')">답변</button><button onclick="deleteQuestion('${docu.id}')">삭제</button>` : ""}</div>`;
+  const list=document.getElementById("qList");
+  const q=query(collection(db,"questions"),orderBy("date","desc"));
+  const snap=await getDocs(q);
+  list.innerHTML="";
+  snap.forEach((d)=>{
+    const qd=d.data();
+    list.innerHTML+=`<div class='card'><p><b>${qd.name}</b>: ${qd.text}</p><small>${qd.date}</small>${qd.answer?`<p style='color:var(--accent);'><b>답변:</b> ${qd.answer}</p>`:""}${currentUser&&currentUser.email==="bagdoeon827@gmail.com"?`<br><button onclick="answerQuestion('${d.id}')">답변</button><button onclick="deleteQuestion('${d.id}')">삭제</button>`:""}</div>`;
   });
 }
 
-// ✅ UI 렌더링 통합
-window.renderAll = function(){
+window.renderAll=function(){
   renderNotices();
   renderQuestions();
-
-  // 로그인 여부에 따라 관리자 UI 제어
-  const adminEmail = "bagdoeon827@gmail.com";
-  const noticeWrite = document.getElementById("noticeWrite");
-
-  if (currentUser && currentUser.email === adminEmail) {
-    noticeWrite.style.display = "block";
-  } else {
-    noticeWrite.style.display = "none";
-  }
+  document.getElementById("noticeWrite").style.display=(currentUser&&currentUser.email==="bagdoeon827@gmail.com")?"block":"none";
 };
 
-window.addEventListener("load", ()=>{renderAll();});
-document.getElementById("lastModified").textContent = document.lastModified;
+window.addEventListener("load",()=>{renderAll();});
+document.getElementById("lastModified").textContent=document.lastModified;
 </script>
 
 <script>
 function showProfile(name){
-  const profiles = {
-    "박부건": [
-      "OMIX IT COMPANY 창립자",
-      "PJ IT COMPANY 공동창립자",
-      "2021~2023 발명 영재원 전체 수석",
-      "2023 영재원 팀 'technolage' 내 프로그래머",
-      "2023~2025 과학 영재원 물리과 전체 수석",
+  const profiles={
+    "박부건":[
+      "OMIX IT COMPANY 창립자","PJ IT COMPANY 공동창립자","2021~2023 발명 영재원 전체 수석",
+      "2023 영재원 팀 'technolage' 내 프로그래머","2023~2025 과학 영재원 물리과 전체 수석",
       "2023~2025 부산 과학영재원 부산대 연계 프로그램 1등 수료",
       "2023 영재원 주관 정보+발명 융합 프로젝트 1등 (6개월)",
-      "2023 영재원 내 해커톤(일명 해발해) 1등",
-      "2024 영재원 주관 정보+화학 융합 프로젝트 3등 (10개월)",
-      "2024~2025 과학 영재원 내 '남정네들', '세 얼간이' 팀 단독 프로그래머",
-      "전국 에그드랍 대회 1등",
-      "2023~2024 해외 외국 개발팀(airlock-team2 개발팀장)",
+      "2023 영재원 해커톤 1등","2024 정보+화학 융합 프로젝트 3등 (10개월)",
+      "2024~2025 '남정네들', '세 얼간이' 팀 프로그래머","전국 에그드랍 대회 1등",
+      "2023~2024 해외 개발팀 team2 개발팀장"
     ],
-    "정우진": [
-      "PJ IT COMPANY 공동창립자",
-      "2019~2022 과학영재",
-      "과학고등학교 영재원 최우수 수료",
-      "과학기술정보통신부 장관상 수상",
-      "화학 올림피아드 장려상 수상",
-      "부산과학전람회 우수상",
-      "부산과학전람회 특상 단독 프로그래머",
-      "전국과학전람회 특상 단독 프로그래머",
+    "정우진":[
+      "PJ IT COMPANY 공동창립자","과학고 영재원 최우수 수료","과학기술정보통신부 장관상 수상",
+      "화학 올림피아드 장려상 수상","부산과학전람회 우수상",
+      "부산과학전람회 특상","전국과학전람회 특상"
     ]
   };
-
   const modal=document.getElementById("profileModal");
   document.getElementById("modalName").innerText=name;
-  document.getElementById("modalContent").innerHTML=profiles[name].map(i=>`<li>${i}</li>`).join("");
-  modal.style.display="flex";
-}
-function closeProfile(){document.getElementById("profileModal").style.display="none";}
-</script>
-</body>
-</html>
+  document.getElementById("modalContent").innerHTML=
