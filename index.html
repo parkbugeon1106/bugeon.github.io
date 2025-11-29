@@ -34,10 +34,10 @@
 
 :root {
   --bg: #080000;
-  --accent: #990012;
+  --accent: #3d0000;
   --card: #390909;
   --button: #2b0000;
-  --text: #ffffff;
+  --text: #efefef;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -199,28 +199,31 @@ footer{
 <section id="projects">
   <h2 class="glow">프로젝트</h2>
   <div class="card">
-    <h3>실시간 코인 가격 웹사이트 <span style="color:var(--accent);">(완료)</span></h3>
+    <h3 style="text-align: center;">실시간 코인 가격 웹사이트 <span style="color:var(--accent);"></span></h3>
     <a href="https://parkbugeon1106.github.io/PJ-IT-COMPANY_COIN-WEBSITE/index.html"
        target="_blank"
-       style="display:inline-block;margin-top:8px;background:var(--accent);
-       color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;">🔗 바로가기</a>
+       style="display:inline-block; margin-top:8px; background:var(--accent); color:#fff; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600;">
+       🔗 바로가기
+    </a>
   </div>
 </section>
 
+
 <section id="team">
   <h2 class="glow">팀원 소개</h2>
-  <div class="team-card">
-    <h3>박부건</h3>
-    <p><b>직책:</b> CEO / AI개발자 / 웹 개발자</p>
-    <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, C#,HTML, go,</p>
-    <button onclick="showProfile('박부건')">경력</button>
-  </div>
   <div class="team-card">
     <h3>정우진</h3>
     <p><b>직책:</b> CEO / AI개발자 / 하드웨어개발자</p>
     <p><b>언어:</b> 한국어, Python, C, C++, C#, Java, JavaScript, Wolfram, HTML, CSS</p>
     <button onclick="showProfile('정우진')">경력</button>
   </div>
+  <div class="team-card">
+    <h3>박부건</h3>
+    <p><b>직책:</b> CEO / AI개발자 / 웹 개발자</p>
+    <p><b>언어:</b> Python, Java, JavaScript, C, C++, Go, C#,HTML, go,</p>
+    <button onclick="showProfile('박부건')">경력</button>
+  </div>
+
 </section>
 
 <section id="community">
